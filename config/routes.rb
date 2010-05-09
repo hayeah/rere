@@ -1,7 +1,18 @@
 Rere::Application.routes.draw do |map|
+  devise_for :users
+
+  root :to => "home#index"
+
+  resource :thoughts do
+    resource :comments
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
-
+  #resources :tweets
+  
+  match ":username" => "users#stream", :as => :stream
+  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
