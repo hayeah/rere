@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
+  
   def create
-    thought = Thought.find(params[:thought_id])
-    Comment.new(params[:comment].merge(:thought => thought,:user => current_user)).save!
-    redirect_to :controller => :users, :action => :stream, :username => current_user.username
+    Comment.save(params[:thought_oid],current_user,params[:content])
+    redirect_to :controller => :users, :action => :stream, :username => params[:username]
   end
 end

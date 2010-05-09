@@ -36,4 +36,8 @@ class Thought < OpenStruct
       db.incr("Thought#id")
     end
   end
+
+  def comments
+    @comments ||= Comment.find(self.oid)
+  end
 end

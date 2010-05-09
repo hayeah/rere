@@ -7,6 +7,7 @@ require 'rails/all'
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 require 'ostruct'
+require 'pp'
 
 module Rere
   class Application < Rails::Application

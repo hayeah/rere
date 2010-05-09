@@ -13,13 +13,14 @@
         %div= thought.content
         %div= thought.time
         %div= thought.oid
-        -# / %ul
-        -#   - thought.comments.each do |comment|
-        -#     %li
-        -#       %div= comment.content
-        -#       %div= comment.user.name
+        %ul
+          - thought.comments.each do |comment|
+            %li
+              %div= comment.content
+              %div= comment.author["name"]
         = form_tag :controller => :comments, :action => :create do
           = text_field_tag :content
-          = hidden_field_tag :thought_id, thought.id
+          = hidden_field_tag :thought_oid, thought.oid
+          = hidden_field_tag :username, owner.username
           = submit_tag "comment"
           

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def stream
     @comment = Comment.new
     @thoughts = Thought.find(owner)
-    p @thoughts
+    pp Comment.db.keys
+    pp @thoughts.first.comments
   end
 end
