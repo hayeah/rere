@@ -1,0 +1,25 @@
+%div
+  - unless user_is_owner?
+    #{owner.name}'s stream
+  - else
+    Hello #{current_user.name}
+    = link_to "Sign out", destroy_user_session_path
+    = form_tag :controller => :thoughts, :action => :create  do
+      = text_field_tag :content
+      = submit_tag "say"
+  %ul
+    - @thoughts.each do |thought|
+      %li
+        %div= thought.content
+        %div= thought.time
+        %div= thought.oid
+        -# / %ul
+        -#   - thought.comments.each do |comment|
+        -#     %li
+        -#       %div= comment.content
+        -#       %div= comment.user.name
+        = form_tag :controller => :comments, :action => :create do
+          = text_field_tag :content
+          = hidden_field_tag :thought_id, thought.id
+          = submit_tag "comment"
+          
