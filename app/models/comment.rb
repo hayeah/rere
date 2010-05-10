@@ -33,6 +33,4 @@ class Comment < OpenStruct
       db.incr("Comment#id")
     end
   end
-
-  
 end

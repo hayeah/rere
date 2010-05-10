@@ -2,16 +2,27 @@
 <html>
 <head>
   <title>Rere</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag :all, 'rere_default' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-<%= yield %>
+<div id="header">
+	<p>RERE IS AWESOME<p>
+</div>
+<div id="main">
+	<div class="mainContent">
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<%= yield %>
+	</div>
+	<div class="rightPanel">
+		<p> The stuff in the right panel will go here, like notifications, etc </p>
+		<p> overflowing items are hidden</p>
+		<p>........................................</p>
+	</div>
+</div>
 
 </body>
 </html>
