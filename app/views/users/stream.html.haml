@@ -8,20 +8,20 @@
     = form_tag :controller => :thoughts, :action => :create  do
       = text_area_tag :content, {},:class => "sayText"
       = submit_tag "Share", :class => "saySubmit"
-  <br/>
-  %ul
+  %ul.thoughtList
     - @thoughts.each do |thought|
-      %li 
-        %div= thought.content
-        %div= thought.time.strftime("%b %d")
+      <hr />
+      %li
+        %div= current_user.name+" "+thought.content
+        %div.thoughtDate= thought.time.strftime("%b %d")
         %ul
+          %img.commentNub{:src => "/images/commentNub.jpg"}
           - thought.comments.each do |comment|
-            %li
-              %div= comment.content
-              %div= comment.author["name"]
+            %li.commentList
+              %div= link_to("#{comment.author["name"]}", "http://localhost:3000/#{comment.author["name"]}")+" "+comment.content
         = form_tag :controller => :comments, :action => :create do
-          = text_field_tag :content
+          = text_field_tag :content, {}, :class => "commentBox"
           = hidden_field_tag :thought_oid, thought.oid
           = hidden_field_tag :username, owner.username
-          = submit_tag "comment"
+          = submit_tag "Comment", :class => "commentSubmit"
           

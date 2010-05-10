@@ -53,32 +53,80 @@ body {
 	list-style: none;
 }
 
-.mainContent li {
-	border: dotted gray 1px;
+.mainContent ul {
 }
-
-.sayText {
-	height: 50px;
-	width: 100%;
-} 
-
-.saySubmit {
-	float: right;
+.mainContent li {
 }
 
 .signOut {
 	float: right;
 }
 
+ul.thoughtList {
+	padding-left: 0px;
+}
+
+.thoughtDate {
+	font-size: 10px;
+	color: #C0C0C0;
+}
+/* share layouts */
+.mainContent hr {
+	color: gray;
+	background-color: #C0C0C0;
+	border: 0px;
+	height: 1px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+.sayText {
+	height: 50px;
+	width: 100%;
+} 
+.saySubmit {
+	margin-left: 100%;
+	float: right;
+}
+
 .shareBox {
 	border: solid gray 1px;
 }
+
+/* comment CSS */
+.commentNub {
+	height: 6px;
+	width: 12px;
+	display: block;
+	border: none;
+	margin-left: 10%;
+	margin-right: 75%;
+	margin-bottom: -3px !important;
+}
+.commentList {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	background-color: #F0F0F0;
+	margin-right: 4px;
+}
+.commentBox {
+	margin-left: 40px !important;
+	width: 88%;
+}
+
+.commentSubmit {
+	margin-top: 3px;
+	margin-left: 100%;
+	float:right;
+}
+
+/* main layouts */
 #main div.rightPanel  {
 	border-left-style: solid;
 	border-left-color: #66CCFF;
 	border-left:dotted #66CCFF 1px;
 	float: right;
-	min-height: 580px;
+	min-height: 600px;
 	width: 170px;
 	padding-left: 10px;
 	padding-right: 10px;
