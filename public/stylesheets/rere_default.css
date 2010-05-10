@@ -1,6 +1,19 @@
+a:link {
+	color:#66AFFF;
+	text-decoration: none;}      /* unvisited link */
+a:visited {
+	color:#66AFFF;
+	text-decoration: none;}  /* visited link */
+a:hover {
+	color:#66AFFF;
+	text-decoration: underline;}  /* mouse over link */
+a:active {
+	color:#66AFFF;
+	text-decoration: none;}  /* selected link */
+
 body {
 	background-color: #66CCFF;
-	font-size: 14px;
+	font-size: 12px;
 }
 #header {
 	position: relative;
@@ -10,7 +23,6 @@ body {
 	width: 650px;
 	margin-bottom: 20px;
 	margin-top: 20px;
-	background-color: #FFFFFF;
 }
 
 /* temporary */
@@ -26,26 +38,90 @@ body {
 	min-height: 600px;
 	width: 650px;
 	font-family: "Lucida Grande";
-	background-color: #FFFFFF;
+	margin-bottom: -10px;
 }
 
 #main div.mainContent {
 	float: left;
+	height: 100%;
 	width: 416px;
-	min-height: 556px;
-	padding: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
-#main div.rightPanel  {
+.mainContent ul li {
+	list-style: none;
+}
+
+.mainContent li {
+	border: dotted gray 1px;
+}
+
+.sayText {
+	height: 50px;
+	width: 100%;
+} 
+
+.saySubmit {
 	float: right;
-	width: 146px;
-	min-height: 556px;
-	padding: 20px;
-	overflow: hidden;
-	background-color: #CCFFFF ;
 }
 
-#main p {
-	margin-top: 0px;
-	overflow: hidden;
+.signOut {
+	float: right;
 }
+
+.shareBox {
+	border: solid gray 1px;
+}
+#main div.rightPanel  {
+	border-left-style: solid;
+	border-left-color: #66CCFF;
+	border-left:dotted #66CCFF 1px;
+	float: right;
+	min-height: 580px;
+	width: 170px;
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: hidden;
+	}
+/* rounded corners styles*/
+.spiffy{display:block}
+.spiffy *{
+  display:block;
+  height:1px;
+  overflow:hidden;
+  font-size:.01em;
+  background:#FFFFFF;}
+.spiffy1{
+  margin-left:3px;
+  margin-right:3px;
+  padding-left:1px;
+  padding-right:1px;
+  border-left:1px solid #a7e1ff;
+  border-right:1px solid #a7e1ff;
+  background:#d8f2ff;}
+.spiffy2{
+  margin-left:1px;
+  margin-right:1px;
+  padding-right:1px;
+  padding-left:1px;
+  border-left:1px solid #75d1ff;
+  border-right:1px solid #75d1ff;
+  background:#e1f5ff;}
+.spiffy3{
+  margin-left:1px;
+  margin-right:1px;
+  border-left:1px solid #e1f5ff;
+  border-right:1px solid #e1f5ff;}
+.spiffy4{
+  border-left:1px solid #a7e1ff;
+  border-right:1px solid #a7e1ff;}
+.spiffy5{
+  border-left:1px solid #d8f2ff;
+  border-right:1px solid #d8f2ff;}
+.spiffyfg{
+	height: 140px;
+  background:#FFFFFF;}
+.spiffyfg2{
+  min-height: 600px;
+  background:#FFFFFF;}

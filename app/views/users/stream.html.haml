@@ -1,18 +1,19 @@
 %div
+  = link_to "Sign out", destroy_user_session_path, :class => "signOut"
+  <br/>
   - unless user_is_owner?
     #{owner.name}'s stream
   - else
-    Hello #{current_user.name}
-    = link_to "Sign out", destroy_user_session_path
+    Hi #{current_user.name}, what's on your mind?
     = form_tag :controller => :thoughts, :action => :create  do
-      = text_field_tag :content
-      = submit_tag "say"
+      = text_area_tag :content, {},:class => "sayText"
+      = submit_tag "Share", :class => "saySubmit"
+  <br/>
   %ul
     - @thoughts.each do |thought|
-      %li
+      %li 
         %div= thought.content
-        %div= thought.time
-        %div= thought.oid
+        %div= thought.time.strftime("%b %d")
         %ul
           - thought.comments.each do |comment|
             %li
