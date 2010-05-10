@@ -8,3 +8,4 @@ class UsersController < ApplicationController
     pp @thoughts.first.comments
   end
 end
+  
