@@ -12,13 +12,13 @@
     - @thoughts.each do |thought|
       <hr />
       %li
-        %div= current_user.name+" "+thought.content
+        %div= link_to(thought.author['name'], "http://localhost:3000/#{thought.author['username']}")+" "+thought.content
         %div.thoughtDate= thought.time.strftime("%b %d")
         %ul
           %img.commentNub{:src => "/images/commentNub.jpg"}
           - thought.comments.each do |comment|
             %li.commentList
-              %div= link_to("#{comment.author["name"]}", "http://localhost:3000/#{comment.author["name"]}")+" "+comment.content
+              %div= link_to("#{comment.author['name']}", "http://localhost:3000/#{comment.author['usernamename']}")+" "+comment.content
         = form_tag :controller => :comments, :action => :create do
           = text_field_tag :content, {}, :class => "commentBox"
           = hidden_field_tag :thought_oid, thought.oid
