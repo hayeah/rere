@@ -1,11 +1,11 @@
 a:link {
-	color:#66AFFF;
+	color:#3399FF;
 	text-decoration: none;}      /* unvisited link */
 a:visited {
-	color:#66AFFF;
+	color:#3399FF;
 	text-decoration: none;}  /* visited link */
 a:hover {
-	color:#66AFFF;
+	color:#3399FF;
 	text-decoration: underline;}  /* mouse over link */
 a:active {
 	color:#66AFFF;
