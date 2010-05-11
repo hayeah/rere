@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   
   def stream
     @comment = Comment.new
-    @thoughts = Thought.find(owner)
+    if !user_is_owner?
+      @thoughts = Thought.find(owner)
+    else
+      @thoughts = Thought.public(current_user)
+    end
   end
 
   def follow
