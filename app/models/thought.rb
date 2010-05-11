@@ -19,7 +19,7 @@ class Thought < OpenStruct
     end
 
     def db
-      @db = Redis.new(:db => 1)
+      @db ||= Redis.new(:db => 1)
     end
 
     def flush

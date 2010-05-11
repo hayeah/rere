@@ -1,3 +1,18 @@
+- content_for(:panel) do
+  - if !user_is_owner? && !Following.following?(owner,current_user)
+    %div= link_to "follow", {:controller => :users, :action => :follow, :username => owner.username}, {:method => :post}
+  %h2
+    followers
+    %span #{Following.followers_count(owner)}
+  %ul
+    - owner.followers.each do |follower|
+      %li= link_to(follower.name,stream_path(:username => follower.username))
+  %h2
+    following
+    %span #{Following.followings_count(owner)}
+  %ul
+    - owner.followings.each do |following|
+      %li= link_to(following.name,stream_path(:username => following.username))
 %div
   = link_to "Sign out", destroy_user_session_path, :class => "signOut"
   <br/>

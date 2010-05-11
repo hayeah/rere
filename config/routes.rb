@@ -6,6 +6,8 @@ Rere::Application.routes.draw do |map|
   resource :thoughts do
     resource :comments
   end
+
+  match 'follow/:username' => "users#follow", :as => :follow
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
