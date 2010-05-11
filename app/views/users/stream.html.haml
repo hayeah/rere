@@ -1,16 +1,16 @@
 - content_for(:panel) do
   - if !user_is_owner? && !Following.following?(owner,current_user)
     %div= link_to "follow", {:controller => :users, :action => :follow, :username => owner.username}, {:method => :post}
-  %h2
-    followers
-    %span #{Following.followers_count(owner)}
-  %ul
+  %div
+    %h3= "followers"
+    %p= "#{Following.followers_count(owner)}"
+  %ul.followList
     - owner.followers.each do |follower|
       %li= link_to(follower.name,stream_path(:username => follower.username))
-  %h2
-    following
-    %span #{Following.followings_count(owner)}
-  %ul
+  %div
+    %h3= "following"
+    %p= "#{Following.followings_count(owner)}"
+  %ul.followList
     - owner.followings.each do |following|
       %li= link_to(following.name,stream_path(:username => following.username))
 %div
@@ -34,6 +34,7 @@
           - thought.comments.each do |comment|
             %li.commentList
               %div= link_to("#{comment.author['name']}", "http://localhost:3000/#{comment.author['usernamename']}")+" "+comment.content
+              %div.thoughtDate= comment.time.strftime("%b %d")
         = form_tag :controller => :comments, :action => :create do
           = text_field_tag :content, {}, :class => "commentBox"
           = hidden_field_tag :thought_oid, thought.oid

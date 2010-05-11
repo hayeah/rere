@@ -48,12 +48,16 @@ body {
 	margin-left :auto;
 	margin-right: auto;
 	min-height: 600px;
+	overflow: auto;
 	width: 650px;
 	font-family: "Lucida Grande";
 	margin-bottom: -10px;
 }
 
 #main div.mainContent {
+	border-right-style: solid;
+	border-right-color: #66CCFF;
+	border-right:dotted #66CCFF 1px;
 	float: left;
 	height: 100%;
 	width: 416px;
@@ -138,16 +142,33 @@ ul.thoughtList {
 
 /* main layouts */
 #main div.rightPanel  {
-	border-left-style: solid;
-	border-left-color: #66CCFF;
-	border-left:dotted #66CCFF 1px;
 	float: right;
-	min-height: 600px;
 	width: 170px;
 	padding-left: 10px;
 	padding-right: 10px;
 	overflow: hidden;
-	}
+	height: auto;
+}
+	
+.rightPanel p {
+	font-weight: normal !important;
+	font-size: 12px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.rightPanel h3 {
+	margin-bottom: 5px;
+}
+
+.followList {
+	margin-top: 3px;
+	padding-left: 10px;
+}
+.followList li {
+	margin: 3px;
+	list-style: none;
+}
 /* rounded corners styles*/
 .spiffy{display:block}
 .spiffy *{
@@ -188,4 +209,5 @@ ul.thoughtList {
   background:#FFFFFF;}
 .spiffyfg2{
   min-height: 600px;
+  overflow: auto;
   background:#FFFFFF;}
