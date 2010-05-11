@@ -15,6 +15,18 @@ body {
 	background-color: #66CCFF;
 	font-size: 12px;
 }
+
+.logo {
+	max-width: 200px;
+}
+#preheader {
+	position: relative;
+	margin-left :auto;
+	margin-right: auto;
+	width: 650px;
+	height: auto;
+	margin-bottom: -13px;
+}
 #header {
 	position: relative;
 	margin-left :auto;
@@ -72,8 +84,8 @@ ul.thoughtList {
 }
 /* share layouts */
 .mainContent hr {
-	color: gray;
-	background-color: #C0C0C0;
+	color: #D8D8D8;
+	background-color: #D8D8D8;
 	border: 0px;
 	height: 1px;
 	margin-top: 30px;
