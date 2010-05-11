@@ -1,0 +1,10 @@
+Start your own group!
+
+= form_for @group do |f|
+  %p= f.label :name
+  %p= f.text_field :name
+
+  %p= f.label :description
+  %p= f.text_area :description
+
+  %p= submit_tag "Create"

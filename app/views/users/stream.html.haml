@@ -13,6 +13,7 @@
   %ul.followList
     - owner.followings.each do |following|
       %li= link_to(following.name,stream_path(:username => following.username))
+  = link_to("Start a Group!",new_group_path)
 %div
   = link_to "Sign out", destroy_user_session_path, :class => "signOut"
   <br/>
@@ -35,9 +36,9 @@
             %li.commentList
               %div= link_to("#{comment.author['name']}", "http://localhost:3000/#{comment.author['usernamename']}")+" "+comment.content
               %div.thoughtDate= comment.time.strftime("%b %d")
-        = form_tag :controller => :comments, :action => :create do
+        = form_tag :controller => :comments, :action => :create, :thought_id => thought.oid do
           = text_field_tag :content, {}, :class => "commentBox"
-          = hidden_field_tag :thought_oid, thought.oid
+          = #hidden_field_tag :thought_oid, thought.oid
           = hidden_field_tag :username, owner.username
           = submit_tag "Comment", :class => "commentSubmit"
           

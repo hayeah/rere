@@ -1,0 +1,8 @@
+%h2 All The Groups In The Universe
+%ul
+  - @groups.each do |group|
+    %li
+      %div= link_to(group.name,:action => :show, :id => group.id)
+      %div= group.description
+      %div= link_to("join", {:action => :join, :id => group.id}, :method => :post)
+    

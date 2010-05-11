@@ -3,8 +3,14 @@ Rere::Application.routes.draw do |map|
 
   root :to => "home#index"
 
-  resource :thoughts do
-    resource :comments
+  resources :thoughts do
+    resources :comments
+  end
+
+  resources :groups do
+    member do
+      post :join
+    end
   end
 
   match 'follow/:username' => "users#follow", :as => :follow
