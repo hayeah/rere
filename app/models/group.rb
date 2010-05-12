@@ -43,8 +43,8 @@ class Group::Thought < OpenStruct
       DB.lpush(group_id,json)
     end
 
-    def find(group,from=0,limit=25)
-      DB.lrange(group.id,from,from+limit).map { |json|
+    def find(group_id,from=0,limit=25)
+      DB.lrange(group_id,from,from+limit).map { |json|
         Group::Thought.new(from_json(json))
       }
     end
@@ -58,5 +58,9 @@ class Group::Thought < OpenStruct
     def next_id
       DB.incr("#id")
     end
+  end
+
+  def comments
+    []
   end
 end

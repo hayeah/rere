@@ -6,7 +6,9 @@
     
 %h2 Hello, Welcome to #{@group.name}
 %div
-  %div= @group.description
+  %div
+    #{@group.description}
+    #{link_to_join}
   %hr
   %div
     Say something to the group

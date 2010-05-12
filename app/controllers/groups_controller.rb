@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    # @thoughts = Thought.of_group(group_id)
+    @thoughts = Group::Thought.find(@group.id)
   end
 
   def say

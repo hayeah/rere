@@ -23,6 +23,8 @@ Rere::Application.routes.draw do |map|
   match 'follow/:username' => "users#follow", :as => :follow
 
   match 'users/thoughts/:thought_id/comment' => "users#comment"
+
+  match 'groups/thoughts/:thought_id/comment' => "groups#comment"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
