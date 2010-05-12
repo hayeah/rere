@@ -17,4 +17,8 @@
             %div.thoughtDate= time_ago_in_words(thought.time)
       = form_tag :action => :comment, :thought_id => thought.oid do
         = text_field_tag :content, {}, :class => "commentBox"
+        - if owner # ya, i know, this really sux
+          = hidden_field_tag :username, owner
+        - if group
+          = hidden_field_tag :group_id, group.id
         = submit_tag "Comment", :class => "commentSubmit"

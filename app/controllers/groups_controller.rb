@@ -22,6 +22,18 @@ class GroupsController < ApplicationController
     to_show
   end
 
+  # {"commit"=>"Comment",
+  #   "authenticity_token"=>"R1vhauI/3hrPVqyW0Cp1Xj/DTCAq7ISZwfj7D/oEfDM=",
+  #   "group_id"=>"1",
+  #   "content"=>"awef",
+  #   "thought_id"=>"6"}
+  
+  def comment
+    Group::Comment.create(params[:thought_id],current_user,params[:content])
+    params[:id] = params[:group_id]
+    to_show
+  end
+
   def join
     Group.join(params[:id],current_user.id)
     to_show

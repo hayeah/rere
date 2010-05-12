@@ -9,4 +9,5 @@ module RedisDB
   Following = db(3)
   Group = db(4)
   GroupThought = db(5)
+  GroupComment = db(6)
 end

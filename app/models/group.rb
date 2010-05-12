@@ -61,6 +61,36 @@ class Group::Thought < OpenStruct
   end
 
   def comments
-    []
+    Group::Comment.find(self.oid)
+  end
+end
+
+class Group::Comment < OpenStruct
+  DB = RedisDB::GroupComment
+  
+  class << self
+    def create(thought_oid,user,content)
+      DB.lpush(thought_oid,{
+                 "oid" => next_id,
+                 "author" => user.attributes.slice("id","username","name"),
+                 "content" => content,
+                 "time" => Time.now.xmlschema}.to_json)
+    end
+
+    def find(thought_oid,from=0,limit=25)
+      comments = DB.lrange(thought_oid,from,from+limit).map { |json|
+        Group::Comment.new(from_json(json))
+      }
+    end
+
+    def from_json(json)
+      attributes = JSON.parse(json)
+      attributes["time"] = Time.parse(attributes["time"])
+      attributes
+    end
+
+    def next_id
+      DB.incr("#id")
+    end
   end
 end
