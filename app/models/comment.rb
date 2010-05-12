@@ -16,7 +16,7 @@ class Comment < OpenStruct
     end
 
     def db
-      @db ||= Redis.new(:db => 2)
+      @db ||= RedisDB::Comment
     end
 
     def flush

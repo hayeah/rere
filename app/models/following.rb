@@ -34,7 +34,7 @@ class Following < OpenStruct
     end
 
     def db
-      @db ||= Redis.new(:db => 3)
+      @db ||= RedisDB::Following
     end
 
     def flush
