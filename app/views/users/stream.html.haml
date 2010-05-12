@@ -37,7 +37,7 @@
         %div
           %span= link_to(thought.author['name'], :action => :stream, :username => thought.author['username'])
           %span= thought.content
-        %div.thoughtDate= thought.time.strftime("%b %d")
+        %div.thoughtDate= time_ago_in_words(thought.time)
         %ul
           - if thought.comments.size > 0
             %img.commentNub{:src => "/images/commentNub.jpg"}
@@ -46,7 +46,7 @@
               %div
                 %span= link_to("#{comment.author['name']}", :action => :stream, :username => comment.author['username'])
                 %span= comment.content
-              %div.thoughtDate= comment.time.strftime("%b %d")
+              %div.thoughtDate= time_ago_in_words(thought.time)
         = form_tag :controller => :comments, :action => :create, :thought_id => thought.oid do
           = text_field_tag :content, {}, :class => "commentBox"
           = #hidden_field_tag :thought_oid, thought.oid
