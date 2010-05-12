@@ -11,6 +11,8 @@ class GroupsController < ApplicationController
   def create
     @group = Group.create(params[:group].merge("creator_id" => current_user))
     params[:id] = @group.id
+    # the creator automatically joins the group
+    Group.join(@group.id,current_user.id)
     to_show
   end
 
