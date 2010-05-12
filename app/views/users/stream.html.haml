@@ -17,7 +17,8 @@
       %li= link_to(following.name,stream_path(:username => following.username))
   = link_to("Start a Group!",new_group_path)
 %div
-  <br/>
+  = link_to "Sign out", destroy_user_session_path, :class => "signOut"
+  %br
   - unless user_is_owner?
     #{owner.name}'s stream
   - else
@@ -27,16 +28,20 @@
       = submit_tag "Share", :class => "saySubmit"
   %ul.thoughtList
     - @thoughts.each do |thought|
-      <hr />
+      %hr
       %li
-        %div= link_to(thought.author['name'], "http://localhost:3000/#{thought.author['username']}")+" "+thought.content
+        %div
+          %span= link_to(thought.author['name'], :action => :stream, :username => thought.author['username'])
+          %span= thought.content
         %div.thoughtDate= thought.time.strftime("%b %d")
         %ul
           - if thought.comments.size > 0
             %img.commentNub{:src => "/images/commentNub.jpg"}
           - thought.comments.each do |comment|
             %li.commentList
-              %div= link_to("#{comment.author['name']}", "http://localhost:3000/#{comment.author['usernamename']}")+" "+comment.content
+              %div
+                %span= link_to("#{comment.author['name']}", :action => :stream, :username => comment.author['username'])
+                %span= comment.content
               %div.thoughtDate= comment.time.strftime("%b %d")
         = form_tag :controller => :comments, :action => :create, :thought_id => thought.oid do
           = text_field_tag :content, {}, :class => "commentBox"
