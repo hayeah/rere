@@ -20,20 +20,37 @@ body {
 	max-width: 200px;
 }
 
+#footer {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Lucida Grande";
+	width: 650px;
+	height: auto;
+}
+
+.foot div {
+	position: relative;
+	display: inline;
+	margin-left: auto; /* WHY WONT THIS WORK */
+	margin-right: auto; /* WHY WONT THIS WORK */
+}
+
 #userheader {
 	font-family: "Lucida Grande";
 	float: right;
 	overflow-left: auto;
-	margin-top: 5px;
+	margin-top: 25px;
 	margin-bottom: 0px;
 	padding: 0px;
 }
 
 #userheader p {
 	font-size: 14px;
-	margin-left: 5px;
+	margin-left: 10px;
 	margin-top: 0px;
-	margin-right: 5px;
+	margin-right: 10px;
+	margin-bottom: 0px;
 }
 #preheader {
 	position: relative;
@@ -226,6 +243,10 @@ ul.thoughtList {
   overflow: auto;
   background:#FFFFFF;}
 .userpanel{
-  height: 20px;
+  height: auto;
   overflow: hidden;
+  background:#FFFFFF;}
+.foot{
+  position: relative;
+  height: auto;
   background:#FFFFFF;}
