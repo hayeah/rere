@@ -22,7 +22,6 @@
         %li= link_to(group.name,:controller => :groups, :action => :show, :id => group.id)
   = link_to("Start a Group!",new_group_path)
 %div
-  = link_to "Sign out", destroy_user_session_path, :class => "signOut"
   %br
   - unless user_is_owner?
     #{owner.name}'s stream
