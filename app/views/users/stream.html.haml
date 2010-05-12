@@ -30,26 +30,5 @@
     = form_tag :controller => :thoughts, :action => :create  do
       = text_area_tag :content, {},:class => "sayText"
       = submit_tag "Share", :class => "saySubmit"
-  %ul.thoughtList
-    - @thoughts.each do |thought|
-      %hr
-      %li
-        %div
-          %span= link_to(thought.author['name'], :action => :stream, :username => thought.author['username'])
-          %span= thought.content
-        %div.thoughtDate= time_ago_in_words(thought.time)
-        %ul
-          - if thought.comments.size > 0
-            %img.commentNub{:src => "/images/commentNub.jpg"}
-          - thought.comments.each do |comment|
-            %li.commentList
-              %div
-                %span= link_to("#{comment.author['name']}", :action => :stream, :username => comment.author['username'])
-                %span= comment.content
-              %div.thoughtDate= time_ago_in_words(thought.time)
-        = form_tag :controller => :comments, :action => :create, :thought_id => thought.oid do
-          = text_field_tag :content, {}, :class => "commentBox"
-          = #hidden_field_tag :thought_oid, thought.oid
-          = hidden_field_tag :username, owner.username
-          = submit_tag "Comment", :class => "commentSubmit"
+  = render :partial => "thought_list"
           
