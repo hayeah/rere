@@ -9,7 +9,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    Group.create(params[:group].merge("creator_id" => current_user))
+    @group = Group.create(params[:group].merge("creator_id" => current_user))
+    params[:id] = @group.id
+    to_show
   end
 
   def show
