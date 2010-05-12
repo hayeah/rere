@@ -27,13 +27,18 @@ body {
 	font-family: "Lucida Grande";
 	width: 650px;
 	height: auto;
+	margin-bottom: 18px;
 }
 
-.foot div {
+#footPanel {
+	text-align: center;
+	font-family: "Lucida Grande";	
+}
+
+#footPanel p {
+	margin-top: 0px;
+	margin-bottom: 0px;
 	position: relative;
-	display: inline;
-	margin-left: auto; /* WHY WONT THIS WORK */
-	margin-right: auto; /* WHY WONT THIS WORK */
 }
 
 #userheader {
@@ -247,6 +252,6 @@ ul.thoughtList {
   overflow: hidden;
   background:#FFFFFF;}
 .foot{
-  position: relative;
   height: auto;
+  overflow: hidden;
   background:#FFFFFF;}
