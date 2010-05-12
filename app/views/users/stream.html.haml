@@ -6,15 +6,15 @@
   %div
     %h3 followers
     %p #{Following.followers_count(owner)}
-  %ul.followList
-    - owner.followers.each do |follower|
-      %li= link_to(follower.name,stream_path(:username => follower.username))
+    %ul.followList
+      - owner.followers.each do |follower|
+        %li= link_to(follower.name,stream_path(:username => follower.username))
   %div
     %h3 following
     %p #{Following.followings_count(owner)}
-  %ul.followList
-    - owner.followings.each do |following|
-      %li= link_to(following.name,stream_path(:username => following.username))
+    %ul.followList
+      - owner.followings.each do |following|
+        %li= link_to(following.name,stream_path(:username => following.username))
   %div
     %h3 Groups
     %ul.groupList
