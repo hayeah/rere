@@ -5,7 +5,7 @@
       %div
         %span= link_to(thought.author['name'], :controller => :users, :action => :stream, :username => thought.author['username'])
         %span= thought.content
-      %div.thoughtDate= time_ago_in_words(thought.time)
+      %div.thoughtDate= time_ago_in_words(thought.time)+ " ago"
       %ul
         - if thought.comments.size > 0
           %img.commentNub{:src => "/images/commentNub.jpg"}
@@ -14,7 +14,7 @@
             %div
               %span= link_to("#{comment.author['name']}", :controller => :users, :action => :stream, :username => comment.author['username'])
               %span= comment.content
-            %div.thoughtDate= time_ago_in_words(thought.time)
+            %div.thoughtDate= time_ago_in_words(thought.time)+" ago"
       = form_tag :action => :comment, :thought_id => thought.oid do
         = text_field_tag :content, {}, :class => "commentBox"
         - if owner # ya, i know, this really sux

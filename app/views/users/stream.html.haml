@@ -15,7 +15,7 @@
         %li= link_to(following.name,stream_path(:username => following.username))
   %div
     %h3 Groups
-    %ul.groupList
+    %ul.followList
       - owner.groups.each do |group|
         %li= link_to(group.name,:controller => :groups, :action => :show, :id => group.id)
   = link_to("Start a Group!",new_group_path)
