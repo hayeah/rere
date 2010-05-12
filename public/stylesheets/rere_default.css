@@ -136,7 +136,9 @@ ul.thoughtList {
 .sayText {
 	height: 50px;
 	width: 100%;
-} 
+	overflow: hidden;
+}
+
 .saySubmit {
 	margin-left: 100%;
 	float: right;
@@ -186,7 +188,7 @@ ul.thoughtList {
 	overflow: hidden;
 	height: auto;
 }
-	
+
 .rightPanel p {
 	font-weight: normal !important;
 	font-size: 12px;
@@ -198,13 +200,41 @@ ul.thoughtList {
 	margin-bottom: 5px;
 }
 
+.groupTitle {
+	display: inline;
+}
+
+.startGroup {
+	float: right;
+}
+
+.followBox {
+	margin-top: 20px;
+}
+.followBox h3{
+	display: inline;
+}
+
+.followBox p {
+	display: inline;
+	float: right;
+}
+.rightPanel hr {
+	color: #D8D8D8;
+	background-color: #D8D8D8;
+	border: 0px;
+	height: 1px;
+	margin-bottom: 10px;	
+}
+
 .followList {
 	margin-top: 3px;
 	padding-left: 10px;
 }
 .followList li {
-	margin: 3px;
-	list-style: none;
+	margin-top: 5pxgi;
+	margin-left: 8px;
+	list-style-image: url('/images/bullet.png');
 }
 /* rounded corners styles*/
 .spiffy{display:block}

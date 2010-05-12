@@ -1,24 +1,30 @@
 - content_for(:panel) do
   - if !user_is_owner? && !Following.following?(owner,current_user)
     %div= link_to "follow", {:controller => :users, :action => :follow, :username => owner.username}, {:method => :post}
-  %div
+  %div.followBox
     %h3 followers
     %p #{Following.followers_count(owner)}
-    %ul.followList
-      - owner.followers.each do |follower|
-        %li= link_to(follower.name,stream_path(:username => follower.username))
-  %div
+  %ul.followList
+    - owner.followers.each do |follower|
+      %li= link_to(follower.name,stream_path(:username => follower.username))
+  %div.followBox
     %h3 following
     %p #{Following.followings_count(owner)}
-    %ul.followList
-      - owner.followings.each do |following|
-        %li= link_to(following.name,stream_path(:username => following.username))
+  %ul.followList
+    - owner.followings.each do |following|
+      %li= link_to(following.name,stream_path(:username => following.username))
+  %hr
   %div
-    %h3 Groups
+    %h3.groupTitle Groups
+    %div.startGroup= link_to("Start a Group!",new_group_path)
     %ul.followList
       - owner.groups.each do |group|
         %li= link_to(group.name,:controller => :groups, :action => :show, :id => group.id)
-  = link_to("Start a Group!",new_group_path)
+
+// really can't get this to work :(
+%script{:type => 'text/javascript'}
+  $('textarea#sayBox').autoResize();
+
 %div
   %br
   - unless user_is_owner?
@@ -26,7 +32,6 @@
   - else
     Hi #{current_user.name}, what's on your mind?
     = form_tag :controller => :thoughts, :action => :create  do
-      = text_area_tag :content, {},:class => "sayText"
+      = text_area_tag :content, {},:class => "sayText", :id => "sayBox", :tabindex => 1
       = submit_tag "Share", :class => "saySubmit"
-  = render :partial => "thought/list"
-          
+  = render :partial => "thought/list"         
