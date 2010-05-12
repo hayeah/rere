@@ -4,16 +4,25 @@ Rere::Application.routes.draw do |map|
   root :to => "home#index"
 
   resources :thoughts do
-    resources :comments
   end
 
   resources :groups do
     member do
       post :join
+      post :say
     end
   end
 
+  resources :users do
+    member do
+      post :follow
+    end
+  end
+
+  
   match 'follow/:username' => "users#follow", :as => :follow
+
+  match 'users/thoughts/:thought_id/comment' => "users#comment"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

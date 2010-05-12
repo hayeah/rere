@@ -16,5 +16,10 @@ class UsersController < ApplicationController
     end
     redirect_to stream_path(:username => owner.username)
   end
+
+  def comment
+    Comment.save(params[:thought_id],current_user,params[:content])
+    redirect_to :action => :stream, :username => params[:username]
+  end
 end
   

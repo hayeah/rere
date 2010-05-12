@@ -5,4 +5,12 @@
       %li= link_to_user(user)
     
 %h2 Hello, Welcome to #{@group.name}
-%div= @group.description
+%div
+  %div= @group.description
+  %hr
+  %div
+    Say something to the group
+    = form_tag :controller => :groups, :action => :say, :id => @group.id  do
+      = text_area_tag :content, {},:class => "sayText"
+      = submit_tag "Share", :class => "saySubmit"
+    = render :partial => 'thought/list'

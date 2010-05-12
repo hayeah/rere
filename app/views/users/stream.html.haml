@@ -30,5 +30,5 @@
     = form_tag :controller => :thoughts, :action => :create  do
       = text_area_tag :content, {},:class => "sayText"
       = submit_tag "Share", :class => "saySubmit"
-  = render :partial => "thought_list"
+  = render :partial => "thought/list"
           
