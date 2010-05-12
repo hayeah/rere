@@ -19,6 +19,22 @@ body {
 .logo {
 	max-width: 200px;
 }
+
+#userheader {
+	font-family: "Lucida Grande";
+	float: right;
+	overflow-left: auto;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+
+#userheader p {
+	font-size: 14px;
+	margin-left: 5px;
+	margin-top: 0px;
+	margin-right: 5px;
+}
 #preheader {
 	position: relative;
 	margin-left :auto;
@@ -210,4 +226,8 @@ ul.thoughtList {
 .spiffyfg2{
   min-height: 600px;
   overflow: auto;
+  background:#FFFFFF;}
+.userpanel{
+  height: 20px;
+  overflow: hidden;
   background:#FFFFFF;}

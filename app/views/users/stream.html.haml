@@ -1,3 +1,5 @@
+- content_for(:userpanel) do
+  %p Signed in as #{current_user.name} #{link_to "Sign Out", destroy_user_session_path}
 - content_for(:panel) do
   - if !user_is_owner? && !Following.following?(owner,current_user)
     %div= link_to "follow", {:controller => :users, :action => :follow, :username => owner.username}, {:method => :post}
@@ -15,7 +17,6 @@
       %li= link_to(following.name,stream_path(:username => following.username))
   = link_to("Start a Group!",new_group_path)
 %div
-  = link_to "Sign out", destroy_user_session_path, :class => "signOut"
   <br/>
   - unless user_is_owner?
     #{owner.name}'s stream
@@ -31,7 +32,8 @@
         %div= link_to(thought.author['name'], "http://localhost:3000/#{thought.author['username']}")+" "+thought.content
         %div.thoughtDate= thought.time.strftime("%b %d")
         %ul
-          %img.commentNub{:src => "/images/commentNub.jpg"}
+          - if thought.comments.size > 0
+            %img.commentNub{:src => "/images/commentNub.jpg"}
           - thought.comments.each do |comment|
             %li.commentList
               %div= link_to("#{comment.author['name']}", "http://localhost:3000/#{comment.author['usernamename']}")+" "+comment.content
