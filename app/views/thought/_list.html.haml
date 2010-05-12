@@ -15,7 +15,7 @@
               %span= link_to("#{comment.author['name']}", :controller => :users, :action => :stream, :username => comment.author['username'])
               %span= comment.content
             %div.thoughtDate= time_ago_in_words(thought.time)
-      = form_tag({:action => :comment, :thought_id => thought.oid}, {:class => "sayForm"}) do
+      = form_tag({:action => :comment, :thought_id => thought.oid}) do
         = text_field_tag :content, {}, :class => "commentBox"
         - if owner # ya, i know, this really sux
           = hidden_field_tag :username, owner.username
