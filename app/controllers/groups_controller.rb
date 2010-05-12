@@ -17,5 +17,7 @@ class GroupsController < ApplicationController
   end
 
   def join
+    Group.join(params[:id],current_user.id)
+    redirect_to :action => :show, :id => params[:id]
   end
 end

@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
   def followings
     @followings ||= Following.followings(self)
   end
+
+  def groups
+    @groups ||= Group.find(Group.groups_of(self.id))
+  end
 end

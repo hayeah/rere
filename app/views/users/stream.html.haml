@@ -4,17 +4,22 @@
   - if !user_is_owner? && !Following.following?(owner,current_user)
     %div= link_to "follow", {:controller => :users, :action => :follow, :username => owner.username}, {:method => :post}
   %div
-    %h3= "followers"
-    %p= "#{Following.followers_count(owner)}"
+    %h3 followers
+    %p #{Following.followers_count(owner)}
   %ul.followList
     - owner.followers.each do |follower|
       %li= link_to(follower.name,stream_path(:username => follower.username))
   %div
-    %h3= "following"
-    %p= "#{Following.followings_count(owner)}"
+    %h3 following
+    %p #{Following.followings_count(owner)}
   %ul.followList
     - owner.followings.each do |following|
       %li= link_to(following.name,stream_path(:username => following.username))
+  %div
+    %h3 Groups
+    %ul.groupList
+      - owner.groups.each do |group|
+        %li= link_to(group.name,:controller => :groups, :action => :show, :id => group.id)
   = link_to("Start a Group!",new_group_path)
 %div
   = link_to "Sign out", destroy_user_session_path, :class => "signOut"

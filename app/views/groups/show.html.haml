@@ -1,2 +1,8 @@
+- content_for(:panel) do
+  %h3 Members
+  %ul
+    - @group.members.each do |user|
+      %li= link_to_user(user)
+    
 %h2 Hello, Welcome to #{@group.name}
 %div= @group.description

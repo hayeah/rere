@@ -7,5 +7,5 @@ module RedisDB
   Thought = db(1)
   Comment = db(2)
   Following = db(3)
-  GroupMember = db(4)
+  Group = db(4)
 end
