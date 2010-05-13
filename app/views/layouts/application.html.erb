@@ -13,11 +13,13 @@
 
 <div id="preheader">
   <%= link_to(image_tag("rerewind_logo.png"),root_path,:class => "logo") %>
+  <% if current_user %>
 	<div id="userheader">
 		<div class="userpanel">
         	<p>Signed in as <%= current_user.name %> | <%= link_to "Profile", user_session_path %> | <%= link_to "Sign Out", destroy_user_session_path %></p>
 		</div>
 	</div>
+  <% end %>
 </div>
 
 <div id="header">
