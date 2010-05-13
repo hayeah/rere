@@ -36,8 +36,8 @@ body {
 }
 
 #footPanel p {
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	position: relative;
 }
 
@@ -53,9 +53,9 @@ body {
 #userheader p {
 	font-size: 14px;
 	margin-left: 10px;
-	margin-top: 0px;
+	margin-top: 5px;
 	margin-right: 10px;
-	margin-bottom: 0px;
+	margin-bottom: 5px;
 }
 #preheader {
 	position: relative;
@@ -71,7 +71,7 @@ body {
 	margin-right: auto;
 	height: 150px;
 	width: 650px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	margin-top: 20px;
 }
 
@@ -134,7 +134,7 @@ ul.thoughtList {
 }
 
 .sayText {
-	height: 50px;
+	margin-top: 1px;
 	width: 100%;
 	overflow: hidden;
 }
@@ -271,10 +271,12 @@ ul.thoughtList {
 .spiffy5{
   border-left:1px solid #d8f2ff;
   border-right:1px solid #d8f2ff;}
-.spiffyfg{
+.headerpanel{
 	height: 140px;
   background:#FFFFFF;}
-.spiffyfg2{
+.mainpanel{
+  padding-bottom: 10px;
+  padding-top: 10px;
   overflow: auto;
   background:#FFFFFF;}
 .userpanel{

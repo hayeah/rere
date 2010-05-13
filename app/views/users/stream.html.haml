@@ -21,10 +21,6 @@
       - owner.groups.each do |group|
         %li= link_to(group.name,:controller => :groups, :action => :show, :id => group.id)
 
-// really can't get this to work :(
-%script{:type => 'text/javascript'}
-  $('textarea#sayBox').autoResize();
-
 %div
   %br
   - unless user_is_owner?
