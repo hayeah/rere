@@ -13,17 +13,16 @@ Rere::Application.routes.draw do |map|
     end
   end
 
+
+  match 'users/:username/watch' => "users#watch", :as => :watch
+  
   resources :users do
     member do
-      post :follow
+      post :watch
     end
   end
 
-  
-  match 'follow/:username' => "users#follow", :as => :follow
-
   match 'users/thoughts/:thought_id/comment' => "users#comment"
-
   match 'groups/thoughts/:thought_id/comment' => "groups#comment"
   
   # The priority is based upon order of creation:
