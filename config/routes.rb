@@ -7,6 +7,12 @@ Rere::Application.routes.draw do |map|
     resources :comments
   end
 
+  resources :groups do
+    member do
+      post :join
+    end
+  end
+
   
 
   match 'users/:username/watch' => "users#watch", :as => :watch

@@ -4,5 +4,6 @@
     %li
       %div= link_to(group.name,:action => :show, :id => group.id)
       %div= group.description
-      %div= #{link_to_join}
+      %div= link_to_join(group)
+      %hr
     
