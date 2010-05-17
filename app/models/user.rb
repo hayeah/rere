@@ -19,15 +19,5 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :username, :email, :password, :password_confirmation
 
-  def followers
-    @followers ||= Following.followers(self)
-  end
-
-  def followings
-    @followings ||= Following.followings(self)
-  end
-
-  def groups
-    @groups ||= Group.find(Group.groups_of(self.id))
-  end
+  
 end
