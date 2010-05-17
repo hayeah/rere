@@ -15,6 +15,7 @@ Rere::Application.routes.draw do |map|
 
 
   match 'users/:username/watch' => "users#watch", :as => :watch
+  match 'users/:username/share' => "users#share", :as => :share
   
   resources :users do
     member do
@@ -22,8 +23,8 @@ Rere::Application.routes.draw do |map|
     end
   end
 
-  match 'users/thoughts/:thought_id/comment' => "users#comment"
-  match 'groups/thoughts/:thought_id/comment' => "groups#comment"
+  #match 'users/thoughts/:thought_id/comment' => "users#comment"
+  #match 'groups/thoughts/:thought_id/comment' => "groups#comment"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -21,13 +21,13 @@
 -#       - owner.groups.each do |group|
 -#         %li= link_to(group.name,:controller => :groups, :action => :show, :id => group.id)
 
--# %div
--#   %br
--#   - unless user_is_owner?
--#     #{owner.name}'s stream
--#   - else
--#     Hi #{current_user.name}, what's on your mind?
--#     = form_tag :controller => :thoughts, :action => :create  do
--#       = text_area_tag :content, {},:class => "sayText", :id => "sayBox", :tabindex => 1
--#       = submit_tag "Share", :class => "saySubmit"
--#   = render :partial => "thought/list"         
+%div
+  %br
+  - unless user_is_owner?
+    #{owner.name}'s stream
+  - else
+    Hi #{current_user.name}, what's on your mind?
+    = form_tag :action => :share  do
+      = text_area_tag :content, {},:class => "sayText", :id => "sayBox", :tabindex => 1
+      = submit_tag "Share", :class => "saySubmit"
+  = render :partial => "thought/list"         
