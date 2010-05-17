@@ -6,13 +6,13 @@
     %p #{owner.watchers.size}
   %ul.followList
     - owner.watchers.each do |watcher|
-      %li= link_to(watcher.username,stream_path(:username => watcher.username))
+      %li= link_to_user(watcher)
   %div.followBox
     %h3 watching:
     %p #{owner.watched.size}
   %ul.followList
     - owner.watched.each do |watched|
-      %li= link_to(watched.username,stream_path(:username => watched.username))
+      %li= link_to_user(watched)
 -#   %hr
 -#   %div
 -#     %h3.groupTitle Groups
