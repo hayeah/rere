@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :username, :email, :password, :password_confirmation
 
+  has_many :thoughts
+
   def watch(user)
     return if user == self
     Watcher.new(:from_user => self, :to_user => user).save!
@@ -34,5 +36,9 @@ class User < ActiveRecord::Base
 
   def watchers
     Watcher.where(:to_user_id => self.id).includes(:from_user).map(&:from_user)
+  end
+
+  def share(content)
+    self.thoughts.create(:content => content)
   end
 end

@@ -40,5 +40,21 @@ describe User do
       end
     end
   end
-  
+
+  context "#share" do
+    let(:thought) do
+      u1.share("content")
+      u1.thoughts.first
+    end
+    
+    it "creates a new thought" do
+      thought
+      u1.should have(1).thought
+    end
+
+    it "creates new thought with content" do
+      thought.content.should == "content"
+    end
+  end
+
 end
