@@ -6,3 +6,9 @@ Factory.define :user do |f|
   f.sequence(:email) { |n| "user#{n}@example.com" }
   f.password "password"
 end
+
+Factory.define :group do |f|
+  f.association :creator, :factory => :user
+  f.sequence(:name)  { |n| "group #{n}" }
+  f.sequence(:description) { |n| "description of group #{n}" }
+end

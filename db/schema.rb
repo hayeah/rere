@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100517072734) do
+ActiveRecord::Schema.define(:version => 20100517145013) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(:version => 20100517072734) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "memberships", :force => true do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+  end
+
+  add_index "memberships", ["group_id", "user_id"], :name => "index_memberships_on_group_id_and_user_id", :unique => true
 
   create_table "relationships", :force => true do |t|
     t.integer "from_user_id", :null => false
