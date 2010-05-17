@@ -11,33 +11,15 @@ gem 'haml', '3.0.0.rc.3'
 
 # db
 gem 'pg'
-gem 'redis', :git => 'git://github.com/hayeah/redis-rb.git'
 
 # test
-gem 'rspec', '2.0.0.beta.8'
-gem 'rspec-rails', '2.0.0.beta.8'
-gem 'capybara'
-gem 'database_cleaner'
-gem 'cucumber-rails'
-gem 'cucumber', '0.7.0'
+group :test do
+  gem 'rspec', '2.0.0.beta.8'
+  gem 'rspec-rails', '2.0.0.beta.8'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber', '0.7.0'
 
-
-
-
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri', '1.4.1'
-# gem 'aws-s3', :require => 'aws/s3'
-
-# Bundle gems for certain environments:
-# gem 'rspec', :group => :test
-# group :test do
-#   gem 'webrat'
-# end
+  gem 'factory_girl', :git => 'git://github.com/szimek/factory_girl.git', :branch => 'rails3'
+end
