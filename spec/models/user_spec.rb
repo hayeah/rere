@@ -8,8 +8,12 @@ describe User do
     before do
       u1.watch(u2)
     end
+
+    specify "u1 is watching u2" do
+      u1.watching?(u2).should be_true
+    end
     
-    specify "u1 watches u2" do
+    specify "u1 is watching u2" do
       u1.watched.should include(u2)
     end
 

@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     Watcher.new(:from_user => self, :to_user => user).save!
   end
 
+  def watching?(user)
+    !Watcher.where(:from_user_id => self.id, :to_user_id => user.id).empty?
+  end
+
   def watched
     Watcher.where(:from_user_id => self.id).includes(:to_user).map(&:to_user)
   end
