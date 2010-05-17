@@ -1,0 +1,3 @@
+class Watcher < Relationship
+  
+end
