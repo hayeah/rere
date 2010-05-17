@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :username, :email, :password, :password_confirmation
 
   def watch(user)
+    return if user == self
     Watcher.new(:from_user => self, :to_user => user).save!
   end
 
