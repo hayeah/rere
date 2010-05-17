@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(:version => 20100517050003) do
   end
 
   create_table "relationships", :force => true do |t|
-    t.integer "from_user_id"
-    t.integer "to_user_id"
-    t.string  "type"
+    t.integer "from_user_id", :null => false
+    t.integer "to_user_id",   :null => false
+    t.string  "type",         :null => false
   end
 
   add_index "relationships", ["from_user_id", "to_user_id"], :name => "index_relationships_on_from_user_id_and_to_user_id", :unique => true

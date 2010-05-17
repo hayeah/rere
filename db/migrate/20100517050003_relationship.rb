@@ -1,9 +1,9 @@
 class Relationship < ActiveRecord::Migration
   def self.up
     create_table(:relationships) do |t|
-      t.integer :from_user_id
-      t.integer :to_user_id
-      t.string :type
+      t.integer :from_user_id, :null => false
+      t.integer :to_user_id, :null => false
+      t.string :type, :null => false
     end
 
     add_index :relationships, [:from_user_id,:to_user_id], :unique => true
