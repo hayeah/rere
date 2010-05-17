@@ -4,25 +4,22 @@ Rere::Application.routes.draw do |map|
   root :to => "home#index"
 
   resources :thoughts do
+    resources :comments
   end
 
-  resources :groups do
-    member do
-      post :join
-      post :say
-    end
-  end
-
+  
 
   match 'users/:username/watch' => "users#watch", :as => :watch
   match 'users/:username/share' => "users#share", :as => :share
-  
-  resources :users do
-    member do
-      post :watch
-    end
-  end
 
+  
+  # resources :groups do
+  #   member do
+  #     post :join
+  #     post :say
+  #   end
+  # end
+  
   #match 'users/thoughts/:thought_id/comment' => "users#comment"
   #match 'groups/thoughts/:thought_id/comment' => "groups#comment"
   

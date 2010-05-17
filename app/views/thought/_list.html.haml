@@ -6,19 +6,19 @@
         %span= link_to_user(thought.user)
         %span= thought.content
       %div.thoughtDate= time_ago_in_words(thought.created_at)+ " ago"
-      -# %ul
-      -#   - if thought.comments.size > 0
-      -#     %img.commentNub{:src => "/images/commentNub.jpg"}
-      -#   - thought.comments.each do |comment|
-      -#     %li.commentList
-      -#       %div
-      -#         %span= link_to("#{comment.author['name']}", :controller => :users, :action => :stream, :username => comment.author['username'])
-      -#         %span= comment.content
-      -#       %div.thoughtDate= time_ago_in_words(thought.time)+" ago"
-      -# = form_tag({:action => :comment, :thought_id => thought.oid}) do
-      -#   = text_field_tag :content, {}, :class => "commentBox"
-      -#   - if owner # ya, i know, this really sux
-      -#     = hidden_field_tag :username, owner.username
-      -#   - if group
-      -#     = hidden_field_tag :group_id, group.id
-      -#   = submit_tag "Comment", :class => "commentSubmit"
+      %ul
+        - if thought.comments.size > 0
+          %img.commentNub{:src => "/images/commentNub.jpg"}
+        - thought.comments.each do |comment|
+          %li.commentList
+            %div
+              = link_to_user(comment.user)
+            %span= comment.content
+            %div.thoughtDate= time_ago_in_words(thought.created_at)+" ago"
+        = form_tag({:controller => :comments, :action => :create, :thought_id => thought.id}) do
+          = text_field_tag :content, {}, :class => "commentBox"
+          -# - if owner # ya, i know, this really sux
+          -#   = hidden_field_tag :username, owner.username
+          -# - if group
+          -#   = hidden_field_tag :group_id, group.id
+          = submit_tag "Comment", :class => "commentSubmit"
