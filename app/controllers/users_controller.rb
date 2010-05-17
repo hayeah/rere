@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include UsersHelper
+  before_filter :authenticate_user!
   
   def stream
     @thought  = Thought.new
