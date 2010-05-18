@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
   end
 
   def share
-    Group.thoughts.create(:user => current_user, :content => params[:content])
+    
     to_show
   end
 
@@ -31,7 +31,8 @@ class GroupsController < ApplicationController
   end
 
   def join
-    Group.join(params[:id],current_user.id)
+    @group = Group.find(params[:id])
+    @group.join(current_user)
     to_show
   end
 

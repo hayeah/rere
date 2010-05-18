@@ -11,7 +11,7 @@
     #{link_to_join(@group)}
   %hr
   %div
-    Say something to the group
+    Share something with the group
     = form_tag :action => :share, :id => @group.id  do
       = text_area_tag :content, {},:class => "sayText"
       = submit_tag "Share", :class => "saySubmit"
