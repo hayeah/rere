@@ -13,13 +13,13 @@
   %ul.followList
     - owner.watched.each do |watched|
       %li= link_to_user(watched)
--#   %hr
--#   %div
--#     %h3.groupTitle Groups
--#     %div.startGroup= link_to("Start a Group!",new_group_path)
--#     %ul.followList
--#       - owner.groups.each do |group|
--#         %li= link_to(group.name,:controller => :groups, :action => :show, :id => group.id)
+  %hr
+  %div
+    %h3.groupTitle Groups
+    %div.startGroup= link_to("Start a Group!",new_group_path)
+    %ul.followList
+      - owner.groups.each do |group|
+        %li= link_to(group.name,group_path(:id => group.id))
 
 %div
   %br

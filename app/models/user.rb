@@ -26,6 +26,9 @@ class User < ActiveRecord::Base
   has_many :shares, :through => :shared_thoughts, :source => :thought
   has_many :shared_thoughts, :as => :subject
 
+  has_many :memberships
+  has_many :groups, :through => :memberships
+
   def stream
     self.thoughts.includes(:comments => [:user]).order("id desc")
   end
