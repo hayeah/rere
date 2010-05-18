@@ -4,6 +4,12 @@ class CommentsController < ApplicationController
     thought = Thought.find(params[:thought_id])
     thought.comments.create(:user => current_user,
                             :content => params[:content])
-    goto_user(thought.user)
+    if group_id = params[:group_id]
+      goto_group(Group.find(group_id))
+    elsif username = params[:username]
+      goto_user(User.where(:username => username).first)
+    else
+      raise "dunno where to go"
+    end
   end
 end
