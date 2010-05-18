@@ -3,6 +3,8 @@ class Thought < ActiveRecord::Base
   has_many :comments
 
   has_many :shared_thoughts
+
+  validates_presence_of :content
   
   def share(subject)
     self.shared_thoughts.create(:thought => self,
