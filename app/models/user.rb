@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
   # shares is the timeline of thoughts from a user and all watched users
   has_many :shares, :through => :shared_thoughts, :source => :thought
   has_many :shared_thoughts, :as => :subject
+
+  def stream
+    self.thoughts.includes(:comments => [:user]).order("id desc")
+  end
   
   def watch(user)
     return if user == self

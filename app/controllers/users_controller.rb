@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def stream
     @thought  = Thought.new
-    @thoughts = owner.thoughts.includes(:comments => [:user]).order("id desc")
+    @thoughts = owner.stream
   end
 
   def watch
