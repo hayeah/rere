@@ -14,7 +14,7 @@
             %div
               = link_to_user(comment.user)
             %span= comment.content
-            %div.thoughtDate= time_ago_in_words(thought.created_at)+" ago"
+            %div.thoughtDate= time_ago_in_words(comment.created_at)+" ago"
         = form_tag({:controller => :comments, :action => :create, :thought_id => thought.id}) do
           = text_field_tag :content, {}, :class => "commentBox"
           -# - if owner # ya, i know, this really sux
