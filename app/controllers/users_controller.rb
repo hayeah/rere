@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   
   def stream
     @thought  = Thought.new
-    @thoughts = owner.stream
+    if owner?
+      @thoughts = current_user.shared_stream
+    else
+      @thoughts = owner.stream
+    end
   end
 
   def watch

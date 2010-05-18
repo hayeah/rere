@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
   def stream
     self.thoughts.includes(:comments => [:user]).order("id desc")
   end
+
+  def shared_stream
+    self.shares.includes(:comments => [:user]).order("id desc")
+  end
   
   def watch(user)
     return if user == self

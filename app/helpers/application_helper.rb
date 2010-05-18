@@ -3,6 +3,10 @@ module ApplicationHelper
     current_user && (current_user == owner)
   end
 
+  def owner?
+    current_user && (current_user == owner)
+  end
+
   def owner
     @owner ||= User.where(:username => params[:username]).first
   end
