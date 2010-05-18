@@ -15,4 +15,4 @@
     = form_tag :action => :share, :id => @group.id  do
       = text_area_tag :content, {},:class => "sayText"
       = submit_tag "Share", :class => "saySubmit"
-      -# render :partial => 'thought/list'
+    = render :partial => 'thought/list'

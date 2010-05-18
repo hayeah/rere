@@ -17,6 +17,10 @@ class Group < ActiveRecord::Base
       group
     end
   end
+
+  def stream
+    self.shares.includes(:comments => [:user]).order("id desc")
+  end
   
   def join(user)
     self.members << user

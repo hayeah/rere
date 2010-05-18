@@ -16,11 +16,12 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    # @thoughts = Group::Thought.find(@group.id)
+    @thoughts = @group.stream
   end
 
   def share
-    
+    @group = Group.find(params[:id])
+    current_user.share(params[:content],@group)
     to_show
   end
 
