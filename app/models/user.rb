@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   has_many :thoughts
   has_many :groups, :through => :memberships
-
+  
   def watch(user)
     return if user == self
     Watcher.new(:from_user => self, :to_user => user).save!

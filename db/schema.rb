@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100517145013) do
+ActiveRecord::Schema.define(:version => 20100518053854) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(:version => 20100517145013) do
   end
 
   add_index "relationships", ["from_user_id", "to_user_id"], :name => "index_relationships_on_from_user_id_and_to_user_id", :unique => true
+
+  create_table "shared_thoughts", :force => true do |t|
+    t.integer "subject_id"
+    t.string  "subject_type"
+    t.integer "thoughts_id"
+  end
 
   create_table "thoughts", :force => true do |t|
     t.integer  "user_id",    :null => false

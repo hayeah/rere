@@ -12,3 +12,14 @@ Factory.define :group do |f|
   f.sequence(:name)  { |n| "group #{n}" }
   f.sequence(:description) { |n| "description of group #{n}" }
 end
+
+Factory.define :thought do |f|
+  f.association :user, :factory => :user
+  f.sequence(:content)  { |n| "content #{n}" }
+end
+
+Factory.define :shared_thought do |f|
+  f.association :subject, :factory => :user
+  f.association :thought, :factory => :thought
+end
+
