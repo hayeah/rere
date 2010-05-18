@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %title Rere
+    = stylesheet_link_tag :all, 'rere_default'
+    = javascript_include_tag :defaults
+    = javascript_include_tag 'autoresize.jquery'
+    = javascript_include_tag 'curvycorners.src'
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"
+    = javascript_include_tag 'rails', 'application'
+    = csrf_meta_tag
+  %body
+    #preheader
+      = link_to(image_tag("rerewind_logo.png"),root_path,:class => "logo")
+      - if current_user
+        #userheader
+          .userpanel
+            %p
+              Signed in as #{current_user.name}
+              \|
+              = link_to "Profile", user_session_path
+              \|
+              = link_to "Sign Out", destroy_user_session_path
+    #header
+      .headerpanel
+        = image_tag("rerewind_banner.png")
+    #main
+      .mainpanel
+        .mainContent
+          .notice= notice
+          .alert= alert
+          = yield
+        .rightPanel
+          = yield :panel
+    #footer
+      #footPanel
+        .foot
+          %p (c) rerewind 2010
+      
