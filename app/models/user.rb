@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
 
   has_many :thoughts
   has_many :groups, :through => :memberships
+
+  # shares is the timeline of thoughts from a user and all watched users
+  has_many :shares, :through => :shared_thoughts, :source => :thought
+  has_many :shared_thoughts, :as => :subject
   
   def watch(user)
     return if user == self
@@ -36,10 +40,17 @@ class User < ActiveRecord::Base
   end
 
   def watchers
-    Watcher.where(:to_user_id => self.id).includes(:from_user).map(&:from_user)
+    @watchers ||= Watcher.where(:to_user_id => self.id).includes(:from_user).map(&:from_user)
   end
 
   def share(content)
-    self.thoughts.create(:content => content)
+    User.transaction do
+      thought = self.thoughts.create(:content => content)
+      # share thoughts with watchers
+      (self.watchers+[self]).each do |watcher|
+        self.shared_thoughts.create(:thought => thought,
+                                    :subject => watcher)
+      end
+    end
   end
 end

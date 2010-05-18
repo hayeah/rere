@@ -55,6 +55,25 @@ describe User do
     it "creates new thought with content" do
       thought.content.should == "content"
     end
+
+    context "broadcast to my watchers" do
+      before do
+        u2.watch(u1)
+        thought
+      end
+
+      let(:shares) do
+        u2.shares
+      end
+
+      it "shares thought with u2" do
+        u2.shares.should include(thought)
+      end
+
+      it "shares thought with self" do
+        u1.shares.should include(thought)
+      end
+    end
   end
 
 end

@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20100518053854) do
   create_table "shared_thoughts", :force => true do |t|
     t.integer "subject_id"
     t.string  "subject_type"
-    t.integer "thoughts_id"
+    t.integer "thought_id"
   end
 
   create_table "thoughts", :force => true do |t|
