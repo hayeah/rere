@@ -43,14 +43,18 @@ class User < ActiveRecord::Base
     @watchers ||= Watcher.where(:to_user_id => self.id).includes(:from_user).map(&:from_user)
   end
 
-  def share(content)
+  def share(content,group=nil)
     User.transaction do
       thought = self.thoughts.create(:content => content)
-      # share thoughts with watchers
-      (self.watchers+[self]).each do |watcher|
-        self.shared_thoughts.create(:thought => thought,
-                                    :subject => watcher)
+      # appear in a group's share thoughts
+      thought.share(group) if group
+      # appear in self's share thoughts
+      thought.share(self)
+      # appear in each watcher's share thoughts
+      self.watchers.each do |watcher|
+        thought.share(watcher)
       end
+      return thought
     end
   end
 end

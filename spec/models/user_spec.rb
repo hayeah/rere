@@ -4,6 +4,8 @@ describe User do
   let(:u1) { Factory(:user) }
   let(:u2) { Factory(:user) }
 
+  let(:group) { Factory(:group) }
+
   context "#watch" do
     context "watching itself" do
       it "returns nil" do
@@ -56,7 +58,7 @@ describe User do
       thought.content.should == "content"
     end
 
-    context "broadcast to my watchers" do
+    context "share with my watchers" do
       before do
         u2.watch(u1)
         thought
@@ -72,6 +74,22 @@ describe User do
 
       it "shares thought with self" do
         u1.shares.should include(thought)
+      end
+
+      it "does not share thought with group" do
+        group.shares.should_not include(thought)
+      end
+    end
+
+    context "share with a group" do
+      let(:thought) { u1.share("foo",group) }
+
+      before do
+        thought
+      end
+
+      it "shares thought with group" do
+        group.shares.should include(thought)
       end
     end
   end

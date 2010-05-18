@@ -6,6 +6,9 @@ class Group < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :creator
 
+  has_many :shares, :through => :shared_thoughts, :source => :thought
+  has_many :shared_thoughts, :as => :subject
+  
   class << self
     def make(attributes)
       group = self.new(attributes)
