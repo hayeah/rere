@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_format_of :email, :with => Devise.email_regexp
   
-  validates_presence_of :password
-  validates_confirmation_of :password
+  # validates_presence_of :password
+  # validates_confirmation_of :password
   
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :username, :email, :password, :password_confirmation

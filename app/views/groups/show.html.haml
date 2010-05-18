@@ -8,11 +8,11 @@
 %div
   %div
     #{@group.description}
-    #{link_to_join}
+    #{link_to_join(@group)}
   %hr
   %div
     Say something to the group
-    = form_tag :controller => :groups, :action => :say, :id => @group.id  do
+    = form_tag :action => :share, :id => @group.id  do
       = text_area_tag :content, {},:class => "sayText"
       = submit_tag "Share", :class => "saySubmit"
-    = render :partial => 'thought/list'
+      -# render :partial => 'thought/list'

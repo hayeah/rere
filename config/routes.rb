@@ -10,6 +10,7 @@ Rere::Application.routes.draw do |map|
   resources :groups do
     member do
       post :join
+      post :share
     end
   end
 

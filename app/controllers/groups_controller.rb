@@ -9,29 +9,21 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.create(params[:group].merge("creator_id" => current_user))
-    params[:id] = @group.id
-    # the creator automatically joins the group
-    Group.join(@group.id,current_user.id)
+    group = Group.make(params[:group].merge(:creator => current_user))
+    params[:id] = group.id
     to_show
   end
 
   def show
     @group = Group.find(params[:id])
-    @thoughts = Group::Thought.find(@group.id)
+    # @thoughts = Group::Thought.find(@group.id)
   end
 
-  def say
-    Group::Thought.create(params[:id],current_user,params[:content])
+  def share
+    Group.thoughts.create(:user => current_user, :content => params[:content])
     to_show
   end
 
-  # {"commit"=>"Comment",
-  #   "authenticity_token"=>"R1vhauI/3hrPVqyW0Cp1Xj/DTCAq7ISZwfj7D/oEfDM=",
-  #   "group_id"=>"1",
-  #   "content"=>"awef",
-  #   "thought_id"=>"6"}
-  
   def comment
     Group::Comment.create(params[:thought_id],current_user,params[:content])
     params[:id] = params[:group_id]
