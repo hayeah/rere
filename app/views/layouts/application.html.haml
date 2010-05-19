@@ -8,6 +8,8 @@
     = javascript_include_tag 'rails', 'application'
     = csrf_meta_tag
   %body
+    - if production?
+      = render :partial => "shared/google_analytics" 
     #preheader
       = link_to(image_tag("rerewind_logo.png",:class => "logo"),root_path)
       - if current_user
