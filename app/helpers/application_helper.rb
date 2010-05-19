@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def production?
+    Rails.env == "production"
+  end
+  
   def user_is_owner?
     current_user && (current_user == owner)
   end
