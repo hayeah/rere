@@ -2,9 +2,9 @@
   = image_tag("logo.png")
   #login
     = form_for(@user, :url => user_session_path) do |f|
-      = f.text_field :email, :value => "login"
-      = f.password_field :password
-      = f.submit "Sign in", :class => "signin"
+      = f.text_field :email, :value => "login", :tabindex => 1
+      = f.password_field :password, :tabindex => 2
+      = f.submit "Sign in", :class => "signin", :tabindex => 3
 #main
   #splash_top
   #splash
