@@ -16,6 +16,6 @@ module ApplicationHelper
   end
 
   def link_to_user(user)
-    link_to(user.name, stream_path(:username => user.username))
+    link_to(user.username, stream_path(:username => user.username))
   end
 end

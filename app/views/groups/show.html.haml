@@ -1,18 +1,24 @@
-- content_for(:panel) do
-  %h3 Members
-  %ul
-    - @group.members.each do |user|
-      %li= link_to_user(user)
+#header
+  = image_tag("logo.png")
+  #toolbar
+    = link_to "Sign Out", destroy_user_session_path
     
-%h2 Hello, Welcome to #{@group.name}
-%div
-  %div
-    #{@group.description}
-    #{link_to_join(@group)}
-  %hr
-  %div
-    Share something with the group
+#content
+  #sidebar
+    #navigation
+      %h2 Members
+      %ul#members
+        - @group.members.each do |user|
+          %li= link_to_user(user)
+      %br
+        = link_to_join(@group)
+  #info
+    %h1 Welcome to #{@group.name}
+    %div
+      #{@group.description}
+  #share_prompt
     = form_tag :action => :share, :id => @group.id  do
-      = text_area_tag :content, {},:class => "sayText"
-      = submit_tag "Share", :class => "saySubmit"
+      = text_area_tag :content
+      = image_submit_tag "share-button.png", :class => "submit"
+  #stream
     = render :partial => 'thought/list'

@@ -1,13 +1,24 @@
+
 $gray1: #d7d7d7
 $gray2: #868181
-  
+
+
 body
   background: url("/images/bg-gradient.png") repeat-x
 
+a
+  color: #118bd1
+  text-decoration: none
+  &:hover
+    color: #99cdeb
+    
 #wrapper
+  position: relative
   width: 800px
   margin: auto
   font: 12px Verdana,non-serif
+  div
+    border: 0px solid black
 
 #header
   color: red
@@ -29,6 +40,11 @@ body
       border: 1px solid $gray2
       float: right
       width: 50px
+
+#toolbar
+  position: absolute
+  right: 78px
+  top: 3px
 
 #splash_top
   background: url("/images/box-top.png") no-repeat
@@ -64,10 +80,133 @@ body
 #splash_bottom
   background: url("/images/box-bottom.png") no-repeat
   height: 20px
-  border: 0px solid black
 
 #footer
   text-align: center
   color: $gray2
   font: 10px Verdana,non-serif
 
+#content
+  position: relative
+  #info
+    margin-left: 100px
+    padding: 20px
+    h1
+      font-size: 2em
+      
+
+#share_prompt
+  width: 500px
+  height: 150px
+  margin: 0 0 0 100px
+  padding-top: 20px
+  textarea
+    margin: auto
+    width: 450px
+    height: 75px
+    display: block
+  .submit
+    float: right
+    margin: 5px 25px 0 0
+      
+#stream
+  width: 600px
+
+#sidebar
+  top: 0
+  width: 200px
+  position: absolute
+  margin-left: 600px
+
+
+#navigation
+  margin: 0 0 0 10px
+  position: absolute
+  top: 160px
+  h2
+    color: $gray2
+    font-weight: bold
+    margin: 1em 0 5px 0
+
+#portrait
+  margin: 10px 0 30px 0
+  background: url("/images/portrait.png") no-repeat
+  width: 130px
+  height: 130px
+
+
+// * thought styling
+#thoughts
+  border: 0px solid black
+
+.thought
+  position: relative
+  margin-bottom: 3em
+  .date
+    width: 100px
+    text-align: right
+    font-size: 1em
+    font-weight: bold
+    color: $gray2
+    margin-bottom: 5px
+  .time
+    clear: both
+    float: left
+    width: 100px
+    text-align: right
+    font-size: 0.8em
+    color: #b9b9b9
+  .content
+    top: 0
+    position: relative
+    margin-left: 100px
+    padding-left: 25px
+    .name a
+      color: #2eaeca
+      text-decoration: none
+      font-weight: bold
+      margin-right: 3px
+      &:hover
+        color: #8bf1ff
+
+#comments
+  .top
+    margin: 5px 0 0 130px
+    background: url("/images/comment-nub.png") no-repeat
+    height: 5px
+    width: 10px
+  .input
+    width: 450px
+    background: #e1e4e5
+    margin-left: 125px
+    padding: 3px
+    input
+      width: 442px
+      border: 1px solid #a8a8a8
+      display: block
+      padding: 3px
+    .submit
+      margin-top: 3px
+      width: 75px
+      float: right
+
+.comment
+  background: #e1e4e5
+  margin: 0 0 3px 125px
+  width: 450px
+  padding: 3px
+  .timestamp
+    font-size: 8px
+    color: $gray2
+  .name a
+    color: #2eaeca
+    text-decoration: none
+    font-weight: bold
+    margin-right: 3px
+    &:hover
+      color: #8bf1ff
+
+.clear
+  height: 1px
+  clear: both
+  visibility: hidden
