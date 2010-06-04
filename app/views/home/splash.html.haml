@@ -3,7 +3,7 @@
   #login
     = form_for(@user, :url => user_session_path) do |f|
       = f.text_field :email, :value => "login"
-      = f.text_field :password, :value => "password"
+      = f.password_field :password
       = f.submit "Sign in", :class => "signin"
 #main
   #splash_top
