@@ -2,38 +2,46 @@
 %html
   %head
     %title Rere
-    = stylesheet_link_tag :all, 'rere_default'
-    = javascript_include_tag 'curvycorners.src'
-    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"
-    = javascript_include_tag 'rails', 'application'
+    = stylesheet_link_tag "http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css", 'rere'
+    = # javascript_include_tag 'curvycorners.src'
+    = # javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"
+    = # javascript_include_tag 'rails', 'application'
     = csrf_meta_tag
   %body
     - if production?
-      = render :partial => "shared/google_analytics" 
-    #preheader
-      = link_to(image_tag("rerewind_logo.png",:class => "logo"),root_path)
-      - if current_user
-        #userheader
-          .userpanel
-            %p
-              Signed in as #{current_user.username}
-              \|
-              = link_to "Profile", user_session_path
-              \|
-              = link_to "Sign Out", destroy_user_session_path
-    #header
-      .headerpanel
-        = image_tag("rerewind_banner.png")
-    #main
-      .mainpanel
-        .mainContent
-          .notice= notice
-          .alert= alert
-          = yield
-        .rightPanel
-          = yield :panel
-    #footer
-      #footPanel
-        .foot
-          %p (c) rerewind 2010
-      
+      = render :partial => "shared/google_analytics"
+    #wrapper
+      #header
+        = image_tag("logo.png")
+      #main
+        #splash_top
+        #splash
+          %h1
+            Reremind is a
+            %span.highlight
+              community
+            for people who are going through life difficulties.
+          %ul
+            %li
+              Depression
+            %li
+              Loneliness
+            %li
+              Anxiety
+            %li
+              Relationship Problems
+            %li
+              Parenting Issues
+          %div
+            We want to
+            %span.highlight
+              help
+          .indent
+            Share your thoughts. Make new Friends.
+          = image_tag("join-us-now.png",:class => "join")
+          %hr
+          stuff
+        #splash_bottom
+        
+      #footer
+        (c) rerewind 2010
