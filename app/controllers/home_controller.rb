@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       redirect_to stream_path(:username => current_user.username)
     else
+      @user = User.new
       render
     end
   end

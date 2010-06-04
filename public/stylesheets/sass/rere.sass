@@ -1,17 +1,40 @@
+$gray1: #d7d7d7
+$gray2: #868181
+  
 body
   background: url("/images/bg-gradient.png") repeat-x
 
 #wrapper
   width: 800px
   margin: auto
+  font: 12px Verdana,non-serif
 
 #header
   color: red
+  #login
+    margin: 10px 20px 0 0
+    border: 0px solid black
+    float: right
+    input
+      color: $gray2
+      border: 1px solid $gray1
+      margin: 0 0 2px 0
+      padding: 2px
+      display: block
+      font-size: 12px
+      width: 10em
+    input.signin
+      color: #000
+      background: $gray1
+      border: 1px solid $gray2
+      float: right
+      width: 50px
 
 #splash_top
   background: url("/images/box-top.png") no-repeat
   height: 20px
   border: 0px solid black
+  margin-top: 1em
 
 #splash
   background: url("/images/box-side.png") repeat-y
@@ -23,7 +46,7 @@ body
     margin: 0.5em 0 1em 1em
     margin-left: 40px
   li
-    color: #868181
+    color: $gray2
     display: inline-block
     font: 25px "Helvetica",non-serif
   div
@@ -45,6 +68,6 @@ body
 
 #footer
   text-align: center
-  color: #868181
+  color: $gray2
   font: 10px Verdana,non-serif
 
