@@ -4,12 +4,17 @@ $(window).load(function () {
     $("#user_password").replaceWith(password_field_hint);
     $("#user_password").bind({
         focusin: function() {
-            $(this).replaceWith(password_field);
+            var replacement = $(password_field);
+            replacement.css("color","#000");
+            $(this).replaceWith(replacement);
+            $(this).unbind("focusin");
         }
     });
-    $("#login input").bind({
+    $("#user_email").bind({
         focusin: function() {
+            $(this).css("color","black");
             $(this).val("");
+            $(this).unbind("focusin");
         }
     });
 });
