@@ -6,6 +6,8 @@
 #content
   #sidebar
     #portrait
+      - if owner.avatar
+        = image_tag owner.avatar.url(:thumb)
     #navigation
       .groups
         %h2 Groups

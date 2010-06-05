@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "90x90>", :tiny => "30x30" }
 
   validates_presence_of :name
 
@@ -17,7 +19,7 @@ class User < ActiveRecord::Base
   # validates_confirmation_of :password
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :username, :email, :password, :password_confirmation
+  attr_accessible :name, :username, :email, :password, :password_confirmation, :avatar
 
   has_many :thoughts
   has_many :groups, :through => :memberships
