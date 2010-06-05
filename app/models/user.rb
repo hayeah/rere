@@ -14,6 +14,15 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
   validates_format_of :email, :with => Devise.email_regexp
+
+  # override devise's authentication search to allow login with either username or email
+  def self.find_for_authentication(conditions={})
+    if conditions[:username] =~ Devise.email_regexp
+      conditions[:email] = conditions[:username]
+      conditions.delete(:username)
+    end
+    super
+  end
   
   # validates_presence_of :password
   # validates_confirmation_of :password

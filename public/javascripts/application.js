@@ -12,7 +12,7 @@ $(window).load(function () {
             $(this).unbind("focusin");
         }
     });
-    $("#user_email").bind({
+    $("#user_username").bind({
         focusin: function() {
             $(this).css("color","black");
             $(this).val("");
