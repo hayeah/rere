@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   # tweet stream
   def index
     if user_signed_in?
-      redirect_to stream_path(:username => current_user.username)
+      render "splash"
     else
       @user = User.new
       render "splash"

@@ -1,37 +1,74 @@
 #header
   = image_tag("logo.png")
-  #login
-    = form_for(@user, :url => user_session_path) do |f|
-      = f.text_field :email, :value => "login"
-      = f.text_field :password, :value => "password"
-      = f.submit "Sign in", :class => "signin"
 #main
-  #splash_top
-  #splash
-    %h1
-      Reremind is a
-      %span.highlight
-        community
-      for people who are going through life difficulties.
-    %ul
-      %li
-        Depression
-      %li
-        Loneliness
-      %li
-        Anxiety
-      %li
-        Relationship Problems
-      %li
-        Parenting Issues
-    %div
-      We want to
-      %span.highlight
-        help
-    .indent
-      Share your thoughts. Make new Friends.
-    = image_tag("join-us-now.png",:class => "join")
-  #splash_bottom
+  #sign_up_box
+    #sign_up
+      %p.title
+        Join our 
+        %span.highlight 
+          Community
+      %table
+        %tr
+          %th 
+            %label Full Name
+          %td 
+            = text_field :user, :name, :class => 'sign_up_input'
+        %tr
+          %th
+          %td.input_helper_td
+            %span.input_helper You can choose to display your name on your profile if you want
+        %tr
+          %th
+            %label Username
+          %td
+            = text_field :user, :name1, :class => 'sign_up_input'
+        %tr
+          %th
+          %td.input_helper_td
+            %span.input_helper You will use this to log in
+        %tr
+          %th
+            %label Password
+          %td
+            = password_field :user, :password, :class => 'sign_up_input'
+        %tr
+          %th
+          %td.input_helper_td
+            %span.input_helper At least 6 characters
+        %tr
+          %th
+            %label Confirm Password
+          %td
+            = password_field :user, :confirm_password, :class => 'sign_up_input'
+        %tr
+          %th
+          %td.input_helper_td
+            %span.input_helper Retype your password
+        %tr
+          %th
+            %label Email
+          %td
+            = text_field :user, :email, :class => 'sign_up_input'
+        %tr
+          %th
+          %td.input_helper_td
+            %span.input_helper Your email will not be displayed publicly
+        %tr
+          %th
+            %label Terms of Service
+            = link_to 'Printable Version', {}, :class => 'tos_print'
+          %td
+            %code.sign_up_input This is a tos, hehe
+        %tr
+          %th
+          %td.input_helper_td
+            %span.tos_helper By clicking on "Create my account" button below, you are agreeing to the Terms of Service above and the Private Policy
+        %tr
+          %th
+          %td.submit_td
+            = link_to 'Create my account', {}, { :src => '/images/create_account_button.png', :class => 'submit_button' }
+         
+        
 
 #footer
   (c) rerewind 2010

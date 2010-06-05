@@ -18,4 +18,76 @@
 
   %p= f.submit "Sign up"
 
-= render :partial => "devise/shared/links"
+#header
+  = image_tag("logo.png")
+#main
+  #sign_up_box
+    #sign_up
+      %p.title
+        Join our 
+        %span.highlight 
+          Community
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+        %table
+          %tr
+            %th 
+              %label Full Name
+            %td 
+              = f.text_field :name, :class => 'sign_up_input'
+          %tr
+            %th
+            %td.input_helper_td
+              %span.input_helper You can choose to display your name on your profile if you want
+          %tr
+            %th
+              %label Username
+            %td
+              = f.text_field :username, :class => 'sign_up_input'
+          %tr
+            %th
+            %td.input_helper_td
+              %span.input_helper You will use this to log in
+          %tr
+            %th
+              %label Password
+            %td
+              = f.password_field :password, :class => 'sign_up_input'
+          %tr
+            %th
+            %td.input_helper_td
+              %span.input_helper At least 6 characters
+          %tr
+            %th
+              %label Confirm Password
+            %td
+              = f.password_field :password_confirmation, :class => 'sign_up_input'
+          %tr
+            %th
+            %td.input_helper_td
+              %span.input_helper Retype your password
+          %tr
+            %th
+              %label Email
+            %td
+              = f.text_field :email, :class => 'sign_up_input'
+          %tr
+            %th
+            %td.input_helper_td
+              %span.input_helper Your email will not be displayed publicly
+          %tr
+            %th
+              %label Terms of Service
+              = link_to 'Printable Version', {}, :class => 'tos_print'
+            %td
+              %code.sign_up_input This is a tos, hehe
+          %tr
+            %th
+            %td.input_helper_td
+              %span.tos_helper By clicking on "Create my account" button below, you are agreeing to the Terms of Service above and the Private Policy
+          %tr
+            %th
+            %td.submit_td
+              = f.submit 'Create my account', {}, { :src => '/images/create_account_button.png', :class => 'submit_button' }
+
+#footer
+  (c) rerewind 2010
