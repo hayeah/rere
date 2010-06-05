@@ -5,7 +5,8 @@
     = stylesheet_link_tag "http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css", 'rere'
     = # javascript_include_tag 'curvycorners.src'
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"
-    = javascript_include_tag 'rails', 'application'
+    = javascript_include_tag 'rails', 'autoresize.jquery'
+    = javascript_include_tag 'application'
     = csrf_meta_tag
   %body
     - if production?

@@ -23,9 +23,11 @@ $(window).load(function () {
 
 
 $(window).load(function () {
+    $('#comments textarea').autoResize();
+    
     $("#comments .submit").hide();
     var comment_hint = "share a comment..."
-    $("#comments input[type='text']").
+    $("#comments textarea").
         val(comment_hint).bind({
             focusin: function(){
                 if($(this).data("changed") == undefined)

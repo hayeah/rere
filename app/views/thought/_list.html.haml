@@ -22,7 +22,7 @@
                 .timestamp= time_ago_in_words(comment.created_at)+" ago"
         .input
           = form_tag(thought_comments_path(:thought_id => thought.id)) do
-            = text_field_tag :content
+            = text_area_tag :content
             - if controller_name == "users"
               = hidden_field_tag :username, owner.username
             - elsif controller_name == "groups"
