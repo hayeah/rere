@@ -14,6 +14,9 @@ module Rere
     Paperclip::Railtie.insert
 
     if Rails.env == "production"
+      # for some reason auto require magic doesn't work in production
+      require 'sass'
+      require 'sass/plugin'
       Sass::Plugin.options[:style] = :never_update
     end
     # Settings in config/environments/* take precedence over those specified here.
