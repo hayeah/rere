@@ -4,7 +4,19 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "90x90>", :tiny => "30x30" }
+
+  options = nil
+  if Rails.env == "production"
+    options = {
+      :storage => :s3, 
+      :s3_credentials => "#{Rails.root}/config/s3.yml", 
+      :path => "/:style/:filename"
+    }
+  else
+    options = {}
+  end
+  
+  has_attached_file :avatar, options.merge(:styles => { :medium => "300x300>", :thumb => "90x90>", :tiny => "30x30" })
 
   validates_presence_of :name
 
