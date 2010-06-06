@@ -227,11 +227,11 @@ a {
 
 #sign_up {
   width: 620px;
-  margin: auto; }
+  margin-left: 40px; }
   #sign_up h1 {
     font-size: 29px;
     border-bottom: 1px solid #bcbbbb;
-    padding-bottom: 5px; }
+    padding: 0 0 5px 0.5em; }
   #sign_up table {
     margin-top: 30px;
     color: #5d5d5d; }
