@@ -4,59 +4,76 @@
     .highlight 
       Community
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = devise_error_messages!
     %table
       %tr
         %th 
           %label Full Name
-        %td= f.text_field :name
+        %td.signup_field
+          = f.text_field :name
+        %td.signup_error
+          %div
+            = "Name #{resource.errors[:name][0]}" if !resource.errors[:name].empty?
       %tr
         %th
-        %td.hint
+        %td.hint{:colspan => "2"}
           Your name is
           %b not displayed
       %tr
         %th
           %label Username
-        %td= f.text_field :username
+        %td.signup_field
+          = f.text_field :username
+        %td.signup_error
+          %div
+            = "Username #{resource.errors[:username][0]}" if !resource.errors[:username].empty?
       %tr
         %th
-        %td.hint
+        %td.hint{:colspan => "2"}
           You will use this to log in
       %tr
         %th
           %label Password
-        %td= f.password_field :password
+        %td.signup_field
+          = f.password_field :password
+        %td.signup_error
+          %div
+            = "Password #{resource.errors[:password][0]}" if !resource.errors[:password].empty?
       %tr
         %th
-        %td.hint
+        %td.hint{:colspan => "2"}
           At least 6 characters
       %tr
         %th
           %label Confirm Password
-        %td= f.password_field :password_confirmation
+        %td.hint{:colspan => "2"}
+          = f.password_field :password_confirmation
       %tr
         %th
-        %td.hint
+        %td.hint{:colspan => "2"}
           Re-type your password
       %tr
         %th
           %label Email
-        %td= f.text_field :email
+        %td.signup_field
+          = f.text_field :email
+        %td.signup_error
+          %div
+            = "Email #{resource.errors[:email][0]}" if !resource.errors[:email].empty?
       %tr
         %th
-        %td.hint
+        %td.hint{:colspan => "2"}
           Your email will not be displayed publicly
       %tr.tos
         %th
           %label Terms of Service
           = link_to 'Printable Version'
-        %td
+        %td{:colspan => "2"}
           %code This is a tos, hehe
       %tr.tos
         %th
-        %td.hint
+        %td.hint{:colspan => "2"}
           By clicking on "Create my account" button below, you are agreeing to the Terms of Service above and the Private Policy
       %tr
         %th
-        %td= f.submit 'Create my account', { :src => '/images/create_account_button.png', :class => 'submit' }
+        %td{:colspan => "2"}
+          = f.submit 'Create my account', { :src => '/images/create_account_button.png', :class => 'submit' }
