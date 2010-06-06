@@ -9,8 +9,7 @@
       %tr
         %th 
           %label Full Name
-        %td 
-          = f.text_field :name
+        %td= f.text_field :name
       %tr
         %th
         %td.hint
@@ -19,8 +18,7 @@
       %tr
         %th
           %label Username
-        %td
-          = f.text_field :username
+        %td= f.text_field :username
       %tr
         %th
         %td.hint
@@ -28,8 +26,7 @@
       %tr
         %th
           %label Password
-        %td
-          = f.password_field :password
+        %td= f.password_field :password
       %tr
         %th
         %td.hint
@@ -37,8 +34,7 @@
       %tr
         %th
           %label Confirm Password
-        %td
-          = f.password_field :password_confirmation
+        %td= f.password_field :password_confirmation
       %tr
         %th
         %td.hint
@@ -46,8 +42,7 @@
       %tr
         %th
           %label Email
-        %td
-          = f.text_field :email
+        %td= f.text_field :email
       %tr
         %th
         %td.hint
@@ -64,5 +59,4 @@
           By clicking on "Create my account" button below, you are agreeing to the Terms of Service above and the Private Policy
       %tr
         %th
-        %td
-          = f.submit 'Create my account', { :src => '/images/create_account_button.png', :class => 'submit' }
+        %td= f.submit 'Create my account', { :src => '/images/create_account_button.png', :class => 'submit' }
