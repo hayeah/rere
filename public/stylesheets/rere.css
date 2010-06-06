@@ -81,19 +81,19 @@ a {
   color: #868181;
   font: 10px Verdana, non-serif; }
 
-#main {
+#stream_main {
   position: relative; }
-  #main #info {
+  #stream_main #info {
     margin-left: 100px;
     padding: 20px; }
-    #main #info h1 {
+    #stream_main #info h1 {
       font-size: 2em; }
-  #main .join {
+  #stream_main .join {
     margin: 1em 0 1em 120px; }
-  #main .join a {
+  #stream_main .join a {
     color: black;
     font-size: 2em; }
-    #main .join a:hover {
+    #stream_main .join a:hover {
       text-decoration: underline; }
 
 #share_prompt {
