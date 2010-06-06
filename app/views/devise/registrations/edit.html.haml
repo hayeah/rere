@@ -1,0 +1,24 @@
+.simple_form
+  = form_for(resource, :url => user_registration_path, :html => { :method => :put }) do |f|
+    %table
+      %tr.input
+        %th Email
+        %td= f.text_field :email
+      %tr.input
+        %th password
+        %td= f.password_field :password
+      %tr.input
+        %th password confirmation
+        %td= f.password_field :password_confirmation
+      %tr.hint
+        %th
+        %td leave blank if you don't want to change it
+      %tr.input
+        %th current password
+        %td= f.password_field :current_password
+      %tr.hint
+        %th
+        %td we need your current password to confirm your changes
+      %tr
+        %th
+        %td= f.submit "Update", :class => "submit"
