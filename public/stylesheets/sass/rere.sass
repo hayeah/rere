@@ -11,7 +11,37 @@ a
   text-decoration: none
   &:hover
     color: #99cdeb
-    
+
+input
+  @extend .rounded
+  font-size: 12px
+  border: 1px solid #9a9a9a
+  margin: 0 0 2px 0
+  padding: 5px
+
+.submit
+  cursor: pointer
+  border: 1px solid $gray1
+  background: #e8e8e8
+  padding: 3px 1em
+  font: 1em
+  @extend .rounded
+  &:hover
+    border: 1px solid #000
+
+.clear
+  height: 1px
+  clear: both
+  visibility: hidden
+
+.highlight
+  color: #ee3758
+  display: inline-block
+
+.rounded
+  border-radius: 5px
+
+
 #wrapper
   position: relative
   width: 800px
@@ -20,6 +50,7 @@ a
   div
     border: 0px solid black
 
+      
 #header
   color: red
   #login
@@ -28,18 +59,14 @@ a
     float: right
     input
       color: $gray2
-      border: 1px solid $gray1
-      margin: 0 0 2px 0
-      padding: 2px
       display: block
-      font-size: 12px
       width: 10em
-    input.signin
+    .submit
       color: #000
       background: $gray1
       border: 1px solid $gray2
       float: right
-      width: 50px
+      width: 70px
 
 #toolbar
   position: absolute
@@ -47,7 +74,6 @@ a
   top: 3px
 
 #box
-  border: 1px solid black
   .top
     background: url("/images/box-top.png") no-repeat
     height: 20px
@@ -223,18 +249,6 @@ a
     &:hover
       color: #8bf1ff
 
-.clear
-  height: 1px
-  clear: both
-  visibility: hidden
-
-.highlight
-  color: #ee3758
-  display: inline-block
-
-.rounded
-  border-radius: 5px
-
 #sign_up
   width: 620px
   margin-left: 40px
@@ -249,17 +263,12 @@ a
     padding: 7px 0
     font-size: 10px
   .submit
-    cursor: pointer
-    border: 1px solid $gray1
     height: 40px
     width: 250px
-    background-color: #e8e8e8
-    padding: 7px 12px
     margin: 15px 0
     font-size: 20px
-    @extend .rounded
     &:hover
-      border: 1px solid $gray2
+      border: 1px solid #000
   .tos a
     margin-top: 3px
     font-size: 14px
@@ -269,7 +278,6 @@ a
     text-align: right
     padding-right: 7px
   input
-    border: 1px solid #9a9a9a
     width: 200px
     outline-style: none
     outline-width: 0px

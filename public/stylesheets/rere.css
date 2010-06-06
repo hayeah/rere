@@ -7,6 +7,33 @@ a {
   a:hover {
     color: #99cdeb; }
 
+input {
+  font-size: 12px;
+  border: 1px solid #9a9a9a;
+  margin: 0 0 2px 0;
+  padding: 5px; }
+
+.submit {
+  cursor: pointer;
+  border: 1px solid #d7d7d7;
+  background: #e8e8e8;
+  padding: 3px 1em;
+  font: 1em; }
+  .submit:hover {
+    border: 1px solid black; }
+
+.clear {
+  height: 1px;
+  clear: both;
+  visibility: hidden; }
+
+.highlight {
+  color: #ee3758;
+  display: inline-block; }
+
+.rounded, input, .submit, #sign_up input, #sign_up code {
+  border-radius: 5px; }
+
 #wrapper {
   position: relative;
   width: 800px;
@@ -23,38 +50,32 @@ a {
     float: right; }
     #header #login input {
       color: #868181;
-      border: 1px solid #d7d7d7;
-      margin: 0 0 2px 0;
-      padding: 2px;
       display: block;
-      font-size: 12px;
       width: 10em; }
-    #header #login input.signin {
+    #header #login .submit {
       color: black;
       background: #d7d7d7;
       border: 1px solid #868181;
       float: right;
-      width: 50px; }
+      width: 70px; }
 
 #toolbar {
   position: absolute;
   right: 78px;
   top: 3px; }
 
-#box {
-  border: 1px solid black; }
-  #box .top {
-    background: url("/images/box-top.png") no-repeat;
-    height: 20px;
-    border: 0px solid black;
-    margin-top: 1em; }
-  #box .middle {
-    background: url("/images/box-side.png") repeat-y;
-    width: 800px;
-    padding-left: 20px; }
-  #box .bottom {
-    background: url("/images/box-bottom.png") no-repeat;
-    height: 20px; }
+#box .top {
+  background: url("/images/box-top.png") no-repeat;
+  height: 20px;
+  border: 0px solid black;
+  margin-top: 1em; }
+#box .middle {
+  background: url("/images/box-side.png") repeat-y;
+  width: 800px;
+  padding-left: 20px; }
+#box .bottom {
+  background: url("/images/box-bottom.png") no-repeat;
+  height: 20px; }
 
 #splash {
   padding: 50px 100px 0 80px;
@@ -213,18 +234,6 @@ a {
     .comment .name a:hover {
       color: #8bf1ff; }
 
-.clear {
-  height: 1px;
-  clear: both;
-  visibility: hidden; }
-
-.highlight {
-  color: #ee3758;
-  display: inline-block; }
-
-.rounded, #sign_up .submit, #sign_up input, #sign_up code {
-  border-radius: 5px; }
-
 #sign_up {
   width: 620px;
   margin-left: 40px; }
@@ -239,16 +248,12 @@ a {
     padding: 7px 0;
     font-size: 10px; }
   #sign_up .submit {
-    cursor: pointer;
-    border: 1px solid #d7d7d7;
     height: 40px;
     width: 250px;
-    background-color: #e8e8e8;
-    padding: 7px 12px;
     margin: 15px 0;
     font-size: 20px; }
     #sign_up .submit:hover {
-      border: 1px solid #868181; }
+      border: 1px solid black; }
   #sign_up .tos a {
     margin-top: 3px;
     font-size: 14px; }
@@ -258,7 +263,6 @@ a {
     text-align: right;
     padding-right: 7px; }
   #sign_up input {
-    border: 1px solid #9a9a9a;
     width: 200px;
     outline-style: none;
     outline-width: 0px;

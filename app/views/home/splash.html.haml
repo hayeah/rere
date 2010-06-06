@@ -2,8 +2,8 @@
   #login
     = form_for(@user, :url => user_session_path) do |f|
       = f.text_field :username, :value => "username or email", :tabindex => 1
-      = f.password_field :password, :tabindex => 2, :id => 'user_password'
-      = f.submit "Sign in", :class => "signin", :tabindex => 3
+      = f.password_field :password, :tabindex => 2
+      = f.submit "Sign in", :class => "submit", :tabindex => 3
 
 #splash
   %h1
