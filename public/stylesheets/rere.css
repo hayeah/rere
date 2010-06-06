@@ -289,6 +289,8 @@ input {
     font-size: 19px;
     text-align: right;
     padding-right: 7px; }
+  #sign_up img {
+    vertical-align: middle; }
   #sign_up input {
     width: 200px;
     outline-style: none;
