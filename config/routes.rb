@@ -1,5 +1,8 @@
 Rere::Application.routes.draw do |map|
-  devise_for :users, :controllers => { :sessions => "sessions" }
+  devise_for :users, :controllers => {
+    :sessions => "sessions",
+    :registrations => "registrations"
+  }
 
   root :to => "home#index"
 
