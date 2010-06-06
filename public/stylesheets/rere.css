@@ -75,22 +75,22 @@ input {
   background: url("/images/box-bottom.png") no-repeat;
   height: 20px; }
 
-#login h1, .simple_form h1 {
+.simple_form h1 {
   font-size: 29px;
   border-bottom: 1px solid #bcbbbb;
   padding: 0 0 5px 0.5em;
   margin: 0 3em 1em 1em; }
-#login table, .simple_form table {
+.simple_form table {
   margin: auto;
   width: 500px; }
-#login th, .simple_form th {
+.simple_form th {
   text-align: right;
   padding-right: 10px; }
-#login .hint, .simple_form .hint {
+.simple_form .hint {
   color: #868181; }
-  #login .hint td, .simple_form .hint td {
+  .simple_form .hint td {
     padding-bottom: 10px; }
-#login .input input, .simple_form .input input {
+.simple_form .input input {
   width: 200px; }
 
 #splash {
