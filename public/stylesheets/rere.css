@@ -261,11 +261,11 @@ input {
     margin-top: 30px;
     color: #5d5d5d; }
   #sign_up .hint {
-    padding: 7px 0;
+    padding: 2px 0px 14px 0px;
     font-size: 10px; }
   #sign_up .submit {
     height: 40px;
-    width: 250px;
+    width: 225px;
     margin: 15px 0;
     font-size: 20px; }
     #sign_up .submit:hover {
@@ -277,8 +277,13 @@ input {
     width: 0px;
     margin: 0px;
     padding: 0px; }
-  #sign_up div {
-    width: 205px; }
+  #sign_up div.error_text {
+    display: inline;
+    vertical-align: middle; }
+  #sign_up td.signup_error {
+    color: black; }
+  #sign_up td.signup_error {
+    width: 212px; }
   #sign_up th {
     width: 175px;
     font-size: 19px;
@@ -291,7 +296,7 @@ input {
     font: 16px "Helvetica", non-sesrif;
     height: 21px;
     padding: 8px;
-    letter-spacing: 0.07em; }
+    letter-spacing: 0.05em; }
   #sign_up code {
     padding: 3px;
     border: 1px solid #9a9a9a;

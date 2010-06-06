@@ -23,5 +23,8 @@ module ApplicationHelper
     @content_for_layout = self.output_buffer
     self.output_buffer = render(:file => "layouts/#{layout}")
   end
-
+  
+  def errorarrow
+    image_tag "/images/error_arrow.png"
+  end
 end

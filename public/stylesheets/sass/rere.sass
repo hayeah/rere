@@ -280,11 +280,11 @@ input
     margin-top: 30px
     color: #5d5d5d
   .hint
-    padding: 7px 0
+    padding: 2px 0px 14px 0px
     font-size: 10px
   .submit
     height: 40px
-    width: 250px
+    width: 225px
     margin: 15px 0
     font-size: 20px
     &:hover
@@ -296,8 +296,13 @@ input
     width: 0px
     margin: 0px
     padding: 0px
-  div
-    width: 205px /* This is too ugly, can't find fix right now*/
+  div.error_text
+    display: inline
+    vertical-align: middle
+  td.signup_error
+    color: black
+  td.signup_error
+    width: 212px /* This is too ugly, can't find fix right now*/
   th
     width: 175px
     font-size: 19px
@@ -311,7 +316,7 @@ input
     font: 16px "Helvetica",non-sesrif
     height: 21px
     padding: 8px
-    letter-spacing: 0.07em
+    letter-spacing: 0.05em
   code
     @extend .rounded
     padding: 3px

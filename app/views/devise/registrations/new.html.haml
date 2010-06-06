@@ -11,8 +11,10 @@
         %td.signup_field
           = f.text_field :name
         %td.signup_error
-          %div
-            = "Name #{resource.errors[:name][0]}" if !resource.errors[:name].empty?
+          - if !resource.errors[:name].empty?
+            = errorarrow
+            %div.error_text
+              = "Name #{resource.errors[:name][0]}"
       %tr
         %th
         %td.hint{:colspan => "2"}
@@ -24,8 +26,10 @@
         %td.signup_field
           = f.text_field :username
         %td.signup_error
-          %div
-            = "Username #{resource.errors[:username][0]}" if !resource.errors[:username].empty?
+          - if !resource.errors[:username].empty?
+            = errorarrow
+            %div.error_text
+              = "Username #{resource.errors[:username][0]}"
       %tr
         %th
         %td.hint{:colspan => "2"}
@@ -36,8 +40,10 @@
         %td.signup_field
           = f.password_field :password
         %td.signup_error
-          %div
-            = "Password #{resource.errors[:password][0]}" if !resource.errors[:password].empty?
+          - if !resource.errors[:password].empty?
+            = errorarrow
+            %div.error_text
+              = "Password #{resource.errors[:password][0]}"
       %tr
         %th
         %td.hint{:colspan => "2"}
@@ -45,7 +51,7 @@
       %tr
         %th
           %label Confirm Password
-        %td.hint{:colspan => "2"}
+        %td.signup_field
           = f.password_field :password_confirmation
       %tr
         %th
@@ -57,8 +63,10 @@
         %td.signup_field
           = f.text_field :email
         %td.signup_error
-          %div
-            = "Email #{resource.errors[:email][0]}" if !resource.errors[:email].empty?
+          - if !resource.errors[:email].empty?
+            = errorarrow
+            %div.error_text
+              = "Name #{resource.errors[:email][0]}"
       %tr
         %th
         %td.hint{:colspan => "2"}
