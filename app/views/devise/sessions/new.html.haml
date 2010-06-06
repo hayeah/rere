@@ -1,0 +1,22 @@
+
+#login
+  = form_for(@user, :url => user_session_path) do |f|
+    %table
+      %tr.input
+        %th
+          username or email
+        %td
+          = f.text_field :username, :tabindex => 1
+      %tr.input
+        %th
+          password
+        %td
+          = f.password_field :password, :tabindex => 2
+      %tr
+        %th
+          
+        %td{:colspan => 2}
+          = f.submit "Sign in", :class => "submit", :tabindex => 3
+          = link_to "Forgot your password?", new_user_password_path
+        
+
