@@ -42,22 +42,20 @@ input {
   #wrapper div {
     border: 0px solid black; }
 
-#header {
-  color: red; }
-  #header #login {
-    margin: 10px 20px 0 0;
-    border: 0px solid black;
-    float: right; }
-    #header #login input {
-      color: #868181;
-      display: block;
-      width: 10em; }
-    #header #login .submit {
-      color: black;
-      background: #d7d7d7;
-      border: 1px solid #868181;
-      float: right;
-      width: 70px; }
+#splash_login {
+  margin: 10px 20px 0 0;
+  border: 0px solid black;
+  float: right; }
+  #splash_login input {
+    color: #868181;
+    display: block;
+    width: 10em; }
+  #splash_login .submit {
+    color: black;
+    background: #d7d7d7;
+    border: 1px solid #868181;
+    float: right;
+    width: 70px; }
 
 #toolbar {
   position: absolute;
