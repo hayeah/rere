@@ -1,0 +1,13 @@
+
+.simple_form
+  %h1 Password Reset
+  = form_for(resource, :url => user_password_path) do |f|
+
+    = devise_error_messages!
+    %table
+      %tr
+        %th Email
+        %td= f.text_field :email
+      %tr
+        %th
+        %td= f.submit "Send me password reset"
