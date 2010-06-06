@@ -1,6 +1,6 @@
 - content_for(:toolbar) do
   #toolbar
-    - if current_user
+    - if user_signed_in?
       = link_to "Settings", edit_user_registration_path
       = link_to "Sign Out", destroy_user_session_path
     - else
@@ -12,7 +12,7 @@
       #portrait
         -# - if owner.avatar
         -#   = image_tag owner.avatar.url(:thumb)
-      - if current_user && !current_user.watching?(owner)
+      - if user_signed_in? && !current_user.watching?(owner)
         %div= link_to "follow", watch_path(:username => owner.username), {:method => :post}
       #navigation
         .followings
@@ -26,7 +26,7 @@
         = form_tag :action => :share  do
           = text_area_tag :content
           = image_submit_tag "share-button.png", :class => "submit"
-    - else
+    - elsif !user_signed_in?
       %h2.join
         - link_to(new_user_registration_path) do
           %u Join
