@@ -8,13 +8,14 @@
     %table
       %tr
         %th 
-          %label Name
+          %label Full Name
         %td 
           = f.text_field :name
       %tr
         %th
         %td.hint
-          You can choose to display your name on your profile if you want
+          Your name is
+          %b not displayed
       %tr
         %th
           %label Username
@@ -57,7 +58,7 @@
           = link_to 'Printable Version'
         %td
           %code This is a tos, hehe
-      %tr
+      %tr.tos
         %th
         %td.hint
           By clicking on "Create my account" button below, you are agreeing to the Terms of Service above and the Private Policy
