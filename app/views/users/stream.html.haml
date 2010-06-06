@@ -9,12 +9,9 @@
     #portrait
       -# - if owner.avatar
       -#   = image_tag owner.avatar.url(:thumb)
+    - if !user_is_owner? && !current_user.watching?(owner)
+      %div= link_to "follow", watch_path(:username => owner.username), {:method => :post}
     #navigation
-      .groups
-        %h2 Groups
-        %ul
-          - owner.groups.each do |group|
-            %li= link_to(group.name,group_path(:id => group.id))
       .followings
         %h2 Followings
         %ul
