@@ -7,7 +7,7 @@
     - else
       = link_to "Sign in", new_user_session_path
 
-#content
+#main
   #sidebar
     #portrait
       -# - if owner.avatar
@@ -26,6 +26,13 @@
       = form_tag :action => :share  do
         = text_area_tag :content
         = image_submit_tag "share-button.png", :class => "submit"
+  - else
+    %h2.join
+      - link_to(new_user_registration_path) do
+        %u Join
+        our
+        .highlight conversation
+        today
   #stream
     = render :partial => "thought/list"
     

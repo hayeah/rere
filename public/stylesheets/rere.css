@@ -81,13 +81,20 @@ a {
   color: #868181;
   font: 10px Verdana, non-serif; }
 
-#content {
+#main {
   position: relative; }
-  #content #info {
+  #main #info {
     margin-left: 100px;
     padding: 20px; }
-    #content #info h1 {
+    #main #info h1 {
       font-size: 2em; }
+  #main .join {
+    margin: 1em 0 1em 120px; }
+  #main .join a {
+    color: black;
+    font-size: 2em; }
+    #main .join a:hover {
+      text-decoration: underline; }
 
 #share_prompt {
   width: 500px;
@@ -206,6 +213,10 @@ a {
   height: 1px;
   clear: both;
   visibility: hidden; }
+
+.highlight {
+  color: #ee3758;
+  display: inline-block; }
 
 #sign_up_box {
   padding-top: 20px;
