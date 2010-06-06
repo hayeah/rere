@@ -222,50 +222,35 @@ a {
   color: #ee3758;
   display: inline-block; }
 
-#sign_up_box {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: white;
-  margin-top: 2em;
-  border: 1px solid #d7d7d7 !important;
-  margin-bottom: 2em;
-  font-family: "Arial"; }
+.rounded, #sign_up .submit, #sign_up input, #sign_up code {
+  border-bottom-left-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px; }
 
 #sign_up {
   width: 620px;
   margin: auto; }
-  #sign_up .title {
+  #sign_up h1 {
     font-size: 29px;
     border-bottom: 1px solid #bcbbbb;
     padding-bottom: 5px; }
-  #sign_up span.highlight {
-    color: #ee3758; }
   #sign_up table {
     margin-top: 30px;
     color: #5d5d5d; }
-  #sign_up span.input_helper {
-    display: block;
-    padding-top: 7px;
-    font-size: 9px; }
-  #sign_up span.tos_helper {
-    display: block;
-    padding-top: 7px; }
-  #sign_up .submit_button {
+  #sign_up .hint {
+    padding: 7px 0;
+    font-size: 10px; }
+  #sign_up .submit {
     cursor: pointer;
     border: 1px solid #d7d7d7;
+    height: 40px;
+    width: 250px;
     background-color: #e8e8e8;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 20px !important;
-    border-bottom-left-radius: 5px 5px;
-    border-bottom-right-radius: 5px 5px;
-    border-top-left-radius: 5px 5px;
-    border-top-right-radius: 5px 5px; }
-  #sign_up .tos_print {
+    padding: 7px 12px;
+    margin: 15px 0;
+    font-size: 20px; }
+  #sign_up .tos a {
     margin-top: 3px;
     font-size: 14px; }
   #sign_up th {
@@ -273,27 +258,19 @@ a {
     font-size: 19px;
     text-align: right;
     padding-right: 7px; }
-  #sign_up td.submit_td {
-    padding-top: 15px;
-    padding-bottom: 20px; }
-  #sign_up td.input_helper_td {
-    padding-bottom: 17px; }
-  #sign_up .sign_up_input {
+  #sign_up input {
     border: 1px solid #9a9a9a;
     width: 200px;
     outline-style: none;
     outline-width: 0px;
-    border-bottom-left-radius: 5px 5px;
-    border-bottom-right-radius: 5px 5px;
-    border-top-left-radius: 5px 5px;
-    border-top-right-radius: 5px 5px;
-    font-size: 18px;
+    font: 16px "Helvetica", non-sesrif;
     height: 21px;
     padding: 8px;
     letter-spacing: 0.07em; }
   #sign_up code {
+    padding: 3px;
+    border: 1px solid #9a9a9a;
     display: block;
-    width: 430px !important;
-    height: 75px !important;
-    font-size: 13px !important;
-    letter-spacing: 0px !important; }
+    width: 430px;
+    height: 75px;
+    font-size: 1em; }
