@@ -1,38 +1,32 @@
-#header
-  = image_tag("logo.png")
+- content_for(:toolbar) do
   #login
     = form_for(@user, :url => user_session_path) do |f|
       = f.text_field :username, :value => "username or email", :tabindex => 1
       = f.password_field :password, :tabindex => 2, :id => 'user_password'
       = f.submit "Sign in", :class => "signin", :tabindex => 3
 
-#box
-  #splash_top
-  #splash
-    %h1
-      Reremind is a
-      %span.highlight
-        community
-      for people who are going through life difficulties.
-    %ul
-      %li
-        Depression
-      %li
-        Loneliness
-      %li
-        Anxiety
-      %li
-        Relationship Problems
-      %li
-        Parenting Issues
-    %div
-      We want to
-      %span.highlight
-        help
-    .indent
-      Share your thoughts. Make new Friends.
-    = link_to(image_tag("join-us-now.png",:class => "join"),new_user_registration_path)
-  #splash_bottom
-
-#footer
-  (c) rerewind 2010
+#splash
+  %h1
+    Reremind is a
+    %span.highlight
+      community
+    for people who are going through life difficulties.
+  %ul
+    %li
+      Depression
+    %li
+      Loneliness
+    %li
+      Anxiety
+    %li
+      Relationship Problems
+    %li
+      Parenting Issues
+  %div
+    We want to
+    %span.highlight
+      help
+  .indent
+    Share your thoughts. Make new Friends.
+  = link_to(image_tag("join-us-now.png",:class => "join"),new_user_registration_path)
+  

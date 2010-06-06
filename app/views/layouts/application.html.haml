@@ -12,4 +12,9 @@
     - if production?
       = render :partial => "shared/google_analytics"
     #wrapper
-      = yield
+      #header
+        = image_tag("logo.png")
+        = yield(:toolbar)
+      = yield(:content)
+      #footer
+        (c) rerewind 2010

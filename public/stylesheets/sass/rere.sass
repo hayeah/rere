@@ -46,15 +46,23 @@ a
   right: 78px
   top: 3px
 
-#splash_top
-  background: url("/images/box-top.png") no-repeat
-  height: 20px
-  border: 0px solid black
-  margin-top: 1em
+#box
+  border: 1px solid black
+  .top
+    background: url("/images/box-top.png") no-repeat
+    height: 20px
+    border: 0px solid black
+    margin-top: 1em
+  .middle
+    background: url("/images/box-side.png") repeat-y
+    width: 800px
+    padding-left: 20px
+  .bottom
+    background: url("/images/box-bottom.png") no-repeat
+    height: 20px
 
 #splash
-  background: url("/images/box-side.png") repeat-y
-  padding: 50px 100px 0 100px
+  padding: 50px 100px 0 80px
   font: 30px Verdana,non-serif
   .highlight
     color: #ee3758
@@ -77,9 +85,6 @@ a
     color: #d7d7d7
     background-color: #d7d7d7
 
-#splash_bottom
-  background: url("/images/box-bottom.png") no-repeat
-  height: 20px
 
 #footer
   text-align: center

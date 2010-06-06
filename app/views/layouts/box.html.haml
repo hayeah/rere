@@ -1,0 +1,8 @@
+- content_for(:content) do
+  #box
+    .top
+    .middle
+      = yield
+    .bottom
+
+= render :file => 'layouts/application'

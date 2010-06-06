@@ -18,4 +18,10 @@ module ApplicationHelper
   def link_to_user(user)
     link_to(user.username, stream_path(:username => user.username))
   end
+
+  def parent_layout(layout)
+    @content_for_layout = self.output_buffer
+    self.output_buffer = render(:file => "layouts/#{layout}")
+  end
+
 end
