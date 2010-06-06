@@ -1,5 +1,4 @@
-#header
-  = image_tag("logo.png")
+- content_for(:toolbar) do
   #toolbar
     - if current_user
       = link_to "Settings", edit_user_registration_path
@@ -7,35 +6,32 @@
     - else
       = link_to "Sign in", new_user_session_path
 
-#stream_main
-  #sidebar
-    #portrait
-      -# - if owner.avatar
-      -#   = image_tag owner.avatar.url(:thumb)
-    - if current_user && !current_user.watching?(owner)
-      %div= link_to "follow", watch_path(:username => owner.username), {:method => :post}
-    #navigation
-      .followings
-        %h2 Followings
-        %ul
-          - owner.watched.each do |watched|
-            %li= link_to_user(watched)
-        
-  - if user_is_owner?
-    #share_prompt
-      = form_tag :action => :share  do
-        = text_area_tag :content
-        = image_submit_tag "share-button.png", :class => "submit"
-  - else
-    %h2.join
-      - link_to(new_user_registration_path) do
-        %u Join
-        our
-        .highlight conversation
-        today
-  #stream
-    = render :partial => "thought/list"
-    
-#footer
-  (c) rerewind 2010
-  
+- content_for(:content) do
+  #stream_main
+    #sidebar
+      #portrait
+        -# - if owner.avatar
+        -#   = image_tag owner.avatar.url(:thumb)
+      - if current_user && !current_user.watching?(owner)
+        %div= link_to "follow", watch_path(:username => owner.username), {:method => :post}
+      #navigation
+        .followings
+          %h2 Followings
+          %ul
+            - owner.watched.each do |watched|
+              %li= link_to_user(watched)
+
+    - if user_is_owner?
+      #share_prompt
+        = form_tag :action => :share  do
+          = text_area_tag :content
+          = image_submit_tag "share-button.png", :class => "submit"
+    - else
+      %h2.join
+        - link_to(new_user_registration_path) do
+          %u Join
+          our
+          .highlight conversation
+          today
+    #stream
+      = render :partial => "thought/list"
