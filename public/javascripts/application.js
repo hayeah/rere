@@ -31,15 +31,6 @@ $(window).load(function () {
           $(this).css("border", "1px solid #9a9a9a");
       }
 	});
-	
-	$("#sign_up .submit").bind({
-		  mouseover: function(){
-          $(this).css("border", "1px solid black");
-      },
-      mouseout: function() {
-			    $(this).css("border", "1px solid #d7d7d7");
-		  }
-	});
 });
 
 $(window).load(function () {

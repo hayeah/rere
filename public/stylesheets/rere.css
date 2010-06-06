@@ -247,6 +247,8 @@ a {
     padding: 7px 12px;
     margin: 15px 0;
     font-size: 20px; }
+    #sign_up .submit:hover {
+      border: 1px solid #868181; }
   #sign_up .tos a {
     margin-top: 3px;
     font-size: 14px; }
