@@ -12,7 +12,8 @@
         %span.name= link_to_user(thought.user)
         %span.body= thought.content
       #comments
-        .top
+        - if current_user || !thought.comments.empty?
+          .top
         - unless thought.comments.empty?
           %ul
             - thought.comments.each do |comment|
@@ -20,13 +21,13 @@
                 %span.name= link_to_user(comment.user)
                 %span.body= comment.content
                 .timestamp= time_ago_in_words(comment.created_at)+" ago"
-        .input
-          = form_tag(thought_comments_path(:thought_id => thought.id)) do
-            = text_area_tag :content
-            - if controller_name == "users"
-              = hidden_field_tag :username, owner.username
-            - elsif controller_name == "groups"
-              = hidden_field_tag :group_id, @group.id
-            = submit_tag "Comment", :class => "submit"
-            .clear .
-              
+        - if current_user
+          .input
+            = form_tag(thought_comments_path(:thought_id => thought.id)) do
+              = text_area_tag :content
+              - if controller_name == "users"
+                = hidden_field_tag :username, owner.username
+              - elsif controller_name == "groups"
+                = hidden_field_tag :group_id, @group.id
+              = submit_tag "Comment", :class => "submit"
+              .clear .
