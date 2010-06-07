@@ -67,7 +67,7 @@ input {
 #toolbar {
   position: absolute;
   right: 78px;
-  top: 3px; }
+  top: 8px; }
 
 #box .top {
   background: url("/images/box-top.png") no-repeat;
@@ -159,6 +159,7 @@ input {
   margin: 0 0 0 100px;
   padding-top: 20px; }
   #share_prompt textarea {
+    border: 1px solid #868181;
     padding: 3px;
     margin: auto;
     width: 450px;
@@ -247,7 +248,7 @@ input {
   #comments .input textarea {
     height: 15px;
     width: 442px;
-    border: 1px solid #a8a8a8;
+    border: 1px solid #d7d7d7;
     display: block;
     padding: 3px; }
   #comments .input .submit {
@@ -258,8 +259,8 @@ input {
 .comment {
   background: #f0f0f0;
   margin: 0 0 3px 125px;
-  width: 450px;
-  padding: 3px; }
+  width: 448px;
+  padding: 3px 5px; }
   .comment .timestamp {
     font-size: 8px;
     color: #868181; }
