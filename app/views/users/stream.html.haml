@@ -25,7 +25,7 @@
       #share_prompt
         = form_tag :action => :share  do
           = text_area_tag :content
-          = image_submit_tag "share-button.png", :class => "submit"
+          = image_submit_tag "share-button.png", :class => "submit_share"
     - elsif !user_signed_in?
       %h2.join
         - link_to(new_user_registration_path) do

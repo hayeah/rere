@@ -1,6 +1,7 @@
 
 $gray1: #d7d7d7
 $gray2: #868181
+$lightGray1: #f0f0f0
 
 
 body
@@ -13,11 +14,11 @@ a
     color: #99cdeb
 
 input
-  @extend .rounded
+  @extend .rounded_medium
   font-size: 12px
   border: 1px solid #9a9a9a
   margin: 0 0 2px 0
-  padding: 5px
+  padding: 3px
 
 .submit
   cursor: pointer
@@ -25,9 +26,13 @@ input
   background: #e8e8e8
   padding: 3px 1em
   font: 1em
-  @extend .rounded
   &:hover
     border: 1px solid #000
+
+.submit_share
+  padding: 3px 2em
+  border: none
+  float: right
 
 .clear
   height: 1px
@@ -41,6 +46,11 @@ input
 .rounded
   border-radius: 5px
 
+.rounded_small
+  border-radius: 2px
+
+.rounded_medium
+  border-radius: 3px
 
 #wrapper
   position: relative
@@ -55,15 +65,17 @@ input
   border: 0px solid black
   float: right
   input
+    @extend .rounded_small
     color: $gray2
     display: block
     width: 10em
   .submit
     color: #000
-    background: $gray1
-    border: 1px solid $gray2
+    background: $lightGray1
     float: right
-    width: 70px
+    padding: 2px
+    width: 58px
+    height: 20px
 
 #toolbar
   position: absolute
@@ -84,17 +96,19 @@ input
     background: url("/images/box-bottom.png") no-repeat
     height: 20px
 
-
+.sign_up_link
+  float: right
+  margin: 10px 20px 0px 0px
 .simple_form
+  padding: 20px 0px 20px 0px
   h1
-    font-size: 29px
+    font-size: 20px
     border-bottom: 1px solid #bcbbbb
     padding: 0 0 5px 0.5em
     margin: 0 3em 1em 1em
   table
     margin: auto
     width: 500px
-  
   th
     text-align: right
     padding-right: 10px
@@ -105,6 +119,8 @@ input
   .input
     input
       width: 200px
+  .space
+    height: 10px
 
 
 #splash
@@ -133,6 +149,7 @@ input
 
 
 #footer
+  margin: 20px 0px 20px 0px
   text-align: center
   color: $gray2
   font: 10px Verdana,non-serif
@@ -318,7 +335,7 @@ input
     font: 16px "Helvetica",non-sesrif
     height: 21px
     padding: 8px
-    letter-spacing: 0.05em
+    letter-spacing: 0.06em
   code
     @extend .rounded
     padding: 3px

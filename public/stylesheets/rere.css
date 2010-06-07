@@ -11,7 +11,7 @@ input {
   font-size: 12px;
   border: 1px solid #9a9a9a;
   margin: 0 0 2px 0;
-  padding: 5px; }
+  padding: 3px; }
 
 .submit {
   cursor: pointer;
@@ -22,6 +22,11 @@ input {
   .submit:hover {
     border: 1px solid black; }
 
+.submit_share {
+  padding: 3px 2em;
+  border: none;
+  float: right; }
+
 .clear {
   height: 1px;
   clear: both;
@@ -31,8 +36,14 @@ input {
   color: #ee3758;
   display: inline-block; }
 
-.rounded, input, .submit, #sign_up input, #sign_up code {
+.rounded, #sign_up input, #sign_up code {
   border-radius: 5px; }
+
+.rounded_small, #splash_login input {
+  border-radius: 2px; }
+
+.rounded_medium, input {
+  border-radius: 3px; }
 
 #wrapper {
   position: relative;
@@ -52,10 +63,11 @@ input {
     width: 10em; }
   #splash_login .submit {
     color: black;
-    background: #d7d7d7;
-    border: 1px solid #868181;
+    background: #f0f0f0;
     float: right;
-    width: 70px; }
+    padding: 2px;
+    width: 58px;
+    height: 20px; }
 
 #toolbar {
   position: absolute;
@@ -75,23 +87,31 @@ input {
   background: url("/images/box-bottom.png") no-repeat;
   height: 20px; }
 
-.simple_form h1 {
-  font-size: 29px;
-  border-bottom: 1px solid #bcbbbb;
-  padding: 0 0 5px 0.5em;
-  margin: 0 3em 1em 1em; }
-.simple_form table {
-  margin: auto;
-  width: 500px; }
-.simple_form th {
-  text-align: right;
-  padding-right: 10px; }
-.simple_form .hint {
-  color: #868181; }
-  .simple_form .hint td {
-    padding-bottom: 10px; }
-.simple_form .input input {
-  width: 200px; }
+.sign_up_link {
+  float: right;
+  margin: 10px 20px 0px 0px; }
+
+.simple_form {
+  padding: 20px 0px 20px 0px; }
+  .simple_form h1 {
+    font-size: 20px;
+    border-bottom: 1px solid #bcbbbb;
+    padding: 0 0 5px 0.5em;
+    margin: 0 3em 1em 1em; }
+  .simple_form table {
+    margin: auto;
+    width: 500px; }
+  .simple_form th {
+    text-align: right;
+    padding-right: 10px; }
+  .simple_form .hint {
+    color: #868181; }
+    .simple_form .hint td {
+      padding-bottom: 10px; }
+  .simple_form .input input {
+    width: 200px; }
+  .simple_form .space {
+    height: 10px; }
 
 #splash {
   padding: 50px 100px 0 80px;
@@ -118,6 +138,7 @@ input {
     background-color: #d7d7d7; }
 
 #footer {
+  margin: 20px 0px 20px 0px;
   text-align: center;
   color: #868181;
   font: 10px Verdana, non-serif; }
@@ -298,7 +319,7 @@ input {
     font: 16px "Helvetica", non-sesrif;
     height: 21px;
     padding: 8px;
-    letter-spacing: 0.05em; }
+    letter-spacing: 0.06em; }
   #sign_up code {
     padding: 3px;
     border: 1px solid #9a9a9a;
