@@ -12,10 +12,10 @@
         // to make plugin users happy:
         var settings = $.extend({
             onResize : function(){},
-            animate : true,
-            animateDuration : 150,
+            animate : false,
+            animateDuration : 0,
             animateCallback : function(){},
-            extraSpace : 20,
+            extraSpace : 0,
             limit: 1000
         }, options);
         

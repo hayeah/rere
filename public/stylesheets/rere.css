@@ -22,11 +22,6 @@ input {
   .submit:hover {
     border: 1px solid black; }
 
-.submit_share {
-  padding: 3px 2em;
-  border: none;
-  float: right; }
-
 .clear {
   height: 1px;
   clear: both;
@@ -164,13 +159,17 @@ input {
   margin: 0 0 0 100px;
   padding-top: 20px; }
   #share_prompt textarea {
+    padding: 3px;
     margin: auto;
     width: 450px;
-    height: 75px;
+    height: 39px;
     display: block; }
   #share_prompt .submit {
-    float: right;
-    margin: 5px 25px 0 0; }
+    border: 1px solid #d7d7d7;
+    background: none;
+    padding: 3px 21px;
+    border: none;
+    float: right; }
 
 #stream {
   width: 600px; }
@@ -236,16 +235,17 @@ input {
         color: #8bf1ff; }
 
 #comments .top {
-  margin: 5px 0 0 130px;
+  margin: 5px 0 0 150px;
   background: url("/images/comment-nub.png") no-repeat;
   height: 5px;
   width: 10px; }
 #comments .input {
   width: 450px;
-  background: #e1e4e5;
+  background: #f0f0f0;
   margin-left: 125px;
   padding: 3px; }
   #comments .input textarea {
+    height: 15px;
     width: 442px;
     border: 1px solid #a8a8a8;
     display: block;
@@ -256,7 +256,7 @@ input {
     float: right; }
 
 .comment {
-  background: #e1e4e5;
+  background: #f0f0f0;
   margin: 0 0 3px 125px;
   width: 450px;
   padding: 3px; }

@@ -35,7 +35,8 @@ $(window).load(function () {
 
 $(window).load(function () {
     $('#comments textarea').autoResize();
-    
+    $('#content').autoResize(); //buggy
+
     $("#comments .submit").hide();
     var comment_hint = "share a comment..."
     $("#comments textarea").
