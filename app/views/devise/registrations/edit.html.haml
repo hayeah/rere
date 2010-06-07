@@ -2,7 +2,8 @@
   %h1 
     Change your
     %span.highlight Settings
-  = form_for(resource, :url => user_registration_path, :html => { :method => :put }) do |f|
+  = devise_error_messages!
+  = form_for(resource, :url => user_registration_path, :html => { :method => :put, :multipart => true }) do |f|
     %table
       %tr.input
         %th Email
@@ -16,6 +17,9 @@
       %tr.hint
         %th
         %td leave blank if you don't want to change it
+      %tr.input
+        %th profile picture
+        %td= f.file_field :avatar
       %tr.input
         %th current password
         %td= f.password_field :current_password
