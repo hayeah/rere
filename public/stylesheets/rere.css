@@ -13,6 +13,9 @@ input {
   margin: 0 0 2px 0;
   padding: 3px; }
 
+.box_padding, #about_us {
+  padding: 20px 40px; }
+
 .submit {
   cursor: pointer;
   border: 1px solid #d7d7d7;

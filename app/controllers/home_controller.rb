@@ -9,5 +9,9 @@ class HomeController < ApplicationController
       render "splash", :layout => "box"
     end
   end
+
+  def about
+    render "about", :layout => "box"
+  end
   
 end

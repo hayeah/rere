@@ -11,6 +11,8 @@ Rere::Application.routes.draw do |map|
     resources :comments
   end
 
+  match "home/about"
+  
   match 'users/:username/watch' => "users#watch", :as => :watch
   match 'users/:username/share' => "users#share", :as => :share
 
