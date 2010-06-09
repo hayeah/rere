@@ -271,20 +271,24 @@ input {
   height: 5px;
   width: 10px; }
 #comments .input {
-  width: 450px;
+  width: 452px;
   background: #f0f0f0;
   margin-left: 125px;
   padding: 3px; }
   #comments .input textarea {
     height: 15px;
-    width: 442px;
+    width: 444px;
     border: 1px solid #d7d7d7;
     display: block;
     padding: 3px; }
   #comments .input .submit {
-    margin-top: 3px;
-    width: 75px;
+    background: #5bb4e5;
+    margin: 4px 1px 0px 0px;
+    width: 85px !important;
+    color: white;
     float: right; }
+    #comments .input .submit:hover {
+      border-color: #868181; }
 
 .comment {
   background: #f0f0f0;
