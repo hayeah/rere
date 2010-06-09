@@ -27,4 +27,8 @@ module ApplicationHelper
   def errorarrow
     image_tag "/images/error_arrow.png"
   end
+
+  def sign_in_link
+    link_to "Sign in", new_user_session_path
+  end
 end

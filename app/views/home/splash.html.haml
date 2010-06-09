@@ -1,9 +1,6 @@
 - content_for(:toolbar) do
   #splash_login
-    = form_for(@user, :url => user_session_path) do |f|
-      = f.text_field :username, :value => "username or email", :tabindex => 1
-      = f.password_field :password, :tabindex => 2
-      = f.submit "Sign in", :class => "submit", :tabindex => 3
+    = sign_in_link
 
 #splash
   %h1
