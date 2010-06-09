@@ -43,6 +43,17 @@ describe User do
     end
   end
 
+  context "#unwatch" do
+    before do
+      u1.watch(u2)
+    end
+
+    it "unwatches" do
+      u1.unwatch(u2)
+      u1.watching?(u2).should be_false
+    end
+  end
+
   context "#share" do
     let(:thought) do
       u1.share("content")

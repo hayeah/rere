@@ -65,6 +65,11 @@ class User < ActiveRecord::Base
     Watcher.new(:from_user => self, :to_user => user).save!
   end
 
+  def unwatch(user)
+    return if user == self
+    Watcher.where(:from_user_id => self.id, :to_user_id => user.id).delete_all
+  end
+
   def watching?(user)
     !Watcher.where(:from_user_id => self.id, :to_user_id => user.id).empty?
   end
