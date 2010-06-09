@@ -9,9 +9,12 @@ $(window).load(function () {
 	});
 });
 
+// Stream page
 $(window).load(function () {
+    $('#share_prompt #content').autoResize();
+    
+    // behaviour for comment input
     $('#comments textarea').autoResize();
-    $('#content').autoResize(); //buggy
 
     $("#comments .submit").hide();
     var comment_hint = "share a comment..."

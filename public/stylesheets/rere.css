@@ -174,9 +174,9 @@ input {
 
 #share_prompt {
   width: 500px;
-  height: 150px;
   margin: 0 0 0 100px;
-  padding-top: 20px; }
+  padding-top: 20px;
+  padding-bottom: 100px; }
   #share_prompt textarea {
     border: 1px solid #868181;
     padding: 3px;
