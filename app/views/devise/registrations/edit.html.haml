@@ -1,4 +1,7 @@
 .simple_form
+  %h1 
+    Change your
+    %span.highlight Settings
   = form_for(resource, :url => user_registration_path, :html => { :method => :put }) do |f|
     %table
       %tr.input
@@ -22,3 +25,6 @@
       %tr
         %th
         %td= f.submit "Update", :class => "submit"
+      %tr
+        %th
+        %td= link_to "Cancel", stream_path(:username => current_user.username)

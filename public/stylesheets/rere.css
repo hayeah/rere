@@ -14,7 +14,23 @@ input {
   padding: 3px; }
 
 .box_padding, #about_us {
-  padding: 20px 40px; }
+  padding: 20px 80px 20px 40px; }
+
+#about_us .links {
+  text-align: center;
+  margin-bottom: 20px; }
+#about_us h1 {
+  font-size: 18px;
+  margin-bottom: 7px; }
+#about_us h2 {
+  font-size: 23px;
+  margin-bottom: 10px;
+  color: #ee3758; }
+#about_us .highlight {
+  color: #ee3758; }
+#about_us p {
+  margin-bottom: 10px;
+  color: #383838; }
 
 .submit {
   cursor: pointer;
@@ -95,7 +111,7 @@ input {
     font-size: 20px;
     border-bottom: 1px solid #bcbbbb;
     padding: 0 0 5px 0.5em;
-    margin: 0 3em 1em 1em; }
+    margin: 0 3em 1.5em 1em; }
   .simple_form table {
     margin: auto;
     width: 500px; }
@@ -192,6 +208,17 @@ input {
     color: #868181;
     font-weight: bold;
     margin: 1em 0 5px 0; }
+  #navigation .followButton {
+    font-family: verdana;
+    border-color: #d7d7d7;
+    background: #5bb4e5;
+    cursor: pointer;
+    color: #383838;
+    font-size: 18px;
+    color: white;
+    padding: 5px 27px; }
+    #navigation .followButton:hover {
+      border-color: black; }
 
 #portrait {
   margin: 10px 0 30px 0;

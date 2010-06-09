@@ -2,6 +2,9 @@
   = link_to "Join reremind", new_user_registration_path, :class => "sign_up_link"
 
 .simple_form
+  %h1
+    Sign in to your 
+    %span.highlight Stream
   = form_for(@user, :url => user_session_path) do |f|
     %table
       %tr.input
