@@ -11,29 +11,28 @@ $(window).load(function () {
 
 // Stream page
 $(window).load(function () {
-    $('#share_prompt #content').autoResize();
-    
-    // behaviour for comment input
-    $('#comments textarea').autoResize();
+    // hinting, and autoresize, and hiding submit button
+    $('#share_prompt textarea').autoResize().data("hint","Say something or ask a question...");
+    $('#comments textarea').autoResize().data("hint","share something...");
+    $("#share_prompt, #comments").find(".submit").hide();
 
-    $("#comments .submit").hide();
-    var comment_hint = "share a comment..."
-    $("#comments textarea").
-        val(comment_hint).bind({
-            focusin: function(){
-                if($(this).data("changed") == undefined)
-                    $(this).val("");
-                $(this).parent("form").find(".submit").show();
-            },
-            change: function() {
-                $(this).data("changed",true);
-            },
-            focusout: function(){
-                if($(this).val() == "") {
-                    $(this).val(comment_hint);
-                    $(this).parent("form").find(".submit").hide();
-                    $(this).removeData("changed");
-                }
-            },
-        });
+    $("#share_prompt, #comments").find("textarea").each(function () {
+        $(this).val($(this).data("hint"));
+    }).bind({
+        focusin: function(){
+            if($(this).data("changed") == undefined)
+                $(this).val("");
+            $(this).parent("form").find(".submit").show();
+        },
+        change: function() {
+            $(this).data("changed",true);
+        },
+        focusout: function(){
+            if($(this).val() == "") {
+                $(this).val($(this).data("hint"));
+                $(this).parent("form").find(".submit").hide();
+                $(this).removeData("changed");
+            }
+        },
+    });
 });
