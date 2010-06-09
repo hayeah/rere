@@ -26,7 +26,7 @@ input {
   font-size: 23px;
   margin-bottom: 10px;
   color: #ee3758; }
-#about_us .highlight {
+#about_us .highlight, #about_us .simple_form .alert, .simple_form#about_us .alert, .simple_form #about_us .alert {
   color: #ee3758; }
 #about_us p {
   margin-bottom: 10px;
@@ -46,7 +46,7 @@ input {
   clear: both;
   visibility: hidden; }
 
-.highlight {
+.highlight, .simple_form .alert {
   color: #ee3758;
   display: inline-block; }
 
@@ -118,6 +118,8 @@ input {
   .simple_form th {
     text-align: right;
     padding-right: 10px; }
+  .simple_form td {
+    padding-top: 8px; }
   .simple_form .hint {
     color: #868181; }
     .simple_form .hint td {
@@ -126,11 +128,13 @@ input {
     width: 200px; }
   .simple_form .space {
     height: 10px; }
+  .simple_form .alert {
+    width: 100%; }
 
 #splash {
   padding: 50px 100px 0 80px;
   font: 30px Verdana, non-serif; }
-  #splash .highlight {
+  #splash .highlight, #splash .simple_form .alert, .simple_form#splash .alert, .simple_form #splash .alert {
     color: #ee3758; }
   #splash ul {
     margin: 0.5em 0 1em 1em;

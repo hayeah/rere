@@ -7,16 +7,16 @@
     %span.highlight Stream
   = form_for(@user, :url => user_session_path) do |f|
     %table
+      %tr
+        %th
+        %td.alert{:colspan => "2"}
+          = flash[:alert]
       %tr.input
         %th Username or email
         %td= f.text_field :username, :tabindex => 1
-      %tr
-        %th.space{:colspan => "9"}
       %tr.input
         %th Password
         %td= f.password_field :password, :tabindex => 2
-      %tr
-        %th.space{:colspan => "9"}
       %tr
         %th
         %td{:colspan => 2}
