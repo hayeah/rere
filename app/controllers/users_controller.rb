@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     redirect_to stream_path(:username => owner.username)
   end
 
+  def unwatch
+    current_user.unwatch(owner)
+    redirect_to stream_path(:username => owner.username)
+  end
+
   def share
     current_user.share(params[:content])
     redirect_to stream_path(:username => current_user.username)
