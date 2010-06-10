@@ -13,6 +13,7 @@ gem 'haml', '3.0.0.rc.3'
 
 # db
 gem 'pg'
+gem 'mysql
 
 # test
 group :test do
