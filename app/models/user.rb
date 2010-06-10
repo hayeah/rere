@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_format_of :email, :with => Devise.email_regexp
 
+  validates_format_of :username, :with => /^[a-z0-9_]+$/, :message => "username may contain be a..z, 0-9, and _"
+
   # override devise's authentication search to allow login with either username or email
   def self.find_for_authentication(conditions={})
     if conditions[:username] =~ Devise.email_regexp
