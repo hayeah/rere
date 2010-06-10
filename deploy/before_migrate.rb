@@ -1,1 +1,1 @@
-system "bundle install"
+exec "bundle install"
