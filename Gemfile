@@ -5,7 +5,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0.beta3'
 
 gem 'devise', '1.1.rc1'
-gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git", :branch => "rails3"
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-s3'
 
 # view
