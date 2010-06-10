@@ -63,11 +63,21 @@ class User < ActiveRecord::Base
   def watch(user)
     return if user == self
     Watcher.new(:from_user => self, :to_user => user).save!
+    # add thoughts of the followed user to the stream of the following user
+    ## arbitrarily limit it to the last 200 thoughts
+    user.thoughts.limit(200).each do |thought|
+      thought.share(self)
+    end
   end
 
   def unwatch(user)
     return if user == self
     Watcher.where(:from_user_id => self.id, :to_user_id => user.id).delete_all
+    # delete all shared thoughts of the unfollowed user
+    SharedThought.where(:thought_id => self.shares.where(:user_id => user.id),
+                        :subject_id => self.id,
+                        :subject_type => self.class.to_s).delete_all
+    true
   end
 
   def watching?(user)

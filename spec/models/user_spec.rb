@@ -41,16 +41,31 @@ describe User do
         lambda { u1.watch(u2) }.should raise_error(ActiveRecord::RecordNotUnique)
       end
     end
+
+    context "add messages of fllowed to stream of follower" do
+      before do
+        u2.share("a")
+        u1.watch(u2)
+      end
+
+      it "has u2's thought in shares" do
+        u1.shares.should include(*u2.thoughts)
+      end
+    end
   end
 
   context "#unwatch" do
-    before do
-      u1.watch(u2)
-    end
-
     it "unwatches" do
+      u1.watch(u2)
       u1.unwatch(u2)
       u1.watching?(u2).should be_false
+    end
+
+    it "removes messages of unfollowed user from follower's stream" do
+      u2.share("a")
+      u1.watch(u2)
+      u1.unwatch(u2)
+      u1.shares.should be_empty
     end
   end
 
