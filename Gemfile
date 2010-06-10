@@ -12,7 +12,7 @@ gem 'aws-s3'
 gem 'haml', '3.0.0.rc.3'
 
 # db
-gem 'pg'
+gem 'pg', :group => "development"
 gem 'mysql'
 
 # test
