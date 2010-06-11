@@ -8,7 +8,7 @@ port = 8080
     w.name = "rere"
     w.interval = 30.seconds # default
     # Go into the website root before starting unicorn
-    w.start = "cd #{RAILS_ROOT} && unicorn_rails -c config/unicorn.conf"
+    w.start = "cd #{RAILS_ROOT} && unicorn_rails -c config/unicorn.conf -E production -p #{port}"
     # -QUIT = graceful shutdown, waits for workers to finish their current request before finishing
     w.stop = "kill -QUIT `cat #{RAILS_ROOT}/tmp/pids/unicorn.pid`"
     # -USR2 = reexecute the running binary. A separate QUIT should be sent to the original process once the child is verified to be up and running.
