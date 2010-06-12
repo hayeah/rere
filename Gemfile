@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'rails', '3.0.0.beta3'
+gem 'unicorn'
 
 gem 'devise', '1.1.rc1'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
