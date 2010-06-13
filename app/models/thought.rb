@@ -9,18 +9,6 @@ class Thought < ActiveRecord::Base
   validates_presence_of :content
 
   class << self
-    # We select distinct to remove duplicates shared thoughts. This
-    # happens when the thought is shared through both a follower
-    # relationship and a group membership.
-    def for_user(user)
-      thought_ids = StreamThought.select("distinct thought_id").
-        where(:to_id => user.id,:to_type => user.class.to_s).
-        order("thought_id desc").
-        limit(25).
-        map(&:thought_id)
-      Thought.where(:id => thought_ids).includes(:comments => [:user])
-    end
-
     def share(content,user,group=nil)
       t = Thought.create(:content => content,
                          :user => user,

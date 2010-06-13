@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :memberships
 
   def stream
-    Thought.for_user(self)
+    StreamThought.for(self)
   end
 
   def shared_stream
