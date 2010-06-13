@@ -45,12 +45,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :username, :email, :password, :password_confirmation, :avatar
 
   has_many :thoughts
-  has_many :groups, :through => :memberships
-
-  # shares is the timeline of thoughts from a user and all watched users
-  has_many :shares, :through => :shared_thoughts, :source => :thought
-  has_many :shared_thoughts, :as => :subject
-
+  
   has_many :memberships
   has_many :groups, :through => :memberships
 
@@ -58,62 +53,23 @@ class User < ActiveRecord::Base
     StreamThought.for(self)
   end
 
-  def shared_stream
-    self.shares.includes(:comments => [:user]).order("id desc")
+  def follow(user)
+    Following.add(user,self)
   end
-
   
+  def unfollow(user)
+    Following.remove(user,self)
+  end
   
-  def watch(user)
-    return if user == self
-    Watcher.new(:from_user => self, :to_user => user).save!
-    # add thoughts of the followed user to the stream of the following user
-    ## arbitrarily limit it to the last 200 thoughts
-    user.thoughts.limit(200).each do |thought|
-      thought.share(self)
-    end
-  end
-  alias_method :follow, :watch
-
-  def unwatch(user)
-    return if user == self
-    Watcher.where(:from_user_id => self.id, :to_user_id => user.id).delete_all
-    # delete all shared thoughts of the unfollowed user
-    SharedThought.where(:thought_id => self.shares.where(:user_id => user.id),
-                        :subject_id => self.id,
-                        :subject_type => self.class.to_s).delete_all
-    true
-  end
-  alias_method :unfollow, :unwatch
-
-  def watching?(user)
-    !Watcher.where(:from_user_id => self.id, :to_user_id => user.id).empty?
-  end
-  alias_method :following?, :watching?
-
-  def watched
-    Watcher.where(:from_user_id => self.id).includes(:to_user).map(&:to_user)
+  def following?(user)
+    Following.exist?(user,self)
   end
 
-  def watchers
-    @watchers ||= Watcher.where(:to_user_id => self.id).includes(:from_user).map(&:from_user)
+  def followed
+    Following.followed_by(self)
   end
-  alias_method :followers, :watchers
 
-  
-
-  def share(content,group=nil)
-    User.transaction do
-      thought = self.thoughts.create(:content => content)
-      # appear in a group's share thoughts
-      thought.share(group) if group
-      # appear in self's share thoughts
-      thought.share(self)
-      # appear in each watcher's share thoughts
-      self.watchers.each do |watcher|
-        thought.share(watcher)
-      end
-      return thought
-    end
+  def followers
+    Following.followers_of(self)
   end
 end
