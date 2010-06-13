@@ -55,12 +55,14 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :memberships
 
   def stream
-    self.thoughts.includes(:comments => [:user]).order("id desc")
+    Thought.for_user(self)
   end
 
   def shared_stream
     self.shares.includes(:comments => [:user]).order("id desc")
   end
+
+  
   
   def watch(user)
     return if user == self
@@ -71,6 +73,7 @@ class User < ActiveRecord::Base
       thought.share(self)
     end
   end
+  alias_method :follow, :watch
 
   def unwatch(user)
     return if user == self
@@ -81,10 +84,12 @@ class User < ActiveRecord::Base
                         :subject_type => self.class.to_s).delete_all
     true
   end
+  alias_method :unfollow, :unwatch
 
   def watching?(user)
     !Watcher.where(:from_user_id => self.id, :to_user_id => user.id).empty?
   end
+  alias_method :following?, :watching?
 
   def watched
     Watcher.where(:from_user_id => self.id).includes(:to_user).map(&:to_user)
@@ -93,6 +98,9 @@ class User < ActiveRecord::Base
   def watchers
     @watchers ||= Watcher.where(:to_user_id => self.id).includes(:from_user).map(&:from_user)
   end
+  alias_method :followers, :watchers
+
+  
 
   def share(content,group=nil)
     User.transaction do

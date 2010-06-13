@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100605064249) do
+ActiveRecord::Schema.define(:version => 20100613083130) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -48,11 +48,20 @@ ActiveRecord::Schema.define(:version => 20100605064249) do
     t.integer "thought_id"
   end
 
+  create_table "stream_thoughts", :force => true do |t|
+    t.integer "thought_id"
+    t.integer "to_id"
+    t.string  "to_type"
+    t.integer "from_id"
+    t.string  "from_type"
+  end
+
   create_table "thoughts", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
   end
 
   create_table "users", :force => true do |t|
