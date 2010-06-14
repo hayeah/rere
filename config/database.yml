@@ -8,8 +8,8 @@ production:
   password: rere
 
 development:
-  adapter: postgresql
-  database: rere_d
+  adapter: mysql
+  database: rere
 
 test:
   adapter: postgresql
