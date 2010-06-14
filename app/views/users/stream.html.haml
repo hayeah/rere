@@ -20,14 +20,14 @@
       #navigation
         .followings
           - if user_signed_in? && !user_is_owner?
-            - if !current_user.watching?(owner)
+            - if !current_user.following?(owner)
               = button_to "Follow", watch_path(:username => owner.username), {:class => "button"}
             - else
               = button_to "Unfollow", unwatch_path(:username => owner.username), {:class => "button"}
-          %h2 Followings
+          %h2 Following
           %ul
-            - owner.watched.each do |watched|
-              %li= link_to_user(watched)
+            - owner.followed.each do |user|
+              %li= link_to_user(user)
     - if user_is_owner?
       #share_prompt
         = form_tag :action => :share  do

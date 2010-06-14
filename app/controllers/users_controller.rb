@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :only => [:watch,:share]
 
-  STREAM_SIZE = 25
   def stream
     @thought  = Thought.new
     if owner?
-      @thoughts = current_user.shared_stream.limit(STREAM_SIZE)
+      @thoughts = current_user.stream
     else
-      @thoughts = owner.stream.limit(STREAM_SIZE)
+      @thoughts = owner.thoughts.limit(25)
     end
   end
 
