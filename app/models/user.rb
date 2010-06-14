@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
     StreamThought.for(self)
   end
 
+  def share(content,group=nil)
+    Thought.share(content,self,group)
+  end
+
   def follow(user)
     Following.add(user,self)
   end

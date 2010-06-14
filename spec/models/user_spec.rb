@@ -6,118 +6,137 @@ describe User do
 
   let(:group) { Factory(:group) }
 
-  context "#watch" do
-    context "watching itself" do
-      it "returns nil" do
-        u1.watch(u1).should be_nil
+  context "#follow" do
+    it "raises when following self" do
+      lambda { u1.follow(u1) }.should raise_error(Following::NotReflexive)
+    end
+    
+    context "u1 following u2" do
+      before do
+        u1.follow(u2)
       end
 
-      it "does not create record" do
-        u1.watch(u1)
-        u1.watchers.should be_empty
-        u1.watched.should be_empty
+      specify "u1 is following u2" do
+        u1.following?(u2).should be_true
       end
       
-    end
-
-    context "u1 watching u2" do
-      before do
-          u1.watch(u2)
+      specify "u1 is following u2" do
+        u1.followed.should include(u2)
       end
 
-      specify "u1 is watching u2" do
-        u1.watching?(u2).should be_true
-      end
-      
-      specify "u1 is watching u2" do
-        u1.watched.should include(u2)
+      specify "u2 is followed by u1" do
+        u2.followers.should include(u1)
       end
 
-      specify "u2 is watched by u1" do
-        u2.watchers.should include(u1)
+      it "raises if a user is followed twice" do
+        lambda { u1.follow(u2) }.should raise_error(ActiveRecord::RecordNotUnique)
       end
 
-      it "raises if a user is watched twice" do
-        lambda { u1.watch(u2) }.should raise_error(ActiveRecord::RecordNotUnique)
+      specify "followers" do
+        u2.followers.should == [u1]
+      end
+
+      specify "followed" do
+        u1.followed.should == [u2]
       end
     end
+  end
+  
+  context "#share" do
+    let(:thought) { u1.share("foo") }
 
-    context "add messages of fllowed to stream of follower" do
-      before do
-        u2.share("a")
-        u1.watch(u2)
+    specify "content" do
+      thought.content.should == "foo"
+    end
+
+    context "with no followers" do
+      before { thought }
+      it "doesn't appear in follower's stream" do
+        u2.stream.should be_empty
       end
 
-      it "has u2's thought in shares" do
-        u1.shares.should include(*u2.thoughts)
+      it "appears in author's stream" do
+        u1.stream.should == [thought]
+      end
+    end
+
+    context "with a follower" do
+      before {
+        u2.follow u1
+        thought
+      }
+
+      it "appears in follower's stream" do
+        u2.stream.should == [thought]
+      end
+
+      it "appears in author's stream" do
+        u1.stream.should == [thought]
+      end
+    end
+
+    context "with members in a group" do
+      let(:thought) { u1.share("foo",group) }
+      before {
+        group.join(u2)
+        thought
+      }
+
+      it "appears in member's stream" do
+        u2.stream.should == [thought]
+      end
+    end
+
+    context "when the follower is also member in the group" do
+      let(:thought){ u1.share("foo",group) }
+      before {
+        u2.follow u1
+        group.join(u2)
+        thought
+      }
+
+      it "shares via group membership" do
+        StreamThought.where(:from_id => group.id,
+                            :from_type => group.class.to_s,
+                            :to_id => u2.id,
+                            :to_type => u2.class.to_s).should_not be_empty
+      end
+
+      it "shares via follower relationship" do
+        StreamThought.where(:from_id => u1.id,
+                            :from_type => u1.class.to_s,
+                            :to_id => u2.id,
+                            :to_type => u2.class.to_s).should_not be_empty
+      end
+
+      it "appears once in member's stream" do
+        u2.stream.should == [thought]
       end
     end
   end
 
-  context "#unwatch" do
-    it "unwatches" do
-      u1.watch(u2)
-      u1.unwatch(u2)
-      u1.watching?(u2).should be_false
+  context "#unfollow" do
+    before do
+      u2.follow(u1)
+      u1.share("foo")
+    end
+    
+    it "unfollowes" do
+      u1.unfollow(u2)
+      u1.following?(u2).should be_false
     end
 
     it "removes messages of unfollowed user from follower's stream" do
-      u2.share("a")
-      u1.watch(u2)
-      u1.unwatch(u2)
-      u1.shares.should be_empty
+      u2.stream.should_not be_empty
+      u2.unfollow(u1)
+      u2.stream.should be_empty
+    end
+
+    it "does nothing if unfollowing a non followed user" do
+      u2.unfollow(u1)
+      lambda { u2.unfollow(u1) }.should_not raise_error
     end
   end
 
-  context "#share" do
-    let(:thought) do
-      u1.share("content")
-      u1.thoughts.first
-    end
-    
-    it "creates a new thought" do
-      thought
-      u1.should have(1).thought
-    end
-
-    it "creates new thought with content" do
-      thought.content.should == "content"
-    end
-
-    context "share with my watchers" do
-      before do
-        u2.watch(u1)
-        thought
-      end
-
-      let(:shares) do
-        u2.shares
-      end
-
-      it "shares thought with u2" do
-        u2.shares.should include(thought)
-      end
-
-      it "shares thought with self" do
-        u1.shares.should include(thought)
-      end
-
-      it "does not share thought with group" do
-        group.shares.should_not include(thought)
-      end
-    end
-
-    context "share with a group" do
-      let(:thought) { u1.share("foo",group) }
-
-      before do
-        thought
-      end
-
-      it "shares thought with group" do
-        group.shares.should include(thought)
-      end
-    end
-  end
-
+  
 end

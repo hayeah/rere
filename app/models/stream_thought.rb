@@ -29,12 +29,10 @@ class StreamThought < ActiveRecord::Base
     #
     # TODO uniqueness constraint on :to and :from ?
     def add_all(from,to)
-      # arbitrarily limit it to the last 257 thoughts
-      ## why 257? just to be more arbitrary. it's a prime. primes are
-      ## good. they are good because i say so. i say so because i am
-      ## arbitrary.
-      from.thoughts.limit(257).each do |thought|
-        share(thought,from,to)
+      # limit insertion to 250 of old records
+      from.thoughts.limit(250).each do |thought|
+        create!(:from => from, :to => to,
+                :thought => thought)
       end
     end
   end

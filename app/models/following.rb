@@ -14,7 +14,7 @@ class Following < ActiveRecord::Base
 
     def remove(followed,follower)
       raise NotReflexive if follower == followed
-      where(:follower => follower, :followed => followed).delete_all
+      where(:follower_id => follower.id, :followed_id => followed.id).delete_all
       StreamThought.remove_all(followed,follower)
     end
 
