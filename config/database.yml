@@ -11,6 +11,10 @@ development:
   adapter: mysql
   database: rere
 
+development2:
+  adapter: postgresql
+  database: rere_d
+
 test:
   adapter: postgresql
   database: rere_t

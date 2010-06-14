@@ -7,14 +7,14 @@ class StreamThought < ActiveRecord::Base
     # We select distinct to remove duplicates shared thoughts. This
     # happens when the thought is shared through both a follower
     # relationship and a group membership.
-    def for(to_object)
+    def for(to_object,size=25)
       thought_ids = StreamThought.select("distinct thought_id").
         where(:to_id => to_object.id,:to_type => to_object.class.to_s).
         order("thought_id desc").
-        limit(25).
+        limit(size).
         map(&:thought_id)
       # TODO should include user as group
-      Thought.where(:id => thought_ids).includes(:comments => [:user])
+      Thought.where(:id => thought_ids).includes(:comments => [:user]).order("id desc")
     end
 
     # when a relationship is removed, delete all the thoughts from stream
