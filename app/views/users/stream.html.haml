@@ -21,9 +21,9 @@
         .followings
           - if user_signed_in? && !user_is_owner?
             - if !current_user.following?(owner)
-              = button_to "Follow", watch_path(:username => owner.username), {:class => "button"}
+              = button_to "Follow", follow_path(:username => owner.username), {:class => "button"}
             - else
-              = button_to "Unfollow", unwatch_path(:username => owner.username), {:class => "button"}
+              = button_to "Unfollow", unfollow_path(:username => owner.username), {:class => "button"}
           %h2 Following
           %ul
             - owner.followed.each do |user|

@@ -13,8 +13,8 @@ Rere::Application.routes.draw do |map|
 
   match "home/about"
   
-  match 'users/:username/watch' => "users#watch", :as => :watch
-  match 'users/:username/unwatch' => "users#unwatch", :as => :unwatch
+  match 'users/:username/follow' => "users#follow", :as => :follow
+  match 'users/:username/unfollow' => "users#unfollow", :as => :unfollow
   
   match 'users/:username/share' => "users#share", :as => :share
 

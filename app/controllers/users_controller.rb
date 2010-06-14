@@ -6,17 +6,17 @@ class UsersController < ApplicationController
     if owner?
       @thoughts = current_user.stream
     else
-      @thoughts = owner.thoughts.limit(25)
+      @thoughts = owner.thoughts.limit(25).order("id desc")
     end
   end
 
-  def watch
-    current_user.watch(owner)
+  def follow
+    current_user.follow(owner)
     redirect_to stream_path(:username => owner.username)
   end
 
-  def unwatch
-    current_user.unwatch(owner)
+  def unfollow
+    current_user.unfollow(owner)
     redirect_to stream_path(:username => owner.username)
   end
 
