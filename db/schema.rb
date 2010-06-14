@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100613095948) do
+ActiveRecord::Schema.define(:version => 20100614191658) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(:version => 20100613095948) do
     t.integer "follower_id"
     t.integer "followed_id"
   end
+
+  add_index "followings", ["follower_id", "followed_id"], :name => "index_followings_on_follower_id_and_followed_id", :unique => true
 
   create_table "groups", :force => true do |t|
     t.string   "name"
