@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include(Twitter::Autolink)
+  
   def production?
     Rails.env == "production"
   end
@@ -30,5 +32,11 @@ module ApplicationHelper
 
   def sign_in_link
     link_to "Sign in", new_user_session_path
+  end
+
+  def render_tweet(text)
+    auto_link_usernames_or_lists(text,
+                                 :username_url_base => "/",
+                                 :suppress_lists => true)
   end
 end

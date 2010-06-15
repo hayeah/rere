@@ -11,6 +11,7 @@ gem 'aws-s3'
 
 # view
 gem 'haml', '3.0.0.rc.3'
+gem 'twitter-text'
 
 # db
 gem 'pg', :group => "development"
