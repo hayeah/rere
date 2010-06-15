@@ -6,6 +6,8 @@ class Notifier < ActionMailer::Base
     @user = user
     mail(:subject => "Welcome to Reremind",
          :to => user.email,
-         :bcc => ["Howard Yeh <hayeah@gmail.com>"])
+         :bcc => ["Howard Yeh <hayeah@gmail.com>"]) do |format|
+      format.text
+    end
   end
 end
