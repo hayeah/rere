@@ -52,7 +52,8 @@ class Thought < ActiveRecord::Base
   # sends email to "replied to" @user, in twitter's terminology. It's the @user that opens up a tweet.
   def recipient
     if username = Twitter::Extractor.extract_reply_screen_name(content)
-      User.find_by_username(username)
+      recipient = User.find_by_username(username)
+      return recipient unless recipient == author
     end
   end
 

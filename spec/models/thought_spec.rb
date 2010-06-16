@@ -1,27 +1,35 @@
 require 'spec_helper'
 
 describe Thought do
-  def thought(content)
-    @thought ||= Thought.new(:content => content)
+  def thought(content=nil)
+    user.share(content)
   end
 
   let(:user) do
     Factory(:user,:username => "user")
   end
 
+  let(:user2) do
+    Factory(:user,:username => "user2")
+  end
+
   context "#recipeint" do
-    before { user }
+    before { user; user2 }
     
     it "returns the recipient if it's mentioned at the reply to position" do
-      thought("@#{user.username} something somthing").recipient.should == user
+      thought("@#{user2.username} something somthing").recipient.should == user2
     end
 
-    it "returns nil if user not mentioned at the reply to position" do
-      thought("foo bar @#{user.username} something somthing").recipient.should be_nil
+    it "returns nil if usernot mentioned at the reply to position" do
+      thought("foo bar @user2 something somthing").recipient.should be_nil
     end
 
     it "returns nil is user is not mentioned at all" do
       thought("fawekfj").recipient.should be_nil
+    end
+
+    it "returns nil is recipient is same as author" do
+      thought("@user fefo").recipient.should be_nil
     end
   end
 
