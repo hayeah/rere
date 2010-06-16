@@ -23,6 +23,11 @@ class Thought < ActiveRecord::Base
     user
   end
 
+  def comment(user,content)
+    self.comments.create(:user => user,
+                         :content => content)
+  end
+
   # A thought could be shared twice:
   #
   # 1) through a follower relationship
