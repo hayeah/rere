@@ -55,3 +55,12 @@ module Rere
     config.filter_parameters += [:password]
   end
 end
+
+# so we can call these methods without having to include them in some class
+module Twitter::Extractor
+  extend self
+end
+
+module Twitter::Autolink
+  extend self
+end

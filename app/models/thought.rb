@@ -49,6 +49,17 @@ class Thought < ActiveRecord::Base
     end
   end
 
+  # sends email to "replied to" @user, in twitter's terminology. It's the @user that opens up a tweet.
+  def recipient
+    if username = Twitter::Extractor.extract_reply_screen_name(content)
+      User.find_by_username(username)
+    end
+  end
+
+  def mentions
+    User.where(:username => Twitter::Extractor.extract_mentioned_screen_names(content).uniq.compact)
+  end
+
   def share(from,to)
     StreamThought.create(:from => from, :to => to, :thought => self)
   end
