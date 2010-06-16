@@ -4,10 +4,8 @@ class CommentsController < ApplicationController
     thought = Thought.find(params[:thought_id])
     thought.comments.create(:user => current_user,
                             :content => params[:content])
-    if group_id = params[:group_id]
-      goto_group(Group.find(group_id))
-    elsif username = params[:username]
-      goto_user(User.where(:username => username).first)
+    if params[:goto_url]
+      redirect_to params[:goto_url]
     else
       raise "dunno where to go"
     end

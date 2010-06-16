@@ -1,4 +1,4 @@
-%li.thought
+.thought
   - # print one date timestamp for all the thoughts that has the same day
   .date= @thought.created_at.strftime("%b %d")
   .time= @thought.created_at.strftime("%I:%M %p").downcase
@@ -17,13 +17,7 @@
             .timestamp= time_ago_in_words(comment.created_at)+" ago"
     - if current_user
       .input
-        = form_tag(thought_comments_path(:thought_id => @thought.id)) do
-          = text_area_tag :content
-          - if controller_name == "users"
-            = hidden_field_tag :username, owner.username
-          - elsif controller_name == "groups"
-            = hidden_field_tag :group_id, @group.id
-          = submit_tag "Comment", :class => "submit"
-          .clear .
+        = render(:partial => "thoughts/comment", :locals => {:thought => @thought})
+        .clear .
 
               
