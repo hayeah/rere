@@ -1,0 +1,81 @@
+* ec2 ubuntu image 10.04, 32 bit
+
+# ec2-keypair is the RSA key generated earlier for access
+
+ec2-run-instances ami-449f772d -k ec2-keypair --availability-zone 'us-east-1a' # get instance id
+ec2-create-volume --availability-zone 'us-east-1a' --size '5' # Grab the volume id
+ec2-attach-volume vol-39039450 --device 'sdq2' --instance i-1035207b
+
+ssh -i ec2-keypair ec2-184-73-36-221.compute-1.amazonaws.com
+
+# create file system
+
+sudo mkfs -t ext3 /dev/sdq1
+sudo mkdir /data
+sudo mount /dev/sdq1 /data -w
+
+* ubuntu system stuff
+
+# update apt source list
+sudo apt-get update
+
+* some base stuff
+
+sudo apt-get install git-core screen vim curl
+
+* ruby
+
+sudo apt-get install ruby-full
+sudo apt-get install rubygems1.8
+
+# update ruby gems
+wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz
+tar xzf rubygems-1.3.7.tgz
+cd rubygems-1.3.7
+sudo ruby setup.rb
+
+# install chef
+sudo gem install chef --no-ri --no-rdoc
+
+*
+
+* chef
+
+
+# clone deployment repo
+git clone git://github.com/hayeah/rere-chef.git
+
+# for some reason the mysql recipe won't run unless this gem is installed
+sudo gem install mysql --no-ri --no-rdoc
+
+# run chef-solo
+cd rere-chef && ./run
+
+# launch the latest release
+
+sudo RAILS_ENV=production bundle exec rails s
+
+
+* move mysql's data directory to persistent EBS
+
+# for mysql
+mkdir /data/mysql
+cp -r /var/lib/mysql /data
+chown mysql:mysql /data/mysql
+
+# ubuntu uses apparmor to limit mysql access to filesystem, which causes problem if mysql datadir is moved somewhere else
+
+sudo rm /etc/apparmor.d/usr.sbin.mysqld
+sudo /etc/init.d/apparmor restart
+
+/etc/init.d/mysql restart
+
+* restart unicorn
+
+# spawns a new unicorn setup, drop a new unicorn.pid, and the old pid is mv to unicorn.oldbin
+kill -USR2 tmp/pids/unicorn.pid
+
+# verify everything's hunky dory
+
+# kill the old unicorn server
+kill -QUIT tmp/pids/unicorn.oldbin
