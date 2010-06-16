@@ -74,9 +74,8 @@
       %tr.tos
         %th
           %label Terms of Service
-          = link_to 'Printable Version'
         %td{:colspan => "2"}
-          %code This is a tos, hehe
+          %code= render :partial => "shared/tos"
       %tr.tos
         %th
         %td.hint{:colspan => "2"}

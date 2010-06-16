@@ -332,6 +332,9 @@ input {
   #sign_up .tos a {
     margin-top: 3px;
     font-size: 14px; }
+  #sign_up code {
+    overflow-y: auto;
+    height: 13em; }
   #sign_up .fieldWithErrors {
     width: 0px;
     margin: 0px;
