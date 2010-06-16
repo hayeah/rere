@@ -12,6 +12,8 @@ Rere::Application.routes.draw do |map|
   end
 
   match "home/about"
+
+  match "admin/:action" => "admin#:action", :as => :admin
   
   match 'users/:username/follow' => "users#follow", :as => :follow
   match 'users/:username/unfollow' => "users#unfollow", :as => :unfollow
