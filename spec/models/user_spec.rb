@@ -45,6 +45,10 @@ describe User do
   context "#share" do
     let(:thought) { u1.share("foo") }
 
+    it "strips the content" do
+      u1.share(" foo\n\n   ").content.should == "foo"
+    end
+
     specify "content" do
       thought.content.should == "foo"
     end

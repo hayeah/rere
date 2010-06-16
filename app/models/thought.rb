@@ -10,7 +10,7 @@ class Thought < ActiveRecord::Base
 
   class << self
     def share(content,user,group=nil)
-      t = Thought.create(:content => content,
+      t = Thought.create(:content => content.strip,
                          :user => user,
                          :group => group)
       t.broadcast
