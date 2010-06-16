@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     options = {}
   end
   
-  has_attached_file :avatar, options.merge(:styles => { :medium => "300x300>", :thumb => "90x90>", :tiny => "30x30" })
+  has_attached_file :avatar, options.merge(:styles => { :medium => "300x300", :thumb => "90x90", :tiny => "30x30" })
 
   validates_presence_of :name
 
