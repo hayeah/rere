@@ -14,7 +14,7 @@ class StreamThought < ActiveRecord::Base
         limit(size).
         map(&:thought_id)
       # TODO should include user as group
-      Thought.where(:id => thought_ids).includes(:comments => [:user]).order("id desc")
+      Thought.where(:id => thought_ids).includes({:comments => [:user]}, :user).order("id desc")
     end
 
     # when a relationship is removed, delete all the thoughts from stream
