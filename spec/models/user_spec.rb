@@ -6,6 +6,17 @@ describe User do
 
   let(:group) { Factory(:group) }
 
+  context "username validation" do
+    def user(username)
+      Factory.build(:user,:username => username)
+    end
+
+    it "disallows certain keywords" do
+      user("admin").should_not be_valid
+      user("root").should_not be_valid
+    end
+  end
+
   context "#follow" do
     it "raises when following self" do
       lambda { u1.follow(u1) }.should raise_error(Following::NotReflexive)
