@@ -1,0 +1,9 @@
+Hi <%= @participant.username %>,
+
+<%= @comment.user.username %> left a new comment:
+
+"<%= @comment.content %>"
+
+Reply by following this link:
+
+<%= thought_url(:id => @comment.thought.id) %>

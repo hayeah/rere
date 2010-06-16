@@ -24,8 +24,12 @@ class Thought < ActiveRecord::Base
   end
 
   def comment(user,content)
-    self.comments.create(:user => user,
-                         :content => content)
+    c = self.comments.create(:user => user,
+                             :content => content)
+    c.participants.each do |participant|
+      Notifier.new_comment(c,participant).deliver
+    end
+    c
   end
 
   # A thought could be shared twice:

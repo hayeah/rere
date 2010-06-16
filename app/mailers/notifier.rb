@@ -12,14 +12,21 @@ class Notifier < ActionMailer::Base
   end
 
   def notify_recipient(thought)
-    if thought.recipient
-      @thought = thought
-      @author = thought.author
-      @recipient = thought.recipient
-      mail(:subject => "#{@author.username} sent you a message",
-           :to => @recipient.email) do |format|
-        format.text
-      end
+    @thought = thought
+    @author = thought.author
+    @recipient = thought.recipient
+    mail(:subject => "#{@author.username} sent you a message",
+         :to => @recipient.email) do |format|
+      format.text
+    end
+  end
+
+  def new_comment(comment,participant)
+    @comment = comment
+    @participant = participant
+    mail(:subject => "#{@comment.user.username} left a comment",
+         :to => @participant.email) do |format|
+      format.text
     end
   end
 end
