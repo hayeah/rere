@@ -239,7 +239,8 @@ input {
 
 .thought {
   position: relative;
-  padding-bottom: 3em; }
+  padding-bottom: 3em;
+  width: 600px; }
   .thought .date {
     width: 100px;
     text-align: right;
