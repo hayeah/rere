@@ -1,0 +1,9 @@
+Hi <%= @recipient.username %>,
+
+<%= @author.username %> sent you a message:
+
+"<%= @thought.content %>"
+
+Reply by following this link:
+
+<%= thought_url(:id => @thought.id) %>
