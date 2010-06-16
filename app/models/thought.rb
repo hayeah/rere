@@ -14,6 +14,7 @@ class Thought < ActiveRecord::Base
                          :user => user,
                          :group => group)
       t.broadcast
+      Notifier.notify_recipient(t).deliver if t.recipient
       t
     end
   end

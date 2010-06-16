@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 
   def share
     thought = current_user.share(params[:content])
-    (m = Notifier.notify_recipient(thought)) && m.deliver
     redirect_to stream_path(:username => current_user.username)
   end
 end
