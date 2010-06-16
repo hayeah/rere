@@ -333,8 +333,7 @@ input {
     margin-top: 3px;
     font-size: 14px; }
   #sign_up code {
-    overflow-y: auto;
-    height: 13em; }
+    overflow-y: auto; }
   #sign_up .fieldWithErrors {
     width: 0px;
     margin: 0px;

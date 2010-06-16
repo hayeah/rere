@@ -7,7 +7,16 @@ $(window).load(function () {
           $(this).css("border", "1px solid #9a9a9a");
       }
 	});
+    $("#sign_up code").toggle(
+        function () {
+            $(this).css("height","15em");
+        },
+        function () {
+            $(this).css("height","");
+        }
+    );
 });
+
 
 // Stream page
 $(window).load(function () {
