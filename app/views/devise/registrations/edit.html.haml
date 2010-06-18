@@ -1,3 +1,4 @@
+= render :partial => "shared/toolbar"
 .simple_form
   %h1 
     Change your
@@ -31,4 +32,4 @@
         %td= f.submit "Update", :class => "submit"
       %tr
         %th
-        %td= link_to "Cancel", stream_path(:username => current_user.username)
+        %td= link_to "Go back to your stream", stream_path(:username => current_user.username)
