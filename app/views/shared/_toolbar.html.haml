@@ -1,0 +1,12 @@
+- content_for(:toolbar) do
+  #toolbar
+    - if user_signed_in?
+      = link_to "Stream", stream_path(:username => current_user.username)
+      |
+      = link_to "Settings", edit_user_registration_path
+      |
+      = link_to "About us", :controller => 'home', :action => 'about'
+      |
+      = link_to "Sign Out", destroy_user_session_path
+    - else
+      = link_to "Sign in", new_user_session_path
