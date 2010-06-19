@@ -1,9 +1,0 @@
-= form_tag(thought_comments_path(:thought_id => thought.id)) do
-  = text_area_tag :content
-  - if controller_name == "users"
-    = hidden_field_tag :goto_url, stream_path(owner.username)
-  - elsif controller_name == "groups"
-    = hidden_field_tag :goto_url, @group.id
-  - elsif controller_name == "thoughts"
-    = hidden_field_tag :goto_url, thought_path(thought.id)
-  = submit_tag "Comment", :class => "submit"
