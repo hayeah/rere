@@ -17,46 +17,46 @@ $(window).load(function () {
     );
 });
 
+(function($){
+    $.fn.hintedInput = function(hint) {
+        this.each(function() {
+            $.extend(this,{
+                "show_hint":function(){
+                    $(this).val(hint).css("color","#9a9a9a");
+                    $(this).parent("form").find(".submit").hide();
+                    $(this).removeData("changed");
+                },
+                "for_input":function(){
+                    $(this).css("color","#000");
+                    $(this).parent("form").find(".submit").show();
+                },
+                "no_input":function(){
+                    return $(this).data("changed") == undefined || $.trim($(this).val()) == ""
+                }
+            }); // extend
+            this.show_hint(); // initial state is "hinted"
+        }); // each
 
-// Stream page
-$(window).load(function () {
-    // hinting, and autoresize, and hiding submit button
-    $('#share_prompt textarea').data("hint","Say something or ask a question...");
-    $('.comments textarea').data("hint","share something...");
-    $("#share_prompt, .comments").find(".submit").hide();
-
-    var inputs = $("#share_prompt, .comments").find("textarea");
-    inputs.autoResize().css("color","#9a9a9a");
-
-    inputs.each(function () {
-        $(this).val($(this).data("hint"));
-        $.extend(this,{
-            "show_hint":function(){
-                $(this).val($(this).data("hint")).css("color","#9a9a9a");
-                $(this).parent("form").find(".submit").hide();
-                $(this).removeData("changed");
+        this.bind({
+            focusin: function(){
+                if(this.no_input()) { $(this).val("") }
+                this.for_input();
             },
-            "for_input":function(){
-                $(this).css("color","#000");
-                $(this).parent("form").find(".submit").show();
+            keypress: function() {
+                $(this).data("changed",true);
             },
-            "no_input":function(){
-                return $(this).data("changed") == undefined || $.trim($(this).val()) == ""
-            }
-            
+            focusout: function(){
+                if(this.no_input()) { this.show_hint(); }
+            },
         });
-    }).bind({
-        focusin: function(){
-            if(this.no_input()) { $(this).val("") }
-            this.for_input();
-        },
-        keypress: function() {
-            $(this).data("changed",true);
-        },
-        focusout: function(){
-            if(this.no_input()) { this.show_hint(); }
-        },
-    });
+        this.autoResize();
+        return this;
+    }
+})(jQuery);
+
+$(window).load(function () {
+    $("#share_prompt textarea").hintedInput("Say something or ask a question...");
+    $(".comments textarea").hintedInput("share something...");
 
     $(".comments form").bind({
         "ajax:success":function(e,data,status,xhr) {
