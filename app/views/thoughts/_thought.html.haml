@@ -1,0 +1,18 @@
+.content
+  %span.name= link_to_user(thought.user)
+  %span.body= raw render_tweet(thought.content)
+
+.comments
+  - if current_user || !thought.comments.empty?
+    .top
+  - unless thought.comments.empty?
+    %ul
+      - thought.comments.each do |comment|
+        %li.comment
+          %span.name= link_to_user(comment.user)
+          %span.body= raw render_tweet(comment.content)
+          .timestamp= time_ago_in_words(comment.created_at)+" ago"
+  - if current_user
+    .input
+      = render(:partial => "thoughts/comment", :locals => {:thought => thought})
+      .clear .

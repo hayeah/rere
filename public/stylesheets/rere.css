@@ -88,16 +88,16 @@ input {
   right: 20px;
   top: 8px; }
 
-#box .top {
+.box .top {
   background: url("/images/box-top.png") no-repeat;
   height: 20px;
   border: 0px solid black;
   margin-top: 1em; }
-#box .middle {
+.box .middle {
   background: url("/images/box-side.png") repeat-y;
   width: 800px;
   padding-left: 20px; }
-#box .bottom {
+.box .bottom {
   background: url("/images/box-bottom.png") no-repeat;
   height: 20px; }
 
@@ -269,7 +269,7 @@ input {
         color: #8bf1ff; }
 
 .comments .top {
-  margin: 5px 0 0 150px;
+  margin: 5px 0 0 140px;
   background: url("/images/comment-nub.png") no-repeat;
   height: 5px;
   width: 10px; }
