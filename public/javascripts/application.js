@@ -58,7 +58,7 @@ $(window).load(function () {
         },
     });
 
-    $("#thoughts .comments form").bind({
+    $(".comments form").bind({
         "ajax:success":function(e,data,status,xhr) {
             var input = $(this).find("textarea[name]").each(function(){this.show_hint()});
         },
