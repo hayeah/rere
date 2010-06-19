@@ -5,16 +5,15 @@
 .comments
   - if current_user || !thought.comments.empty?
     .top
-  - unless thought.comments.empty?
-    %ul
-      - thought.comments.each do |comment|
-        %li.comment
-          %span.name= link_to_user(comment.user)
-          %span.body= raw render_tweet(comment.content)
-          .timestamp= time_ago_in_words(comment.created_at)+" ago"
+  %ul
+    - thought.comments.each do |comment|
+      %li.comment
+        %span.name= link_to_user(comment.user)
+        %span.body= raw render_tweet(comment.content)
+        .timestamp= time_ago_in_words(comment.created_at)+" ago"
   - if current_user
     .input
-      = form_tag(thought_comments_path(:thought_id => thought.id)) do
+      = form_tag(thought_comments_path(:thought_id => thought.id),:remote => true) do
         = text_area_tag :content
         - if controller_name == "users"
           = hidden_field_tag :goto_url, stream_path(owner.username)

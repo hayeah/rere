@@ -1,7 +1,7 @@
 %ul#thoughts
   - day = nil
   - @thoughts.each do |thought|
-    %li.thought
+    %li.thought{:id => "thought#{thought.id}"}
       - # print one date timestamp for all the thoughts that has the same day
       - if day.nil? or thought.created_at.yday != day.yday
         - day = thought.created_at
