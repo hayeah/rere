@@ -1,0 +1,7 @@
+var new_thought = $('<%= escape_javascript(render(:partial => "thoughts/item",:locals => {:thought => @thought})) %>');
+new_thought.find("textarea").hintedInput("share something...");
+$("#thoughts").prepend(new_thought);
+if($("#thoughts .date").eq(1).html() == new_thought.find(".date").html()) {
+    // we have two date timestamps that are the same. remove the second one
+    $("#thoughts .date").eq(1).remove();
+}

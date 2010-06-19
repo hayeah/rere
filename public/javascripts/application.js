@@ -48,7 +48,15 @@ $(window).load(function () {
             focusout: function(){
                 if(this.no_input()) { this.show_hint(); }
             },
+            "ajax:success": function(){
+                this.show_hint();
+            }
         });
+        // pass the form's ajax:success event to the input field
+        this.parent("form").bind("ajax:success",function(e,data,status,xhr) {
+            $(this).find("textarea[name]").trigger("ajax:success");
+        });
+        
         this.autoResize();
         return this;
     }
@@ -57,13 +65,4 @@ $(window).load(function () {
 $(window).load(function () {
     $("#share_prompt textarea").hintedInput("Say something or ask a question...");
     $(".comments textarea").hintedInput("share something...");
-
-    $(".comments form").bind({
-        "ajax:success":function(e,data,status,xhr) {
-            var input = $(this).find("textarea[name]").each(function(){this.show_hint()});
-        },
-        "ajax:failure":function(e,xhr,status,error) {
-            alert("oops, something went wrong");
-        }
-    });
 });

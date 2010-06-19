@@ -1,0 +1,6 @@
+.thought{:id => "thought#{thought.id}"}
+  - # print one date timestamp for all the thoughts that has the same day
+  .date= thought.created_at.strftime("%b %d")
+  .time= thought.created_at.strftime("%I:%M %p").downcase
+  = render(:partial => "thoughts/thought", :locals => {:thought => thought})
+

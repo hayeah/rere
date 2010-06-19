@@ -19,7 +19,7 @@
               %li= link_to_user(user)
     - if user_is_owner?
       #share_prompt
-        = form_tag :action => :share  do
+        = form_tag({:action => :share}, {:remote => true}) do
           = text_area_tag :content
           = image_submit_tag "share-button.png", :class => "submit"
     - elsif !user_signed_in?
