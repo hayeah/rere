@@ -268,29 +268,29 @@ input {
       .thought .content .name a:hover {
         color: #8bf1ff; }
 
-#comments .top {
+.comments .top {
   margin: 5px 0 0 150px;
   background: url("/images/comment-nub.png") no-repeat;
   height: 5px;
   width: 10px; }
-#comments .input {
+.comments .input {
   width: 452px;
   background: #f0f0f0;
   margin-left: 125px;
   padding: 3px; }
-  #comments .input textarea {
+  .comments .input textarea {
     height: 15px;
     width: 444px;
     border: 1px solid #d7d7d7;
     display: block;
     padding: 3px; }
-  #comments .input .submit {
+  .comments .input .submit {
     background: #5bb4e5;
     margin: 4px 1px 0px 0px;
     width: 85px !important;
     color: white;
     float: right; }
-    #comments .input .submit:hover {
+    .comments .input .submit:hover {
       border-color: #868181; }
 
 .comment {

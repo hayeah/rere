@@ -11,7 +11,7 @@
       .content
         %span.name= link_to_user(thought.user)
         %span.body= raw render_tweet(thought.content)
-      #comments
+      .comments
         - if current_user || !thought.comments.empty?
           .top
         - unless thought.comments.empty?

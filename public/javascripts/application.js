@@ -22,10 +22,10 @@ $(window).load(function () {
 $(window).load(function () {
     // hinting, and autoresize, and hiding submit button
     $('#share_prompt textarea').autoResize().data("hint","Say something or ask a question...").css("color","#9a9a9a");
-    $('#comments textarea').autoResize().data("hint","share something...").css("color","#9a9a9a");
-    $("#share_prompt, #comments").find(".submit").hide();
+    $('.comments textarea').autoResize().data("hint","share something...").css("color","#9a9a9a");
+    $("#share_prompt, .comments").find(".submit").hide();
 
-    $("#share_prompt, #comments").find("textarea").each(function () {
+    $("#share_prompt, .comments").find("textarea").each(function () {
         $(this).val($(this).data("hint"));
     }).bind({
         focusin: function(){
