@@ -18,18 +18,17 @@ class GroupsController < ApplicationController
   def show
     @group = Group.where(:permalink => params[:permalink]).first
     @thoughts = @group.stream
+    render :layout => "application"
   end
 
   def share
     @group = Group.find(params[:id])
-    current_user.share(params[:content],@group)
-    to_show
-  end
-
-  def comment
-    Group::Comment.create(params[:thought_id],current_user,params[:content])
-    params[:id] = params[:group_id]
-    to_show
+    @thought = @group.share(params[:content],current_user)
+    unless request.xhr?
+      to_show
+    else
+      render "thoughts/share"
+    end
   end
 
   def join
@@ -40,6 +39,6 @@ class GroupsController < ApplicationController
 
   private
   def to_show
-    redirect_to :action => :show, :id => params[:id]
+    redirect_to :action => :show, :permalink => @group.permalink
   end
 end

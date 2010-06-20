@@ -24,6 +24,8 @@ class UsersController < ApplicationController
     @thought = current_user.share(params[:content])
     unless request.xhr?
       redirect_to stream_path(:username => current_user.username)
+    else
+      render "thoughts/share"
     end
   end
 end

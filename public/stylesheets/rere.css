@@ -177,7 +177,8 @@ input.link {
   position: relative; }
   #stream_main #info {
     margin-left: 100px;
-    padding: 20px; }
+    width: 490px;
+    border-bottom: 1px solid #d7d7d7; }
     #stream_main #info h1 {
       font-size: 2em; }
   #stream_main .join {

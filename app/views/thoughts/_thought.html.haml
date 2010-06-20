@@ -18,7 +18,7 @@
         - if controller_name == "users"
           = hidden_field_tag :goto_url, stream_path(owner.username)
         - elsif controller_name == "groups"
-          = hidden_field_tag :goto_url, @group.id
+          = hidden_field_tag :goto_url, group_permalink_path(@group.permalink)
         - elsif controller_name == "thoughts"
           = hidden_field_tag :goto_url, thought_path(thought.id)
         = submit_tag "Comment", :class => "submit"
