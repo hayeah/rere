@@ -21,6 +21,10 @@ module ApplicationHelper
     link_to(user.username, stream_path(:username => user.username))
   end
 
+  def link_to_group(group)
+    link_to(group.name,group_permalink_path(:permalink => group.permalink))
+  end
+
   def parent_layout(layout)
     @content_for_layout = self.output_buffer
     self.output_buffer = render(:file => "layouts/#{layout}")

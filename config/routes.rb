@@ -11,6 +11,7 @@ Rere::Application.routes.draw do |map|
     resources :comments
   end
 
+  
   match "home/about"
 
   match "admin/:action" => "admin#:action", :as => :admin
@@ -19,6 +20,14 @@ Rere::Application.routes.draw do |map|
   match 'users/:username/unfollow' => "users#unfollow", :as => :unfollow
   
   match 'users/:username/share' => "users#share", :as => :share
+
+  match "group/:permalink" => "groups#show", :as => :group_permalink
+
+  resources :groups do
+    member do
+      get :join
+    end
+  end
 
   match ":username" => "users#stream", :as => :stream
   

@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  layout "box"
   before_filter :authenticate_user!
   def index
     @groups = Group.all
@@ -15,7 +16,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.where(:permalink => params[:permalink]).first
     @thoughts = @group.stream
   end
 

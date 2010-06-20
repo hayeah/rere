@@ -1,10 +1,18 @@
-%div= link_to("Create your own group",new_group_path)
-%h2 All The Groups In The Universe
-%ul
-  - @groups.each do |group|
-    %li
-      %div= link_to(group.name,:action => :show, :id => group.id)
-      %div= group.description
-      %div= link_to_join(group)
-      %hr
-    
+#group_index
+  %h1
+    Find A
+    .highlight Group
+    That You Belong
+    .create
+      or
+      = link_to("create your own",new_group_path)
+
+  %ul.groups
+    - @groups.each do |group|
+      %li
+        .name= link_to_group(group)
+        .description= group.description
+        .info
+          %span.members= pluralize(group.members.count,"member")
+          = link_to("Join",{:action => :join, :id => group.id},{:class => "link",:method => :post})
+

@@ -20,6 +20,14 @@ input
   margin: 0 0 2px 0
   padding: 3px
 
+input.link
+  background: none
+  border: none
+  color: #118bd1
+  text-decoration: none
+  &:hover
+    color: #99cdeb
+
 .box_padding
   padding: 20px 80px 20px 40px
 
@@ -388,3 +396,29 @@ input
     width: 430px
     height: 75px
     font-size: 1em
+
+#group_index
+  a
+    text-decoration: underline
+  a:hover
+    text-decoration: none
+  h1
+    font-size: 2.5em
+    padding: 25px 0 0 75px
+    .create
+      font-size: 14px
+      font-style: italic
+      right: 0
+      padding-left: 28em
+  ul.groups
+    margin: 25px 0 0 100px
+    .name
+      font-size: 20px
+    .description
+      margin: 5px 0 0 0
+    .info
+      .members
+        color: $gray2
+      a
+        text-decoration: none
+        font-size: 14px
