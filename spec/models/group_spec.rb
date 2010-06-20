@@ -26,6 +26,18 @@ describe Group do
       group.member?(u1)
     end
   end
+
+  context "#permalink" do
+    let(:group) {
+      g = Group.new(:name => "123-abc_efg ")
+      g.valid?
+      g
+    }
+
+    it "dahserize any non-alphanumeric chars" do
+      group.permalink.should == "123-abc-efg-"
+    end
+  end
   
   context "#join" do
     before do

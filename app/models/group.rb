@@ -6,9 +6,19 @@ class Group < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :creator
 
+  validates_uniqueness_of :permalink, :message => "group name is taken"
+  validates_presence_of :permalink
+
   has_many :shares, :through => :shared_thoughts, :source => :thought
   has_many :shared_thoughts, :as => :subject
 
+  before_validation :set_permalink
+
+  # one-to-one mapping from arbitrary group name to permalink
+  def set_permalink
+    self.permalink = self.name.gsub(/[^[:alnum:]]/,"-")
+  end
+  
   class BadAuth < StandardError
   end
   

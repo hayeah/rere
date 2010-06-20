@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100614195107) do
+ActiveRecord::Schema.define(:version => 20100620153232) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -32,7 +32,10 @@ ActiveRecord::Schema.define(:version => 20100614195107) do
     t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "permalink"
   end
+
+  add_index "groups", ["permalink"], :name => "index_groups_on_permalink", :unique => true
 
   create_table "memberships", :force => true do |t|
     t.integer "group_id"
