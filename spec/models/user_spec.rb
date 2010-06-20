@@ -91,11 +91,23 @@ describe User do
     end
 
     context "with members in a group" do
-      let(:thought) { u1.share("foo",group) }
+      let(:thought) { group.share("foo",u1) }
       before {
-        group.join(u2)
+        group.add(u1)
+        group.add(u2)
         thought
       }
+
+      it "creates StreamThought for the creator" do
+        StreamThought.where(:from_id => u1.id,
+                            :from_type => u1.class.to_s,
+                            :to_id => u1.id,
+                            :to_type => u1.class.to_s).should_not be_empty
+      end
+
+      it "appears in sharer's stream" do
+        u1.stream.should == [thought]
+      end
 
       it "appears in member's stream" do
         u2.stream.should == [thought]
@@ -103,10 +115,11 @@ describe User do
     end
 
     context "when the follower is also member in the group" do
-      let(:thought){ u1.share("foo",group) }
+      let(:thought){ group.share("foo",u1) }
       before {
+        group.add(u1)
+        group.add(u2)
         u2.follow u1
-        group.join(u2)
         thought
       }
 
