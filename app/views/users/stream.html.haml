@@ -17,6 +17,12 @@
           %ul
             - owner.followed.each do |user|
               %li= link_to_user(user)
+        .groups
+          %h2 Groups
+          %ul
+            - owner.groups.each do |group|
+              %li= link_to_group(group)
+          
     - if user_is_owner?
       #share_prompt
         = form_tag({:action => :share}, {:remote => true}) do

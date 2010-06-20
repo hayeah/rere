@@ -80,6 +80,10 @@ class User < ActiveRecord::Base
     Following.followers_of(self)
   end
 
+  def groups
+    Group.of(self)
+  end
+
   def join(group)
     group.add(self)
   end
