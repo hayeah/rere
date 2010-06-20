@@ -9,7 +9,7 @@ class Group < ActiveRecord::Base
   has_many :shares, :through => :shared_thoughts, :source => :thought
   has_many :shared_thoughts, :as => :subject
 
-  class NotMember < StandardError
+  class BadAuth < StandardError
   end
   
   class << self
@@ -28,7 +28,7 @@ class Group < ActiveRecord::Base
     if member?(user)
       Thought.share(content,user,self)
     else
-      raise(NotMember)
+      raise BadAuth, "non-member cannot share with group"
     end
   end
 
@@ -42,8 +42,13 @@ class Group < ActiveRecord::Base
   end
 
   def remove(user)
-    Membership.where(:group_id => self.id,
-                     :user_id => user.id).delete_all
+    if creator == user
+      raise BadAuth, "admin cannot leave group"
+    else
+      Membership.where(:group_id => self.id,
+                       :user_id => user.id).delete_all
+    end
+    
   end
 
   def member?(user)

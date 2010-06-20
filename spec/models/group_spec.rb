@@ -45,7 +45,7 @@ describe Group do
     end
   end
 
-  context "#join" do
+  context "#remove" do
     before do
       group.add(u1)
       group.remove(u1)
@@ -62,6 +62,10 @@ describe Group do
     it "does nothing if removed twice" do
       lambda { group.remove(u1) }.should_not raise_error
     end
+
+    it "raises if group creator tries to leave the group" do
+      lambda { group.remove(group.creator) }.should raise_error(Group::BadAuth)
+    end
   end
 
   context "#share" do
@@ -74,7 +78,7 @@ describe Group do
     end
 
     it "does not allow non-group member to post" do
-      group.share("a",u2).should be_nil
+      lambda { group.share("a",u2) }.should raise_error(Group::BadAuth)
     end
   end
 
