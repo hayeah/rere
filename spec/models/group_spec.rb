@@ -3,8 +3,9 @@ require 'spec_helper'
 describe Group do
   let(:u1) { Factory(:user) }
   let(:u2) { Factory(:user) }
-  let(:g1) { Factory(:group) }
+  let(:group) { Factory(:group) }
 
+  
   context ".make" do
     let(:creator) { u1 }
     let(:group) {
@@ -13,26 +14,89 @@ describe Group do
                  :creator => creator)
     }
 
+    it "creates a record" do
+      group && Group.all.should == [group]
+    end
+
+    it "sets creator of group" do
+      group.creator.should == creator
+    end
+    
     it "adds creator to group members" do
-      group.include?(u1)
+      group.member?(u1)
+    end
+  end
+  
+  context "#join" do
+    before do
+      group.add(u1)
+    end
+
+    it "has a member for the group" do
+      group.members.should == [u1]
+    end
+
+    it "has u1 as a member" do
+      group.member?(u1).should be_true
+    end
+
+    it "raises if joined twice" do
+      lambda { group.add(u1) }.should raise_error(ActiveRecord::RecordNotUnique)
     end
   end
 
   context "#join" do
     before do
-      g1.join(u1)
+      group.add(u1)
+      group.remove(u1)
     end
 
-    it "has u1 as member" do
-      g1.include?(u1).should be_true
+    it "has no member for the group" do
+      group.members.should be_empty
     end
 
-    it "doesn't have u1 as member" do
-      g1.include?(u2).should be_false
+    it "has u1 as a member" do
+      group.member?(u1).should be_false
     end
-    
-    it "raises when joining twice" do
-      lambda { g1.join(u1) }.should raise_error(ActiveRecord::RecordNotUnique)
+
+    it "does nothing if removed twice" do
+      lambda { group.remove(u1) }.should_not raise_error
     end
   end
+
+  context "#share" do
+    before do
+      group.add(u1)
+    end
+
+    it "allows non-group member to post" do
+      group.share("a",u1).should be_a(Thought)
+    end
+
+    it "does not allow non-group member to post" do
+      group.share("a",u2).should be_nil
+    end
+  end
+
+  context "#stream" do
+    let(:thought) {
+      group.share("a",u1)
+    }
+    before {
+      group.add(u1)
+      thought
+    }
+
+    it "contains thoughts" do
+      group.stream.should == [thought]
+    end
+
+    context "when user unjoins a group" do
+      it "does not remove thoughts already created" do
+        group.remove(u1)
+        group.stream.should == [thought]
+      end
+    end
+  end
+  
 end

@@ -152,6 +152,4 @@ describe User do
       lambda { u2.unfollow(u1) }.should_not raise_error
     end
   end
-
-  
 end

@@ -8,26 +8,45 @@ class Group < ActiveRecord::Base
 
   has_many :shares, :through => :shared_thoughts, :source => :thought
   has_many :shared_thoughts, :as => :subject
+
+  class NotMember < StandardError
+  end
   
   class << self
     def make(attributes)
       group = self.new(attributes)
-      group.join(group.creator)
-      group.save
+      Group.transaction do
+        group.add(group.creator)
+        group.save!
+      end
       group
     end
   end
 
+  def share(content,user)
+    # TODO do we allow non-group member to post?
+    if member?(user)
+      Thought.share(content,user,self)
+    else
+      raise(NotMember)
+    end
+  end
+
   def stream
-    self.shares.includes(:comments => [:user]).order("id desc")
+    StreamThought.for(self)
   end
   
-  def join(user)
+  def add(user)
     self.members << user
     self.save
   end
 
-  def include?(user)
+  def remove(user)
+    Membership.where(:group_id => self.id,
+                     :user_id => user.id).delete_all
+  end
+
+  def member?(user)
     !Membership.where(:group_id => self.id,
                       :user_id => user.id).empty?
   end
