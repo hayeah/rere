@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username, :message => "is taken"
   INVALID_USERNAMES = %w(admin root group thought groups thoughts user users support about contact no-reply help feedback)
-  INVALID_USERNAMES_REGEX = Regexp.compile("^#{INVALID_USERNAMES.map { |str| Regexp.quote(str) }.join("|")}$")
+  INVALID_USERNAMES_REGEX = Regexp.compile("^(#{INVALID_USERNAMES.map { |str| Regexp.quote(str) }.join("|")})$")
   validates_format_of :username, :without => INVALID_USERNAMES_REGEX, :message => "username is taken"
   
   validates_presence_of :email
@@ -78,5 +78,9 @@ class User < ActiveRecord::Base
 
   def followers
     Following.followers_of(self)
+  end
+
+  def join(group)
+    group.add(self)
   end
 end
