@@ -382,26 +382,30 @@ input.link {
     height: 75px;
     font-size: 1em; }
 
-#group_index a {
-  text-decoration: underline; }
-#group_index a:hover {
-  text-decoration: none; }
-#group_index h1 {
-  font-size: 2.5em;
-  padding: 25px 0 0 75px; }
-  #group_index h1 .create {
-    font-size: 14px;
-    font-style: italic;
-    right: 0;
-    padding-left: 28em; }
-#group_index ul.groups {
-  margin: 25px 0 0 100px; }
-  #group_index ul.groups .name {
-    font-size: 20px; }
-  #group_index ul.groups .description {
-    margin: 5px 0 0 0; }
-  #group_index ul.groups .info .members {
-    color: #868181; }
-  #group_index ul.groups .info a {
-    text-decoration: none;
-    font-size: 14px; }
+#group_index {
+  padding-bottom: 25px; }
+  #group_index a {
+    text-decoration: underline; }
+  #group_index a:hover {
+    text-decoration: none; }
+  #group_index h1 {
+    font-size: 2.5em;
+    padding: 25px 0 0 75px; }
+    #group_index h1 .create {
+      font-size: 14px;
+      font-style: italic;
+      right: 0;
+      padding-left: 28em; }
+  #group_index ul.groups {
+    margin: 25px 0 0 100px; }
+    #group_index ul.groups li {
+      margin-bottom: 25px; }
+    #group_index ul.groups .name {
+      font-size: 20px; }
+    #group_index ul.groups .description {
+      margin: 5px 0 0 0; }
+    #group_index ul.groups .info .members {
+      color: #868181; }
+    #group_index ul.groups .info a {
+      text-decoration: none;
+      font-size: 14px; }
