@@ -28,14 +28,35 @@ describe Group do
   end
 
   context "#permalink" do
-    let(:group) {
-      g = Group.new(:name => "123-abc_efg ")
-      g.valid?
-      g
-    }
+    def permalink(name)
+      g = Group.new(:name => name)
+      g.set_permalink
+    end
 
+    it "strips whitespace" do
+      permalink(" abc ").should == "abc"
+    end
+    
     it "dahserize any non-alphanumeric chars" do
-      group.permalink.should == "123-abc-efg-"
+      permalink("_ ;").should == "---"
+    end
+
+    it "makes permalink lowercase" do
+      permalink("ABC").should == "abc"
+    end
+
+    it "keeps alphanumeric unchanged" do
+      permalink("123abc").should == "123abc"
+    end
+
+    it "cannot be blank" do
+      
+    end
+
+    it "sets permalink before validating" do
+      g = Group.new(:name => " abc ")
+      g.valid?
+      g.permalink.should == "abc"
     end
   end
   

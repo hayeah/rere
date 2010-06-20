@@ -16,7 +16,8 @@ class Group < ActiveRecord::Base
 
   # one-to-one mapping from arbitrary group name to permalink
   def set_permalink
-    self.permalink = self.name.gsub(/[^[:alnum:]]/,"-")
+    self.name = self.name.strip
+    self.permalink = self.name.gsub(/[^[:alnum:]]/,"-").downcase
   end
   
   class BadAuth < StandardError
@@ -30,6 +31,10 @@ class Group < ActiveRecord::Base
         group.save!
       end
       group
+    end
+
+    def of(user)
+      self.find(Membership.where(:user_id => user.id).map(&:group_id))
     end
   end
 
