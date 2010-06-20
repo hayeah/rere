@@ -1,10 +1,18 @@
-Start your own group!
+.simple_form
+  %h1
+    Start Your 
+    .highlight Group
+  = @group.errors
+  = form_for(@group) do |f|
+    %table
+      %tr.input
+        %th Group Name
+        %td= f.text_field :name
+      %tr.input
+        %th Description
+        %td= f.text_area :description
+      %tr
+        %th
+        %td= f.submit "Create Group", :class => "submit"
+        
 
-= form_for @group do |f|
-  %p= f.label :name
-  %p= f.text_field :name
-
-  %p= f.label :description
-  %p= f.text_area :description
-
-  %p= submit_tag "Create"
