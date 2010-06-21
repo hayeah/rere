@@ -10,8 +10,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.make(params[:group].merge(:creator => current_user))
-    params[:id] = group.id
+    @group = Group.make(params[:group].merge(:creator => current_user))
     to_show
   end
 
@@ -31,9 +30,15 @@ class GroupsController < ApplicationController
     end
   end
 
+  def leave
+    @group = Group.find(params[:id])
+    @group.remove(current_user)
+    to_show
+  end
+
   def join
     @group = Group.find(params[:id])
-    @group.join(current_user)
+    @group.add(current_user)
     to_show
   end
 

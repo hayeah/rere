@@ -25,7 +25,8 @@ Rere::Application.routes.draw do |map|
 
   resources :groups do
     member do
-      get :join
+      post :join
+      post :leave
       post :share
     end
   end

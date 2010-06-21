@@ -6,6 +6,11 @@
       = @group.description
     #sidebar
       #navigation
+        - if user_signed_in?
+          - if !@group.member?(current_user)
+            = button_to "Join", {:action => :join, :id => @group.id}, {:class => "button"}
+          - elsif @group.creator != current_user
+            = button_to "Leave", {:action => :leave, :id => @group.id}, {:class => "button"}
         %h2 Members
         %ul.members
           - @group.members.each do |user|
@@ -24,5 +29,4 @@
             .highlight conversation
             today
       = render :partial => "thoughts/list"
-      
-    
+
