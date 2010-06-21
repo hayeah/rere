@@ -3,7 +3,7 @@
   %span.name= link_to_user(thought.user)
   %span.body= raw render_tweet(thought.content)
   - if thought.group && controller_name != "groups"
-    %span.group #{link_to_group(thought.group)} 
+    %span.group #{link_to_group(thought.group)}
 
 .comments
   - if current_user || !thought.comments.empty?

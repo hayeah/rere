@@ -287,10 +287,12 @@ input.link {
       .thought .content .name a:hover {
         color: #8bf1ff; }
     .thought .content .group {
-      margin-left: 3px; }
+      margin-left: 5px; }
       .thought .content .group a {
         font-size: 10px;
         color: #868181; }
+        .thought .content .group a:hover {
+          text-decoration: underline; }
 
 .comments .top {
   margin: 5px 0 0 140px;
