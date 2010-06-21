@@ -14,5 +14,6 @@
         .description= group.description
         .info
           %span.members= pluralize(group.members.count,"member")
-          = link_to("Join",{:action => :join, :id => group.id},{:class => "link",:method => :post})
+          - if current_user && !group.member?(current_user)
+            = link_to("Join",{:action => :join, :id => group.id},{:class => "link",:method => :post})
 
