@@ -1,5 +1,5 @@
-- content_for(:toolbar) do
-  - unless yield(:toolbar)
+- if user_signed_in?
+  - content_for(:toolbar) do
     = render(:partial => "shared/toolbar")
 - content_for(:content) do
   .box
