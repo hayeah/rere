@@ -284,6 +284,11 @@ input.link {
       margin-right: 3px; }
       .thought .content .name a:hover {
         color: #8bf1ff; }
+    .thought .content .group {
+      margin-left: 3px; }
+      .thought .content .group a {
+        font-size: 10px;
+        color: #868181; }
 
 .comments .top {
   margin: 5px 0 0 140px;
