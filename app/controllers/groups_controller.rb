@@ -11,7 +11,11 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.make(params[:group].merge(:creator => current_user))
-    to_show
+    if @group.valid?
+      to_show
+    else
+      render :action => :new
+    end
   end
 
   def show

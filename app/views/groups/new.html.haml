@@ -2,12 +2,15 @@
   %h1
     Start Your 
     .highlight Group
-  = @group.errors
   = form_for(@group) do |f|
     %table
       %tr.input
         %th Group Name
         %td= f.text_field :name
+      %tr.error
+        %th
+        %td
+          %div= @group.errors[:permalink].first
       %tr.input
         %th Description
         %td= f.text_area :description

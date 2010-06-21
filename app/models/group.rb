@@ -27,8 +27,9 @@ class Group < ActiveRecord::Base
     def make(attributes)
       group = self.new(attributes)
       Group.transaction do
-        group.add(group.creator)
-        group.save!
+        if group.save
+          group.add(group.creator)
+        end
       end
       group
     end
