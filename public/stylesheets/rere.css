@@ -410,6 +410,7 @@ input.link {
       right: 0;
       padding-left: 28em; }
   #group_index ul.groups {
+    width: 600px;
     margin: 25px 0 0 100px; }
     #group_index ul.groups li {
       margin-bottom: 25px; }
