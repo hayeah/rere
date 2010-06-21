@@ -1,9 +1,6 @@
 = render :partial => "shared/toolbar"
 -content_for(:content) do
   #stream_main
-    #info
-      %h1= @group.name
-      = @group.description
     #sidebar
       #navigation
         - if user_signed_in?
@@ -16,7 +13,7 @@
           - @group.members.each do |user|
             %li= link_to_user(user)
     #stream
-      - if @group.member?(current_user)
+      - if current_user && @group.member?(current_user)
         #share_prompt
           = form_tag({:action => :share, :id => @group.id},{:remote => true}) do
             = text_area_tag :content
@@ -28,5 +25,8 @@
             our
             .highlight conversation
             today
+      #info
+        %h1= @group.name
+        = @group.description
       = render :partial => "thoughts/list"
 

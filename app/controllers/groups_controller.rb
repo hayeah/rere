@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   layout "box"
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:index,:show]
   def index
     @groups = Group.all
   end
