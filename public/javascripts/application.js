@@ -19,12 +19,14 @@ $(window).load(function () {
 
 (function($){
     $.fn.hintedInput = function(hint) {
+        
         this.each(function() {
             $.extend(this,{
                 "show_hint":function(){
                     $(this).val(hint).css("color","#9a9a9a");
                     $(this).parent("form").find(".submit").hide();
                     $(this).removeData("changed");
+                    $(this).parent("form").find("textarea").trigger("change.dynSiz"); // need to trigger autorezie
                 },
                 "for_input":function(){
                     $(this).css("color","#000");
@@ -48,16 +50,18 @@ $(window).load(function () {
             focusout: function(){
                 if(this.no_input()) { this.show_hint(); }
             },
-            "ajax:success": function(){
+            "success": function(){
                 this.show_hint();
+                return false;
             }
         });
         // pass the form's ajax:success event to the input field
         this.parent("form").bind("ajax:success",function(e,data,status,xhr) {
-            $(this).find("textarea[name]").trigger("ajax:success");
+            $(this).find("textarea").trigger("success");
         });
-        
+
         this.autoResize();
+        
         return this;
     }
 })(jQuery);
