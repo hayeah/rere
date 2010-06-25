@@ -72,6 +72,7 @@ input.link {
 
 #wrapper {
   position: relative;
+  padding-top: 10px;
   width: 800px;
   margin: auto;
   font: 12px Verdana, non-serif; }
@@ -91,11 +92,11 @@ input.link {
     padding: 2px;
     width: 58px;
     height: 20px; }
-
+ 
 #toolbar {
   position: absolute;
-  right: 20px;
-  top: 8px; }
+  right: 80px;
+  top: 13px; }
 
 .box .top {
   background: url("/images/box-top.png") no-repeat;
@@ -255,6 +256,18 @@ input.link {
 
 #thoughts {
   border: 0px solid black; }
+  .empty_stream {
+	font-size: 13px;
+	margin: 50px 50px 0px 125px;
+  }
+  p {
+    margin-bottom: 10px;	
+  }
+  .new_stream_arrow {
+    position: absolute;
+    margin: -145px 0px 0px -105px;
+  }
+
 
 .thought {
   position: relative;

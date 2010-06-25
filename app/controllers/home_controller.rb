@@ -13,5 +13,9 @@ class HomeController < ApplicationController
   def about
     render "about", :layout => "box"
   end
+
+  def people
+    render "random_people", :layout => "box"
+  end
   
 end

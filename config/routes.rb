@@ -13,6 +13,7 @@ Rere::Application.routes.draw do |map|
 
   
   match "home/about"
+  match "home/people"
 
   match "admin/:action" => "admin#:action", :as => :admin
   

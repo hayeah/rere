@@ -1,12 +1,32 @@
 %ul#thoughts
   - day = nil
-  - @thoughts.each do |thought|
-    %li.thought{:id => "thought#{thought.id}"}
-      - # print one date timestamp for all the thoughts that has the same day
-      - if day.nil? or thought.created_at.yday != day.yday
-        - day = thought.created_at
-        .date= thought.created_at.strftime("%b %d")
-        - # time_ago_in_words(thought.created_at)+ " ago"
-      .time= thought.created_at.strftime("%I:%M %p").downcase
-      = render(:partial => "thoughts/thought", :locals => {:thought => thought})
+  - if @thoughts.size == 0
+    %div.empty_stream
+      =image_tag "/images/new_stream_arrow.png", :class => 'new_stream_arrow'
+      %p
+        Welcome to
+        %span.highlight reremind
+        , you've probably notice there's nothing here, that's because you haven't shared anything yet!
+      %p
+        You can start by sharing a thought using the text box above; you can talk about 
+        %span.highlight anything 
+        you like, even the little things.  
+      %p
+        You should also check out the 
+        =link_to "groups", groups_path
+        page and find the group that you 
+        %span.highlight belong 
+        to.  Or you can go to our
+        =link_to "peoples", :controller => :home, :action => :people
+        page and just check out what people are talking about!
+  - else
+    - @thoughts.each do |thought|
+      %li.thought{:id => "thought#{thought.id}"}
+        - # print one date timestamp for all the thoughts that has the same day
+        - if day.nil? or thought.created_at.yday != day.yday
+          - day = thought.created_at
+          .date= thought.created_at.strftime("%b %d")
+          - # time_ago_in_words(thought.created_at)+ " ago"
+        .time= thought.created_at.strftime("%I:%M %p").downcase
+        = render(:partial => "thoughts/thought", :locals => {:thought => thought})
       
