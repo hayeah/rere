@@ -55,8 +55,14 @@ $(window).load(function () {
                 return false;
             }
         });
+        //
+        this.parent("form").bind("ajax:loading",function(e,data,status,xhr) {
+            $(this).find("input").attr("disabled",true);
+        });
+        
         // pass the form's ajax:success event to the input field
-        this.parent("form").bind("ajax:success",function(e,data,status,xhr) {
+        this.parent("form").bind("ajax:complete",function(e,data,status,xhr) {
+            $(this).find("input").attr("disabled",false);
             $(this).find("textarea").trigger("success");
         });
 
