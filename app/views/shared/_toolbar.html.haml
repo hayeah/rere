@@ -3,13 +3,9 @@
     - if user_signed_in?
       = link_to "Stream", stream_path(:username => current_user.username)
       |
-      = link_to "People", :controller => :home, :action => :people
-      |
       = link_to "Groups", groups_path
       |
       = link_to "Settings", edit_user_registration_path
-      |
-      = link_to "About us", :controller => 'home', :action => 'about'
       |
       = link_to "Sign Out", destroy_user_session_path
     - else
