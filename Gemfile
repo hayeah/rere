@@ -26,5 +26,5 @@ group :test do
   gem 'cucumber-rails'
   gem 'cucumber', '0.7.0'
 
-  gem 'factory_girl', :git => 'git://github.com/szimek/factory_girl.git', :branch => 'rails3'
+  gem 'factory_girl', :git => "http://github.com/thoughtbot/factory_girl.git"
 end
