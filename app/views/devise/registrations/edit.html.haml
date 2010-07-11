@@ -6,6 +6,9 @@
   = form_for(resource, :url => user_registration_path, :html => { :method => :put, :multipart => true }) do |f|
     %table
       %tr.input
+        %th Username
+        %td= f.text_field :username
+      %tr.input
         %th Email
         %td= f.text_field :email
       %tr.input

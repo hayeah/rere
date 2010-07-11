@@ -12,9 +12,11 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     if resource.update_with_password(params[resource_name])
       set_flash_message :notice, :updated
+      redirect_to :action => :edit
     else
       clean_up_passwords(resource)
+      resource.reload
+      render :edit
     end
-    render :edit
   end
 end
